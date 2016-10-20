@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="uk.co.chamberlain.netbeans.nsis">
+    <module_version install_time="1476993190193" last="true" origin="installer" specification_version="1.0">
+        <file crc="323475871" name="config/Modules/uk-co-chamberlain-netbeans-nsis.xml"/>
+        <file crc="565263102" name="modules/uk-co-chamberlain-netbeans-nsis.jar"/>
+    </module_version>
+</module>
