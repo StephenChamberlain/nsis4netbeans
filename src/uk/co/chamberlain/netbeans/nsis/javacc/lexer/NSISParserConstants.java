@@ -79,7 +79,7 @@ public interface NSISParserConstants {
   /** RegularExpression Id. */
   int LONG = 37;
   /** RegularExpression Id. */
-  int NATIVE = 38;
+  int NAME = 38;
   /** RegularExpression Id. */
   int NEW = 39;
   /** RegularExpression Id. */
@@ -292,7 +292,7 @@ public interface NSISParserConstants {
     "\"int\"",
     "\"interface\"",
     "\"long\"",
-    "\"native\"",
+    "\"name\"",
     "\"new\"",
     "\"null\"",
     "\"package\"",

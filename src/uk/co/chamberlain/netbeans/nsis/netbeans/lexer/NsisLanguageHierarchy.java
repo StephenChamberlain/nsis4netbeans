@@ -10,7 +10,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static List<NsisTokenId> tokens;
     private static Map<Integer, NsisTokenId> idToToken;
 
-    private static void init() {
+    private static void init() {        
         tokens = Arrays.asList(new NsisTokenId[]{
             new NsisTokenId("EOF", "whitespace", 0),
             new NsisTokenId("WHITESPACE", "whitespace", 1),
@@ -47,7 +47,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
             new NsisTokenId("INT", "keyword", 35),
             new NsisTokenId("INTERFACE", "keyword", 36),
             new NsisTokenId("LONG", "keyword", 37),
-            new NsisTokenId("NATIVE", "keyword", 38),
+            new NsisTokenId("NAME", "keyword", 38),
             new NsisTokenId("NEW", "keyword", 39),
             new NsisTokenId("NULL", "keyword", 40),
             new NsisTokenId("PACKAGE", "keyword", 41),
