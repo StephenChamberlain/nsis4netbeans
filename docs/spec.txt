@@ -1,0 +1,6 @@
+- syntax highlighting
+- config option - point to nsis exe
+- button; compile script with nsis (must be configured)
+- menu action; compile script with nsis (must be configured)
+- config option - point to dialog design
+- open .nsddef and .nsdinc files in dialog designer
