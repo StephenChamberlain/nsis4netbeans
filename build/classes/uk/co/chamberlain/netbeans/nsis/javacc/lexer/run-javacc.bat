@@ -1,1 +1,0 @@
-D:\Users\Stephen\Documents\NetBeansProjects\netbeans-nsis\javacc-5.0\bin\javacc nsis.jj
