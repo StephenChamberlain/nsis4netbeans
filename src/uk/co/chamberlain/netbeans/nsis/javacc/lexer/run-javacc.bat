@@ -1,1 +1,1 @@
-..\..\..\..\..\..\..\..\javacc-6.0\bin\javacc nsis.jj
+..\..\..\..\..\..\..\..\javacc-5.0\bin\javacc nsis.jj

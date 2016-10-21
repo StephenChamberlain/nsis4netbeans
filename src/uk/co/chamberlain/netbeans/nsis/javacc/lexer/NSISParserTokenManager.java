@@ -2,7 +2,7 @@
 package uk.co.chamberlain.netbeans.nsis.javacc.lexer;
 
 /** Token Manager. */
-public class NSISParserTokenManager 
+public class NSISParserTokenManager implements NSISParserConstants
 {
 
   /** Debug output. */
@@ -1802,7 +1802,7 @@ null, null, null, null, null, "\50", "\51", "\173", "\175", "\133", "\135", "\73
 "\76\75", "\41\75", "\174\174", "\46\46", "\53\53", "\55\55", "\53", "\55", "\52", 
 "\57", "\46", "\174", "\136", "\45", "\74\74", "\53\75", "\55\75", "\52\75", 
 "\57\75", "\46\75", "\174\75", "\136\75", "\45\75", "\74\74\75", "\76\76\75", 
-"\76\76\76\75", "\56\56\56", };
+"\76\76\76\75", "\56\56\56", null, };
 
 /** Lexer state names. */
 public static final String[] lexStateNames = {
@@ -1817,10 +1817,10 @@ public static final int[] jjnewLexState = {
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
-   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
 };
 static final long[] jjtoToken = {
-   0x3fffffffffffff73L, 0xfffffffffff9c2L, 
+   0x3fffffffffffff73L, 0x1fffffffffff9c2L, 
 };
 static final long[] jjtoMore = {
    0x8cL, 0x0L, 
@@ -1940,6 +1940,10 @@ public Token getNextToken()
          jjmatchedKind = 0x7fffffff;
          jjmatchedPos = 0;
          curPos = jjMoveStringLiteralDfa0_0();
+         if (jjmatchedPos == 0 && jjmatchedKind > 120)
+         {
+            jjmatchedKind = 120;
+         }
          break;
        case 1:
          jjmatchedKind = 0x7fffffff;

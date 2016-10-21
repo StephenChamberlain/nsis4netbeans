@@ -889,3 +889,5 @@ TOKEN :
 | < RUNSIGNEDSHIFTASSIGN: ">>>=" >
 | < ELLIPSIS: "..." >
 }
+
+TOKEN: { <UNEXPECTED_CHARACTER: ~[] > }
