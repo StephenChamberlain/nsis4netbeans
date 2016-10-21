@@ -8,8 +8,8 @@ package uk.co.chamberlain.netbeans.nsis.netbeans.lexer;
 import org.netbeans.spi.lexer.Lexer;
 import org.netbeans.spi.lexer.LexerRestartInfo;
 import uk.co.chamberlain.netbeans.nsis.javacc.lexer.JavaCharStream;
+import uk.co.chamberlain.netbeans.nsis.javacc.lexer.NSISParserTokenManager;
 import uk.co.chamberlain.netbeans.nsis.javacc.lexer.Token;
-import uk.co.chamberlain.netbeans.nsis.lexer.NSISParserTokenManager;
 
 class NsisLexer implements Lexer<NsisTokenId> {
 

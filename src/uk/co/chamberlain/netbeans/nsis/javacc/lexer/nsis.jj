@@ -10,7 +10,7 @@ options {
 
 PARSER_BEGIN(NSISParser)
 
-package uk.co.chamberlain.netbeans.nsis.lexer;
+package uk.co.chamberlain.netbeans.nsis.javacc.lexer;
 
 public class NSISParser {}
 
