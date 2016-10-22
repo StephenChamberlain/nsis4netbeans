@@ -5,6 +5,7 @@
  */
 package uk.co.chamberlain.netbeans.nsis.options;
 
+import javax.swing.JFileChooser;
 import org.openide.util.NbPreferences;
 
 final class NsisPanel extends javax.swing.JPanel {
@@ -74,9 +75,11 @@ final class NsisPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nsisHomeBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nsisHomeBrowseActionPerformed
-        nsisFileChooser.showDialog(this, "Ok");
-        nsisHome.setText(nsisFileChooser.getSelectedFile().getAbsolutePath());
-        controller.changed();
+        final int result = nsisFileChooser.showDialog(this, "Ok");
+        if (result == JFileChooser.APPROVE_OPTION) {
+            nsisHome.setText(nsisFileChooser.getSelectedFile().getAbsolutePath());
+            controller.changed();
+        }
     }//GEN-LAST:event_nsisHomeBrowseActionPerformed
 
     void load() {
