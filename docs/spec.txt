@@ -4,3 +4,4 @@
 - menu action; compile script with nsis (must be configured)
 - config option - point to dialog design
 - open .nsddef and .nsdinc files in dialog designer
+- new project (new->module development->project template)?
