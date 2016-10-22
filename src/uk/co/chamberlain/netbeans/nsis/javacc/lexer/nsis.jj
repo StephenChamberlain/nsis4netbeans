@@ -6,6 +6,7 @@ options {
   TOKEN_FACTORY = "Token";
   JDK_VERSION = "1.5";
   BUILD_PARSER = false;
+  IGNORE_CASE = true;
 }
 
 PARSER_BEGIN(NSISParser)
