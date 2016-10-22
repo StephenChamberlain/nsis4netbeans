@@ -5,11 +5,14 @@
  */
 package uk.co.chamberlain.netbeans.nsis.options;
 
+import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import org.openide.util.NbPreferences;
 
 final class NsisPanel extends javax.swing.JPanel {
 
+    private static final String MAKENSIS_EXE_NAME = "makensis.exe";
     private final NsisOptionsPanelController controller;
 
     NsisPanel(NsisOptionsPanelController controller) {
@@ -91,7 +94,28 @@ final class NsisPanel extends javax.swing.JPanel {
     }
 
     boolean valid() {
-        // TODO check whether form is consistent and complete
+        /*
+        TODO: FIX: option pane is shown recursively; looks like this method keeps 
+        getting called? Find out how 'valid' works...
+        
+        final File makensisExeFile = new File(
+                NbPreferences.forModule(NsisPanel.class).get("nsis.home", "")
+                + System.getProperty("file.separator")
+                + MAKENSIS_EXE_NAME);
+
+        if (makensisExeFile.exists()) {
+            return true;
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "'makensis.exe' not detected in this directory; please select the installation location of NSIS!",
+                "NSIS Home Error",
+                JOptionPane.ERROR_MESSAGE);
+
+        return false;
+        */
+
         return true;
     }
 
