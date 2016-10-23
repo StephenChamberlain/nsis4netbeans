@@ -17,14 +17,10 @@
  */
 package uk.co.chamberlain.netbeans.nsis.options;
 
-import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import org.openide.util.NbPreferences;
 
 final class NsisPanel extends javax.swing.JPanel {
-
-    private static final String MAKENSIS_EXE_NAME = "makensis.exe";
+    
     private final NsisOptionsPanelController controller;
 
     NsisPanel(NsisOptionsPanelController controller) {
@@ -98,11 +94,11 @@ final class NsisPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_nsisHomeBrowseActionPerformed
 
     void load() {
-        nsisHome.setText(NbPreferences.forModule(NsisPanel.class).get("nsis.home", ""));
+        nsisHome.setText(NsisOptionsManager.getNsisHome());
     }
 
     void store() {
-        NbPreferences.forModule(NsisPanel.class).put("nsis.home", nsisHome.getText());
+        NsisOptionsManager.setNsisHome(nsisHome.getText());
     }
 
     boolean valid() {
