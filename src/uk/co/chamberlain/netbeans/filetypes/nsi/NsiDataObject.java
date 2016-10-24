@@ -34,17 +34,17 @@ import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
 
 @Messages({
-    "LBL_Nsis_LOADER=Files of Nsis"
+    "LBL_Nsi_LOADER=Files of Nsi"
 })
 @MIMEResolver.ExtensionRegistration(
-        displayName = "#LBL_Nsis_LOADER",
+        displayName = "#LBL_Nsi_LOADER",
         mimeType = "text/x-nsi",
-        extension = {"nsi", "NSI", "nsh", "NSH"}
+        extension = {"nsi", "NSI"}
 )
 @DataObject.Registration(
         mimeType = "text/x-nsi",
         iconBase = "uk/co/chamberlain/netbeans/filetypes/nsi/nsis.png",
-        displayName = "#LBL_Nsis_LOADER",
+        displayName = "#LBL_Nsi_LOADER",
         position = 300
 )
 @ActionReferences({
@@ -107,9 +107,9 @@ import org.openide.windows.TopComponent;
             position = 1400
     )
 })
-public class NsisDataObject extends MultiDataObject {
+public class NsiDataObject extends MultiDataObject {
 
-    public NsisDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
+    public NsiDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
         super(pf, loader);
         registerEditor("text/x-nsi", true);
     }
@@ -120,14 +120,14 @@ public class NsisDataObject extends MultiDataObject {
     }
 
     @MultiViewElement.Registration(
-            displayName = "#LBL_Nsis_EDITOR",
+            displayName = "#LBL_Nsi_EDITOR",
             iconBase = "uk/co/chamberlain/netbeans/filetypes/nsi/nsis.png",
             mimeType = "text/x-nsi",
             persistenceType = TopComponent.PERSISTENCE_ONLY_OPENED,
             preferredID = "Nsis",
             position = 1000
     )
-    @Messages("LBL_Nsis_EDITOR=Source")
+    @Messages("LBL_Nsi_EDITOR=Source")
     public static MultiViewEditorElement createEditor(Lookup lkp) {
         return new MultiViewEditorElement(lkp);
     }

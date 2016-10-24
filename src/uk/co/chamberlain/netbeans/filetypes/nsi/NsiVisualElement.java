@@ -30,29 +30,29 @@ import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
 
 @MultiViewElement.Registration(
-        displayName = "#LBL_Nsis_VISUAL",
+        displayName = "#LBL_Nsi_VISUAL",
         iconBase = "uk/co/chamberlain/netbeans/filetypes/nsi/nsis.png",
         mimeType = "text/x-nsi",
         persistenceType = TopComponent.PERSISTENCE_NEVER,
-        preferredID = "NsisVisual",
+        preferredID = "NsiVisual",
         position = 2000
 )
-@Messages("LBL_Nsis_VISUAL=Visual")
-public final class NsisVisualElement extends JPanel implements MultiViewElement {
+@Messages("LBL_Nsi_VISUAL=Visual")
+public final class NsiVisualElement extends JPanel implements MultiViewElement {
 
-    private final NsisDataObject obj;
+    private final NsiDataObject obj;
     private final JToolBar toolbar = new JToolBar();
     private transient MultiViewElementCallback callback;
 
-    public NsisVisualElement(Lookup lkp) {
-        obj = lkp.lookup(NsisDataObject.class);
+    public NsiVisualElement(Lookup lkp) {
+        obj = lkp.lookup(NsiDataObject.class);
         assert obj != null;
         initComponents();
     }
 
     @Override
     public String getName() {
-        return "NsisVisualElement";
+        return "NsiVisualElement";
     }
 
     /**

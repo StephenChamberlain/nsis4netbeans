@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-@TemplateRegistration(folder = "NSIS", content = "NsisTemplate.nsi", displayName = "NSIS Script", description = "NsisTemplateDescription.html")
+@TemplateRegistration(folder = "NSIS", content = "NsiTemplate.nsi", displayName = "NSIS Script", description = "NsiTemplateDescription.html")
 package uk.co.chamberlain.netbeans.filetypes.nsi;
 
 import org.netbeans.api.templates.TemplateRegistration;
