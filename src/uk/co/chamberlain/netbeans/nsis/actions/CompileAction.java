@@ -1,19 +1,7 @@
 /*
- * NSIS 4 NetBeans
- * Copyright (C) 2016 Stephen Chamberlain
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package uk.co.chamberlain.netbeans.nsis.actions;
 
@@ -36,25 +24,26 @@ import uk.co.chamberlain.netbeans.nsis.options.NsisOptionsManager;
         id = "uk.co.chamberlain.netbeans.nsis.actions.CompileAction"
 )
 @ActionRegistration(
-        iconBase = "uk/co/chamberlain/netbeans/nsis/actions/nsis16x16.png",
+        iconBase = "uk/co/chamberlain/netbeans/nsis/actions/nsis24x24.png",
         displayName = "#CTL_CompileAction"
 )
 @ActionReferences({
-    @ActionReference(path = "Menu/BuildProject", position = 150, separatorAfter = 175)
+    @ActionReference(path = "Menu/BuildProject", position = 125, separatorAfter = 137)
     ,
-  @ActionReference(path = "Toolbars/Build", position = -20)
+  @ActionReference(path = "Toolbars/Build", position = 500)
     ,
-  @ActionReference(path = "Loaders/text/x-nsi/Actions", position = 0)
+  @ActionReference(path = "Loaders/text/x-nsi/Actions", position = 1500, separatorBefore = 1450)
     ,
-  @ActionReference(path = "Editors/text/x-nsi/Popup", position = 400)
+  @ActionReference(path = "Editors/text/x-nsi/Popup", position = 1300)
 })
-@Messages("CTL_CompileAction=Compile Installer")
+@Messages("CTL_CompileAction=Compile NSIS script...")
 public final class CompileAction implements ActionListener {
 
-    private final DataObject context;
     private final String SEPARATOR = System.getProperty("file.separator");
     private final String DOUBLE_QUOTE = "\"";
-    private final String SPACE = " ";
+    private final String SPACE = " ";    
+    
+    private final DataObject context;
 
     public CompileAction(DataObject context) {
         this.context = context;
