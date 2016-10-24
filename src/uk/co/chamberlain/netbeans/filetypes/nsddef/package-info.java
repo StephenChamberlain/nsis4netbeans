@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-@TemplateRegistration(folder = "Other", content = "NsdincTemplate.nsdinc")
-package uk.co.chamberlain.netbeans.nsdinc;
+@TemplateRegistration(folder = "Other", content = "NsddefTemplate.nsddef")
+package uk.co.chamberlain.netbeans.filetypes.nsddef;
 
 import org.netbeans.api.templates.TemplateRegistration;

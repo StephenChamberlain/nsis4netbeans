@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.co.chamberlain.netbeans.nsis;
+package uk.co.chamberlain.netbeans.filetypes.nsi;
 
 import java.io.IOException;
 import org.netbeans.core.spi.multiview.MultiViewElement;
@@ -43,7 +43,7 @@ import org.openide.windows.TopComponent;
 )
 @DataObject.Registration(
         mimeType = "text/x-nsi",
-        iconBase = "uk/co/chamberlain/netbeans/nsis/nsis.png",
+        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsi/nsis.png",
         displayName = "#LBL_Nsis_LOADER",
         position = 300
 )
@@ -121,7 +121,7 @@ public class NsisDataObject extends MultiDataObject {
 
     @MultiViewElement.Registration(
             displayName = "#LBL_Nsis_EDITOR",
-            iconBase = "uk/co/chamberlain/netbeans/nsis/nsis.png",
+            iconBase = "uk/co/chamberlain/netbeans/filetypes/nsi/nsis.png",
             mimeType = "text/x-nsi",
             persistenceType = TopComponent.PERSISTENCE_ONLY_OPENED,
             preferredID = "Nsis",

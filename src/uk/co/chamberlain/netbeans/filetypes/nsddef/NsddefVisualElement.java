@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.co.chamberlain.netbeans.nsddef;
+package uk.co.chamberlain.netbeans.filetypes.nsddef;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -31,7 +31,7 @@ import org.openide.windows.TopComponent;
 
 @MultiViewElement.Registration(
         displayName = "#LBL_Nsddef_VISUAL",
-        iconBase = "uk/co/chamberlain/netbeans/nsddef/nsddef.png",
+        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsddef/nsddef.png",
         mimeType = "text/x-nsddef",
         persistenceType = TopComponent.PERSISTENCE_NEVER,
         preferredID = "NsddefVisual",

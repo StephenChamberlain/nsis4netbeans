@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.co.chamberlain.netbeans.nsdinc;
+package uk.co.chamberlain.netbeans.filetypes.nsdinc;
 
 import java.io.IOException;
 import org.netbeans.core.spi.multiview.MultiViewElement;
@@ -43,7 +43,7 @@ import org.openide.windows.TopComponent;
 )
 @DataObject.Registration(
         mimeType = "text/x-nsdinc",
-        iconBase = "uk/co/chamberlain/netbeans/nsdinc/nsddef.png",
+        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsddef.png",
         displayName = "#LBL_Nsdinc_LOADER",
         position = 300
 )
@@ -121,7 +121,7 @@ public class NsdincDataObject extends MultiDataObject {
 
     @MultiViewElement.Registration(
             displayName = "#LBL_Nsdinc_EDITOR",
-            iconBase = "uk/co/chamberlain/netbeans/nsdinc/nsddef.png",
+            iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsddef.png",
             mimeType = "text/x-nsdinc",
             persistenceType = TopComponent.PERSISTENCE_ONLY_OPENED,
             preferredID = "Nsdinc",

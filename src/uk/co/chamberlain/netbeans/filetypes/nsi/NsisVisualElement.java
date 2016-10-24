@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.co.chamberlain.netbeans.nsis;
+package uk.co.chamberlain.netbeans.filetypes.nsi;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -31,7 +31,7 @@ import org.openide.windows.TopComponent;
 
 @MultiViewElement.Registration(
         displayName = "#LBL_Nsis_VISUAL",
-        iconBase = "uk/co/chamberlain/netbeans/nsis/nsis.png",
+        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsi/nsis.png",
         mimeType = "text/x-nsi",
         persistenceType = TopComponent.PERSISTENCE_NEVER,
         preferredID = "NsisVisual",
