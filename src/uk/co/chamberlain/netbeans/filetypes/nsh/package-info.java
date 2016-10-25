@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-@TemplateRegistration(folder = "NSIS", content = "NshTemplate.nsh", displayName = "NSIS Header", description = "NshTemplateDescription.html")
+@TemplateRegistration(folder = "NSIS", content = "Header.nsh", displayName = "NSIS Header", description = "NshTemplateDescription.html", targetName = "NewHeader")
 package uk.co.chamberlain.netbeans.filetypes.nsh;
 
 import org.netbeans.api.templates.TemplateRegistration;
