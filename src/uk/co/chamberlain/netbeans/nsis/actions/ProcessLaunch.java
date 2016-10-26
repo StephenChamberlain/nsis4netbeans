@@ -30,9 +30,9 @@ class ProcessLaunch implements Callable<Process> {
 
     @Override
     public Process call() throws Exception {
-        ProcessBuilder pb = new ProcessBuilder(commandLine);
-        pb.directory(new File(System.getProperty("user.home"))); //NOI18N
-        pb.redirectErrorStream(true);
-        return pb.start();
+        final ProcessBuilder processBuilder = new ProcessBuilder(commandLine);
+        processBuilder.directory(new File(System.getProperty("user.home"))); //NOI18N
+        processBuilder.redirectErrorStream(true);
+        return processBuilder.start();
     }
 }

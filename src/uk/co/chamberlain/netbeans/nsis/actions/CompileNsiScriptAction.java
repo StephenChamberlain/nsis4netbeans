@@ -20,7 +20,6 @@ package uk.co.chamberlain.netbeans.nsis.actions;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Future;
-
 import org.netbeans.api.extexecution.ExecutionDescriptor;
 import org.netbeans.api.extexecution.ExecutionService;
 import org.openide.loaders.DataObject;
@@ -29,38 +28,36 @@ import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
 import org.openide.util.NbBundle.Messages;
-
+import static uk.co.chamberlain.netbeans.nsis.NsisConstants.MAKENSIS_EXE_NAME;
 import uk.co.chamberlain.netbeans.nsis.options.NsisOptionsManager;
-
-import static uk.co.chamberlain.netbeans.nsis.NsisConstants.*;
 
 @ActionID(
         category = "Build",
-        id = "uk.co.chamberlain.netbeans.nsis.actions.CompileAction"
+        id = "uk.co.chamberlain.netbeans.nsis.actions.CompileNsiScriptAction"
 )
 @ActionRegistration(
-        iconBase = "uk/co/chamberlain/netbeans/nsis/actions/nsis24x24.png",
-        displayName = "#CTL_CompileAction"
+        iconBase = "uk/co/chamberlain/netbeans/nsis/actions/nsis16x16.png",
+        displayName = "#CTL_CompileNsiScriptAction"
 )
 @ActionReferences({
-    @ActionReference(path = "Menu/BuildProject", position = 150, separatorAfter = 175)
+    @ActionReference(path = "Menu/BuildProject", position = 297, separatorBefore = 296)
     ,
-  @ActionReference(path = "Toolbars/Build", position = -20)
+  @ActionReference(path = "Toolbars/Build", position = 250)
     ,
-  @ActionReference(path = "Loaders/text/x-nsi/Actions", position = 0)
+  @ActionReference(path = "Loaders/text/x-nsi/Actions", position = -100, separatorAfter = -50)
     ,
-  @ActionReference(path = "Editors/text/x-nsi/Popup", position = 400)
+  @ActionReference(path = "Editors/text/x-nsi/Popup", position = 300, separatorAfter = 350)
 })
-@Messages("CTL_CompileAction=Compile NSIS script...")
-public final class CompileAction implements ActionListener {
+@Messages("CTL_CompileNsiScriptAction=Compile NSIS script...")
+public final class CompileNsiScriptAction implements ActionListener {
 
     private final String SEPARATOR = System.getProperty("file.separator");
     private final String DOUBLE_QUOTE = "\"";
-    private final String SPACE = " ";
-
+    private final String SPACE = " ";    
+    
     private final DataObject context;
 
-    public CompileAction(DataObject context) {
+    public CompileNsiScriptAction(DataObject context) {
         this.context = context;
     }
 
