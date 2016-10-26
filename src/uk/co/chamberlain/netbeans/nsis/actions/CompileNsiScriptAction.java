@@ -75,6 +75,7 @@ public final class CompileNsiScriptAction implements ActionListener {
                     MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.",
                     "NSIS not found!",
                     JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
         final int nsisVerbosity = NsisOptionsManager.getNsisVerbosity();
