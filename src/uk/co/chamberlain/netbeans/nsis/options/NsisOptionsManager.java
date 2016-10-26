@@ -21,8 +21,10 @@ import org.openide.util.NbPreferences;
 
 public class NsisOptionsManager {
 
-    private static final String NSIS_HOME = "nsis.home";
+    private static final String NSIS_HOME = "nsis.home";    
     private static final String NSIS_HOME_DEFAULT = "";
+    private static final String NSIS_VERBOSITY = "nsis.verbosity";
+    private static final int NSIS_VERBOSITY_DEFAULT = 2;
 
     public static String getNsisHome() {
         return NbPreferences.forModule(NsisPanel.class).get(NSIS_HOME, NSIS_HOME_DEFAULT);
@@ -31,4 +33,12 @@ public class NsisOptionsManager {
     public static void setNsisHome(final String nsisHome) {
         NbPreferences.forModule(NsisPanel.class).put(NSIS_HOME, nsisHome);
     }
+    
+    public static int getNsisVerbosity() {
+        return NbPreferences.forModule(NsisPanel.class).getInt(NSIS_VERBOSITY, NSIS_VERBOSITY_DEFAULT);
+    }
+
+    public static void setNsisVerbosity(final int nsisVerbosity) {
+        NbPreferences.forModule(NsisPanel.class).putInt(NSIS_VERBOSITY, nsisVerbosity);
+    }    
 }

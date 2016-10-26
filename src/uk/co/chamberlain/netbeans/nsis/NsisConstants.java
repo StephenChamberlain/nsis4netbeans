@@ -20,4 +20,5 @@ package uk.co.chamberlain.netbeans.nsis;
 public class NsisConstants {
 
     public static final String MAKENSIS_EXE_NAME = "makensis.exe";
+    public static final String MAKENSIS_CLI_VERBOSITY = "/V";
 }

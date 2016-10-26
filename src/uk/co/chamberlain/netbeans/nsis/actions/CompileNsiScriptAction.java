@@ -20,6 +20,7 @@ package uk.co.chamberlain.netbeans.nsis.actions;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Future;
+
 import org.netbeans.api.extexecution.ExecutionDescriptor;
 import org.netbeans.api.extexecution.ExecutionService;
 import org.openide.loaders.DataObject;
@@ -28,15 +29,17 @@ import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
 import org.openide.util.NbBundle.Messages;
-import static uk.co.chamberlain.netbeans.nsis.NsisConstants.MAKENSIS_EXE_NAME;
+
 import uk.co.chamberlain.netbeans.nsis.options.NsisOptionsManager;
+
+import static uk.co.chamberlain.netbeans.nsis.NsisConstants.*;
 
 @ActionID(
         category = "Build",
         id = "uk.co.chamberlain.netbeans.nsis.actions.CompileNsiScriptAction"
 )
 @ActionRegistration(
-        iconBase = "uk/co/chamberlain/netbeans/nsis/actions/nsis16x16.png",
+        iconBase = "uk/co/chamberlain/netbeans/nsis/actions/nsis24x24.png",
         displayName = "#CTL_CompileNsiScriptAction"
 )
 @ActionReferences({
@@ -44,7 +47,7 @@ import uk.co.chamberlain.netbeans.nsis.options.NsisOptionsManager;
     ,
   @ActionReference(path = "Toolbars/Build", position = 250)
     ,
-  @ActionReference(path = "Loaders/text/x-nsi/Actions", position = -100, separatorAfter = -50)
+  @ActionReference(path = "Loaders/text/x-nsi/Actions", position = 150, separatorBefore = 125) // position = 150, separatorBefore = 125 // original = position = -100, separatorAfter = -50
     ,
   @ActionReference(path = "Editors/text/x-nsi/Popup", position = 300, separatorAfter = 350)
 })
@@ -53,8 +56,8 @@ public final class CompileNsiScriptAction implements ActionListener {
 
     private final String SEPARATOR = System.getProperty("file.separator");
     private final String DOUBLE_QUOTE = "\"";
-    private final String SPACE = " ";    
-    
+    private final String SPACE = " ";
+
     private final DataObject context;
 
     public CompileNsiScriptAction(DataObject context) {
@@ -64,10 +67,13 @@ public final class CompileNsiScriptAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ev) {
         final String nsisHome = NsisOptionsManager.getNsisHome();
+        final int nsisVerbosity = NsisOptionsManager.getNsisVerbosity();
         final String nsisFilePath = context.getPrimaryFile().getPath();
 
         final String commandLine
                 = DOUBLE_QUOTE + nsisHome + SEPARATOR + MAKENSIS_EXE_NAME + DOUBLE_QUOTE
+                + SPACE
+                + MAKENSIS_CLI_VERBOSITY + nsisVerbosity
                 + SPACE
                 + DOUBLE_QUOTE + nsisFilePath + DOUBLE_QUOTE;
 
