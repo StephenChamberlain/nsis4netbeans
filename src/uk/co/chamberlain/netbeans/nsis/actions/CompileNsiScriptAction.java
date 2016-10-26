@@ -19,7 +19,9 @@ package uk.co.chamberlain.netbeans.nsis.actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.concurrent.Future;
+import javax.swing.JOptionPane;
 
 import org.netbeans.api.extexecution.ExecutionDescriptor;
 import org.netbeans.api.extexecution.ExecutionService;
@@ -67,6 +69,14 @@ public final class CompileNsiScriptAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ev) {
         final String nsisHome = NsisOptionsManager.getNsisHome();
+        if (!canFindNsisExecutable(nsisHome)) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.",
+                    "NSIS not found!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
         final int nsisVerbosity = NsisOptionsManager.getNsisVerbosity();
         final String nsisFilePath = context.getPrimaryFile().getPath();
 
@@ -89,5 +99,10 @@ public final class CompileNsiScriptAction implements ActionListener {
                 descriptor, "NSIS Compile");
 
         final Future<Integer> exitCode = exeService.run();
+    }
+
+    private boolean canFindNsisExecutable(final String nsisHome) {
+        final File makensis = new File(nsisHome + SEPARATOR + MAKENSIS_EXE_NAME);
+        return makensis.exists();
     }
 }

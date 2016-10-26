@@ -6,16 +6,11 @@
             <file>file:/D:/Users/Stephen/Documents/NetBeansProjects/netbeans-nsis/src/uk/co/chamberlain/netbeans/nsis/NsisTemplate.nsi</file>
         </group>
         <group name="projects">
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsi/NsiDataObject.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsi/nsis.png</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsi/package-info.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsi/NsiVisualElement.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/actions/ProcessLaunch.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/options/NsisPanel.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/actions/CompileNsiScriptAction.java</file>
             <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/NsisConstants.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/actions/CompileAction.java</file>
             <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/options/NsisOptionsManager.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsh/package-info.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/layer.xml</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/NsisLanguage.java</file>
         </group>
     </open-files>
 </project-private>
