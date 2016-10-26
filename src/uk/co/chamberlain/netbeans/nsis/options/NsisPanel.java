@@ -18,14 +18,32 @@
 package uk.co.chamberlain.netbeans.nsis.options;
 
 import javax.swing.JFileChooser;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 final class NsisPanel extends javax.swing.JPanel {
-    
+
     private final NsisOptionsPanelController controller;
 
     NsisPanel(NsisOptionsPanelController controller) {
         this.controller = controller;
         initComponents();
+        nsisHome.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent de) {
+                controller.changed();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent de) {
+                controller.changed();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent de) {
+                controller.changed();
+            }
+        });
     }
 
     /**
@@ -156,7 +174,7 @@ final class NsisPanel extends javax.swing.JPanel {
                 JOptionPane.ERROR_MESSAGE);
 
         return false;
-        */
+         */
 
         return true;
     }
