@@ -6,11 +6,8 @@
             <file>file:/D:/Users/Stephen/Documents/NetBeansProjects/netbeans-nsis/src/uk/co/chamberlain/netbeans/nsis/NsisTemplate.nsi</file>
         </group>
         <group name="projects">
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/options/NsisPanel.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/actions/CompileNsiScriptAction.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/NsisConstants.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/options/NsisOptionsManager.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/NsisLanguage.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/javacc/lexer/nsis.jj</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/layer.xml</file>
         </group>
     </open-files>
 </project-private>

@@ -39,7 +39,8 @@ import org.openide.windows.TopComponent;
 @MIMEResolver.ExtensionRegistration(
         displayName = "#LBL_Nsdinc_LOADER",
         mimeType = "text/x-nsdinc",
-        extension = {"nsdinc", "NSDINC"}
+        extension = {"nsdinc", "NSDINC"},
+        position =  2147483003
 )
 @DataObject.Registration(
         mimeType = "text/x-nsdinc",

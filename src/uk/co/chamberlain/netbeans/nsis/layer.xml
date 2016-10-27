@@ -17,7 +17,7 @@
     </folder>
     <folder name="Editors">
         <folder name="text">
-            <folder name="x-nsi">
+            <folder name="x-nsi">            
                 <attr name="displayName" bundlevalue="uk.co.chamberlain.netbeans.nsis.Bundle#Editors/text/x-nsi"/>
                 <folder name="FontsColors">
                     <folder name="NetBeans">

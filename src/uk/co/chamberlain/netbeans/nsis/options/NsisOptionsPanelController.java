@@ -29,7 +29,8 @@ import org.openide.util.Lookup;
         categoryName = "#OptionsCategory_Name_Nsis",
         iconBase = "uk/co/chamberlain/netbeans/nsis/options/nsis32x32.png",
         keywords = "#OptionsCategory_Keywords_Nsis",
-        keywordsCategory = "Nsis"
+        keywordsCategory = "Nsis",
+        position = 801
 )
 @org.openide.util.NbBundle.Messages({"OptionsCategory_Name_Nsis=NSIS", "OptionsCategory_Keywords_Nsis=NSIS"})
 public final class NsisOptionsPanelController extends OptionsPanelController {

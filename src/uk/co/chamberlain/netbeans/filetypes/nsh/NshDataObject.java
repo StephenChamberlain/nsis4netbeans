@@ -39,7 +39,8 @@ import org.openide.windows.TopComponent;
 @MIMEResolver.ExtensionRegistration(
         displayName = "#LBL_Nsh_LOADER",
         mimeType = "text/x-nsh",
-        extension = {"nsh", "NSH"}
+        extension = {"nsh", "NSH"},
+        position =  2147483002
 )
 @DataObject.Registration(
         mimeType = "text/x-nsh",

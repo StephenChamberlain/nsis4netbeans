@@ -39,7 +39,8 @@ import org.openide.windows.TopComponent;
 @MIMEResolver.ExtensionRegistration(
         displayName = "#LBL_Nsddef_LOADER",
         mimeType = "text/nsddef+xml",
-        extension = {"nsddef", "NSDDEF"}
+        extension = {"nsddef", "NSDDEF"},
+        position =  2147483004
 )
 @DataObject.Registration(
         mimeType = "text/nsddef+xml",
