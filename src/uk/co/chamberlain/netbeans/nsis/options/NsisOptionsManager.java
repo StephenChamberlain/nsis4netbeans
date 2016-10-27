@@ -24,7 +24,7 @@ public class NsisOptionsManager {
     private static final String NSIS_HOME = "nsis.home";    
     private static final String NSIS_HOME_DEFAULT = "";
     private static final String NSIS_VERBOSITY = "nsis.verbosity";
-    private static final int NSIS_VERBOSITY_DEFAULT = 2;
+    private static final int NSIS_VERBOSITY_DEFAULT = 3;
 
     public static String getNsisHome() {
         return NbPreferences.forModule(NsisPanel.class).get(NSIS_HOME, NSIS_HOME_DEFAULT);

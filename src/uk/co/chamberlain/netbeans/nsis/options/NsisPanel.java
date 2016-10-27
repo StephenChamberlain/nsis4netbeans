@@ -25,7 +25,7 @@ final class NsisPanel extends javax.swing.JPanel {
 
     private final NsisOptionsPanelController controller;
 
-    NsisPanel(NsisOptionsPanelController controller) {
+    NsisPanel(final NsisOptionsPanelController controller) {
         this.controller = controller;
         initComponents();
         nsisHome.getDocument().addDocumentListener(new DocumentListener() {
@@ -108,7 +108,7 @@ final class NsisPanel extends javax.swing.JPanel {
         add(nsisVerbosityLabel, gridBagConstraints);
 
         nsisVerbosity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No output", "Errors only", "Warnings and errors", "Info, warnings, and errors", "All output" }));
-        nsisVerbosity.setSelectedIndex(2);
+        nsisVerbosity.setSelectedIndex(3);
         nsisVerbosity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nsisVerbosityActionPerformed(evt);
