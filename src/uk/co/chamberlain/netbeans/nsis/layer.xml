@@ -15,15 +15,16 @@
             <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileAction.instance_hidden"/>
         </folder>
     </folder>
+
     <folder name="Editors">
         <folder name="text">
-            <folder name="x-nsi">            
+            <folder name="x-nsi">
                 <attr name="displayName" bundlevalue="uk.co.chamberlain.netbeans.nsis.Bundle#Editors/text/x-nsi"/>
                 <folder name="FontsColors">
                     <folder name="NetBeans">
                         <folder name="Defaults">
-                            <file name="FontAndColors.xml">
-                                <attr name="displayName" bundlevalue="uk.co.chamberlain.netbeans.nsis.Bundle#Editors/text/x-nsi/FontsColors/NetBeans/Defaults/FontAndColors.xml"/>
+                            <file name="FontsAndColors.xml" url="FontsAndColors.xml">  
+                                <attr name="displayName" bundlevalue="uk.co.chamberlain.netbeans.nsis.Bundle#Editors/text/x-nsi/FontsColors/NetBeans/Defaults/FontsAndColors.xml"/>
                             </file>
                         </folder>
                     </folder>
@@ -31,7 +32,7 @@
             </folder>
         </folder>
     </folder>
-
+    
     <folder name="OptionsDialog">
         <folder name="PreviewExamples">
             <folder name="text">
