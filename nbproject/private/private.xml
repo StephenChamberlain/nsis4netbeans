@@ -6,12 +6,12 @@
             <file>file:/D:/Users/Stephen/Documents/NetBeansProjects/netbeans-nsis/src/uk/co/chamberlain/netbeans/nsis/NsisTemplate.nsi</file>
         </group>
         <group name="projects">
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/netbeans/lexer/NsisLanguageHierarchy.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/netbeans/lexer/NsisTokenId.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/Bundle.properties</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/netbeans/lexer/NsisLexer.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/layer.xml</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/FontsAndColors.xml</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/exe.png</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/package-info.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsdinc/package-info.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/ExeDataObject.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsddef/package-info.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/ExeVisualElement.java</file>
         </group>
     </open-files>
 </project-private>
