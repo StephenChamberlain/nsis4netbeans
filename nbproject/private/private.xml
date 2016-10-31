@@ -6,8 +6,12 @@
             <file>file:/D:/Users/Stephen/Documents/NetBeansProjects/netbeans-nsis/src/uk/co/chamberlain/netbeans/nsis/NsisTemplate.nsi</file>
         </group>
         <group name="projects">
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/javacc/lexer/nsis.jj</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/netbeans/lexer/NsisLanguageHierarchy.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/netbeans/lexer/NsisTokenId.java</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/Bundle.properties</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/netbeans/lexer/NsisLexer.java</file>
             <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/layer.xml</file>
+            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/nsis/FontsAndColors.xml</file>
         </group>
     </open-files>
 </project-private>
