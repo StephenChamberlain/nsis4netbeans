@@ -39,7 +39,7 @@ import org.openide.windows.TopComponent;
 @MIMEResolver.ExtensionRegistration(
         displayName = "#LBL_Nsi_LOADER",
         mimeType = "text/x-nsi",
-        extension = {"nsi", "NSI", "nsh", "NSH"},
+        extension = {"nsi", "NSI", "nsh", "NSH", "nsdinc", "NSDINC"},
         position =  2147483001
 )
 @DataObject.Registration(
