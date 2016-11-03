@@ -56,10 +56,6 @@ import static uk.co.chamberlain.netbeans.nsis.NsisConstants.*;
 @Messages("CTL_CompileNsiScriptAction=Compile NSIS script...")
 public final class CompileNsiScriptAction implements ActionListener {
 
-    private final String SEPARATOR = System.getProperty("file.separator");
-    private final String DOUBLE_QUOTE = "\"";
-    private final String SPACE = " ";
-
     private final DataObject context;
 
     public CompileNsiScriptAction(DataObject context) {
