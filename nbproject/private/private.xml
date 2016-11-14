@@ -1,17 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Users/Stephen/Documents/NetBeansProjects/netbeans-nsis/src/uk/co/chamberlain/netbeans/nsis/NsisTemplate.nsi</file>
-        </group>
-        <group name="projects">
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/exe.png</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/package-info.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsdinc/package-info.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/ExeDataObject.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/nsddef/package-info.java</file>
-            <file>file:/D:/Development/SourceForge/Nsis4NetBeans/src/uk/co/chamberlain/netbeans/filetypes/exe/ExeVisualElement.java</file>
-        </group>
-    </open-files>
 </project-private>
