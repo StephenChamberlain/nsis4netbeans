@@ -44,7 +44,7 @@ import org.openide.windows.TopComponent;
 )
 @DataObject.Registration(
         mimeType = "text/x-nsdinc",
-        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsddef.png",
+        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsdinc.png",
         displayName = "#LBL_Nsdinc_LOADER",
         position = 300
 )
@@ -122,7 +122,7 @@ public class NsdincDataObject extends MultiDataObject {
 
     @MultiViewElement.Registration(
             displayName = "#LBL_Nsdinc_EDITOR",
-            iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsddef.png",
+            iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsdinc.png",
             mimeType = "text/x-nsdinc",
             persistenceType = TopComponent.PERSISTENCE_ONLY_OPENED,
             preferredID = "Nsdinc",

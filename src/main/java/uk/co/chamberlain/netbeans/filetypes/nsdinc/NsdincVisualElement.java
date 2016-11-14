@@ -31,7 +31,7 @@ import org.openide.windows.TopComponent;
 
 @MultiViewElement.Registration(
         displayName = "#LBL_Nsdinc_VISUAL",
-        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsddef.png",
+        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsdinc/nsdinc.png",
         mimeType = "text/x-nsdinc",
         persistenceType = TopComponent.PERSISTENCE_NEVER,
         preferredID = "NsdincVisual",
