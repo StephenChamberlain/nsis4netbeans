@@ -19,7 +19,9 @@ package uk.co.chamberlain.netbeans.nsis.actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 import java.util.concurrent.Future;
+import javax.swing.Action;
 import org.netbeans.api.extexecution.ExecutionDescriptor;
 import org.netbeans.api.extexecution.ExecutionService;
 import org.openide.loaders.DataObject;
@@ -38,7 +40,7 @@ import org.openide.util.NbBundle.Messages;
 )
 @ActionReference(path = "Loaders/text/x-exe/Actions", position = 150, separatorBefore = 125)
 @Messages("CTL_RunExeAction=Run Executable...")
-public final class RunExeAction implements ActionListener {
+public final class RunExeAction implements Action, ActionListener {
 
     private final DataObject context;
 
@@ -64,5 +66,31 @@ public final class RunExeAction implements ActionListener {
                 descriptor, "Run Executable");
 
         final Future<Integer> exitCode = exeService.run();
+    }
+
+    @Override
+    public Object getValue(String string) {
+        return context;
+    }
+
+    @Override
+    public void putValue(String string, Object o) {
+    }
+
+    @Override
+    public void setEnabled(boolean bln) {
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener pl) {
+    }
+
+    @Override
+    public void removePropertyChangeListener(PropertyChangeListener pl) {
     }
 }
