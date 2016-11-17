@@ -17,143 +17,230 @@
  */
 package uk.co.chamberlain.netbeans.nsis.netbeans.lexer;
 
+import java.lang.reflect.Field;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.netbeans.spi.lexer.LanguageHierarchy;
 import org.netbeans.spi.lexer.Lexer;
 import org.netbeans.spi.lexer.LexerRestartInfo;
+import org.openide.util.Exceptions;
+import uk.co.chamberlain.netbeans.nsis.javacc.lexer.NSISParserConstants;
 
 public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
 
+    private static final Logger LOGGER = Logger.getLogger(NsisLanguageHierarchy.class.getName());
+
+    private static final NSISParserConstants PARSER_CONSTANTS = new ParserConstants();
+
+    private static final String KEYWORD = "keyword";
+    private static final String LITERAL = "literal";
+    private static final String COMMENT = "comment";
+    private static final String WHITESPACE = "whitespace";
+    private static final String NUMBER = "number";
+    private static final String IDENTIFIER = "identifier";
+    private static final String OPERATOR = "";
+
+    private static List<String> whitespace;
+    private static List<String> literals;
+    private static List<String> comments;
     private static List<NsisTokenId> tokens;
     private static Map<Integer, NsisTokenId> idToToken;
 
-    private static void init() {        
-        tokens = Arrays.asList(new NsisTokenId[]{
-            new NsisTokenId("EOF", "whitespace", 0),
-            new NsisTokenId("WHITESPACE", "whitespace", 1),
-            new NsisTokenId("SINGLE_LINE_COMMENT", "comment", 4),
-            new NsisTokenId("FORMAL_COMMENT", "comment", 5),
-            new NsisTokenId("MULTI_LINE_COMMENT", "comment", 6),
-            new NsisTokenId("ABSTRACT", "keyword", 8),
-            new NsisTokenId("ASSERT", "keyword", 9),
-            new NsisTokenId("BOOLEAN", "keyword", 10),
-            new NsisTokenId("BREAK", "keyword", 11),
-            new NsisTokenId("BYTE", "keyword", 12),
-            new NsisTokenId("CASE", "keyword", 13),
-            new NsisTokenId("CATCH", "keyword", 14),
-            new NsisTokenId("CHAR", "keyword", 15),
-            new NsisTokenId("CLASS", "keyword", 16),
-            new NsisTokenId("CONST", "keyword", 17),
-            new NsisTokenId("CONTINUE", "keyword", 18),
-            new NsisTokenId("_DEFAULT", "keyword", 19),
-            new NsisTokenId("DO", "keyword", 20),
-            new NsisTokenId("DOUBLE", "keyword", 21),
-            new NsisTokenId("ELSE", "keyword", 22),
-            new NsisTokenId("ENUM", "keyword", 23),
-            new NsisTokenId("EXTENDS", "keyword", 24),
-            new NsisTokenId("FALSE", "keyword", 25),
-            new NsisTokenId("FINAL", "keyword", 26),
-            new NsisTokenId("FINALLY", "keyword", 27),
-            new NsisTokenId("FLOAT", "keyword", 28),
-            new NsisTokenId("FOR", "keyword", 29),
-            new NsisTokenId("GOTO", "keyword", 30),
-            new NsisTokenId("IF", "keyword", 31),
-            new NsisTokenId("IMPLEMENTS", "keyword", 32),
-            new NsisTokenId("IMPORT", "keyword", 33),
-            new NsisTokenId("INSTANCEOF", "keyword", 34),
-            new NsisTokenId("INT", "keyword", 35),
-            new NsisTokenId("INTERFACE", "keyword", 36),
-            new NsisTokenId("LONG", "keyword", 37),
-            new NsisTokenId("NAME", "keyword", 38),
-            new NsisTokenId("NEW", "keyword", 39),
-            new NsisTokenId("NULL", "keyword", 40),
-            new NsisTokenId("PACKAGE", "keyword", 41),
-            new NsisTokenId("PRIVATE", "keyword", 42),
-            new NsisTokenId("PROTECTED", "keyword", 43),
-            new NsisTokenId("PUBLIC", "keyword", 44),
-            new NsisTokenId("RETURN", "keyword", 45),
-            new NsisTokenId("SHORT", "keyword", 46),
-            new NsisTokenId("STATIC", "keyword", 47),
-            new NsisTokenId("STRICTFP", "keyword", 48),
-            new NsisTokenId("SUPER", "keyword", 49),
-            new NsisTokenId("SWITCH", "keyword", 50),
-            new NsisTokenId("SYNCHRONIZED", "keyword", 51),
-            new NsisTokenId("THIS", "keyword", 52),
-            new NsisTokenId("THROW", "keyword", 53),
-            new NsisTokenId("THROWS", "keyword", 54),
-            new NsisTokenId("TRANSIENT", "keyword", 55),
-            new NsisTokenId("TRUE", "keyword", 56),
-            new NsisTokenId("TRY", "keyword", 57),
-            new NsisTokenId("VOID", "keyword", 58),
-            new NsisTokenId("VOLATILE", "keyword", 59),
-            new NsisTokenId("WHILE", "keyword", 60),
-            new NsisTokenId("INTEGER_LITERAL", "literal", 61),
-            new NsisTokenId("DECIMAL_LITERAL", "literal", 62),
-            new NsisTokenId("HEX_LITERAL", "literal", 63),
-            new NsisTokenId("OCTAL_LITERAL", "literal", 64),
-            new NsisTokenId("FLOATING_POINT_LITERAL", "literal", 65),
-            new NsisTokenId("DECIMAL_FLOATING_POINT_LITERAL", "literal", 66),
-            new NsisTokenId("DECIMAL_EXPONENT", "number", 67),
-            new NsisTokenId("HEXADECIMAL_FLOATING_POINT_LITERAL", "literal", 68),
-            new NsisTokenId("HEXADECIMAL_EXPONENT", "number", 69),
-            new NsisTokenId("CHARACTER_LITERAL", "literal", 70),
-            new NsisTokenId("STRING_LITERAL", "literal", 71),
-            new NsisTokenId("IDENTIFIER", "identifier", 72),
-            new NsisTokenId("LETTER", "literal", 73),
-            new NsisTokenId("PART_LETTER", "literal", 74),
-            new NsisTokenId("LPAREN", "operator", 75),
-            new NsisTokenId("RPAREN", "operator", 76),
-            new NsisTokenId("LBRACE", "operator", 77),
-            new NsisTokenId("RBRACE", "operator", 78),
-            new NsisTokenId("LBRACKET", "operator", 79),
-            new NsisTokenId("RBRACKET", "operator", 80),
-            new NsisTokenId("SEMICOLON", "operator", 81),
-            new NsisTokenId("COMMA", "operator", 82),
-            new NsisTokenId("DOT", "operator", 83),
-            new NsisTokenId("AT", "operator", 84),
-            new NsisTokenId("ASSIGN", "operator", 85),
-            new NsisTokenId("LT", "operator", 86),
-            new NsisTokenId("BANG", "operator", 87),
-            new NsisTokenId("TILDE", "operator", 88),
-            new NsisTokenId("HOOK", "operator", 89),
-            new NsisTokenId("COLON", "operator", 90),
-            new NsisTokenId("EQ", "operator", 91),
-            new NsisTokenId("LE", "operator", 92),
-            new NsisTokenId("GE", "operator", 93),
-            new NsisTokenId("NE", "operator", 94),
-            new NsisTokenId("SC_OR", "operator", 95),
-            new NsisTokenId("SC_AND", "operator", 96),
-            new NsisTokenId("INCR", "operator", 97),
-            new NsisTokenId("DECR", "operator", 98),
-            new NsisTokenId("PLUS", "operator", 99),
-            new NsisTokenId("MINUS", "operator", 100),
-            new NsisTokenId("STAR", "operator", 101),
-            new NsisTokenId("SLASH", "operator", 102),
-            new NsisTokenId("BIT_AND", "operator", 103),
-            new NsisTokenId("BIT_OR", "operator", 104),
-            new NsisTokenId("XOR", "operator", 105),
-            new NsisTokenId("REM", "operator", 106),
-            new NsisTokenId("LSHIFT", "operator", 107),
-            new NsisTokenId("PLUSASSIGN", "operator", 108),
-            new NsisTokenId("MINUSASSIGN", "operator", 109),
-            new NsisTokenId("STARASSIGN", "operator", 110),
-            new NsisTokenId("SLASHASSIGN", "operator", 111),
-            new NsisTokenId("ANDASSIGN", "operator", 112),
-            new NsisTokenId("ORASSIGN", "operator", 113),
-            new NsisTokenId("XORASSIGN", "operator", 114),
-            new NsisTokenId("REMASSIGN", "operator", 115),
-            new NsisTokenId("LSHIFTASSIGN", "operator", 116),
-            new NsisTokenId("RSIGNEDSHIFTASSIGN", "operator", 117),
-            new NsisTokenId("RUNSIGNEDSHIFTASSIGN", "operator", 118),
-            new NsisTokenId("ELLIPSIS", "operator", 119),
-            new NsisTokenId("RUNSIGNEDSHIFT", "operator", 120),
-            new NsisTokenId("RSIGNEDSHIFT", "operator", 121),
-            new NsisTokenId("GT", "operator", 122)
-        });
-        idToToken = new HashMap<Integer, NsisTokenId>();
+    private static void init() {
+
+        whitespace = Arrays.asList(
+                "EOF",
+                "WHITESPACE"
+        );
+
+        literals = Arrays.asList(
+                "INTEGER_LITERAL",
+                "DECIMAL_LITERAL",
+                "HEX_LITERAL",
+                "OCTAL_LITERAL",
+                "FLOATING_POINT_LITERAL",
+                "DECIMAL_FLOATING_POINT_LITERAL",
+                "DECIMAL_EXPONENT",
+                "HEXADECIMAL_FLOATING_POINT_LITERAL",
+                "CHARACTER_LITERAL",
+                "STRING_LITERAL",
+                "LETTER",
+                "PART_LETTER"
+        );
+
+        comments = Arrays.asList(
+                "SINGLE_LINE_COMMENT",
+                "FORMAL_COMMENT",
+                "MULTI_LINE_COMMENT"
+        );
+
+        tokens = new ArrayList<>();
+
+        for (final Field field : NSISParserConstants.class
+                .getFields()) {
+            try {
+                if (field.getType() == Integer.TYPE) {
+                    if (whitespace.contains(field.getName())) {
+                        addTokenId(field, WHITESPACE);
+
+                    } else if (literals.contains(field.getName())) {
+                        addTokenId(field, LITERAL);                        
+                        
+                    } else if (comments.contains(field.getName())) {
+                        addTokenId(field, COMMENT);
+
+                    } else {
+                        addTokenId(field, KEYWORD);
+                    }
+                }
+            } catch (IllegalArgumentException | IllegalAccessException ex) {
+                Exceptions.printStackTrace(ex);
+            }
+        }
+
+//        tokens = Arrays.asList(new NsisTokenId[]{
+//            new NsisTokenId("EOF", WHITESPACE, 0),
+//            new NsisTokenId("WHITESPACE", WHITESPACE, 1),
+//            new NsisTokenId("SINGLE_LINE_COMMENT", COMMENT, 4),
+//            new NsisTokenId("FORMAL_COMMENT", COMMENT, 5),
+//            new NsisTokenId("MULTI_LINE_COMMENT", COMMENT, 6),
+//            new NsisTokenId("ABSTRACT", KEYWORD, 8),
+//            new NsisTokenId("ASSERT", KEYWORD, 9),
+//            new NsisTokenId("BOOLEAN", KEYWORD, 10),
+//            new NsisTokenId("BREAK", KEYWORD, 11),
+//            new NsisTokenId("BYTE", KEYWORD, 12),
+//            new NsisTokenId("CASE", KEYWORD, 13),
+//            new NsisTokenId("CATCH", KEYWORD, 14),
+//            new NsisTokenId("CHAR", KEYWORD, 15),
+//            new NsisTokenId("CLASS", KEYWORD, 16),
+//            new NsisTokenId("CONST", KEYWORD, 17),
+//            new NsisTokenId("CONTINUE", KEYWORD, 18),
+//            new NsisTokenId("_DEFAULT", KEYWORD, 19),
+//            new NsisTokenId("DO", KEYWORD, 20),
+//            new NsisTokenId("DOUBLE", KEYWORD, 21),
+//            new NsisTokenId("ELSE", KEYWORD, 22),
+//            new NsisTokenId("ENUM", KEYWORD, 23),
+//            new NsisTokenId("EXTENDS", KEYWORD, 24),
+//            new NsisTokenId("FALSE", KEYWORD, 25),
+//            new NsisTokenId("FINAL", KEYWORD, 26),
+//            new NsisTokenId("FINALLY", KEYWORD, 27),
+//            new NsisTokenId("FLOAT", KEYWORD, 28),
+//            new NsisTokenId("FOR", KEYWORD, 29),
+//            new NsisTokenId("GOTO", KEYWORD, 30),
+//            new NsisTokenId("IF", KEYWORD, 31),
+//            new NsisTokenId("IMPLEMENTS", KEYWORD, 32),
+//            new NsisTokenId("IMPORT", KEYWORD, 33),
+//            new NsisTokenId("INSTANCEOF", KEYWORD, 34),
+//            new NsisTokenId("INT", KEYWORD, 35),
+//            new NsisTokenId("INTERFACE", KEYWORD, 36),
+//            new NsisTokenId("LONG", KEYWORD, 37),
+//            new NsisTokenId("NAME", KEYWORD, 38),
+//            new NsisTokenId("NEW", KEYWORD, 39),
+//            new NsisTokenId("NULL", KEYWORD, 40),
+//            new NsisTokenId("PACKAGE", KEYWORD, 41),
+//            new NsisTokenId("PRIVATE", KEYWORD, 42),
+//            new NsisTokenId("PROTECTED", KEYWORD, 43),
+//            new NsisTokenId("PUBLIC", KEYWORD, 44),
+//            new NsisTokenId("RETURN", KEYWORD, 45),
+//            new NsisTokenId("SHORT", KEYWORD, 46),
+//            new NsisTokenId("STATIC", KEYWORD, 47),
+//            new NsisTokenId("STRICTFP", KEYWORD, 48),
+//            new NsisTokenId("SUPER", KEYWORD, 49),
+//            new NsisTokenId("SWITCH", KEYWORD, 50),
+//            new NsisTokenId("SYNCHRONIZED", KEYWORD, 51),
+//            new NsisTokenId("THIS", KEYWORD, 52),
+//            new NsisTokenId("THROW", KEYWORD, 53),
+//            new NsisTokenId("THROWS", KEYWORD, 54),
+//            new NsisTokenId("TRANSIENT", KEYWORD, 55),
+//            new NsisTokenId("TRUE", KEYWORD, 56),
+//            new NsisTokenId("TRY", KEYWORD, 57),
+//            new NsisTokenId("VOID", KEYWORD, 58),
+//            new NsisTokenId("VOLATILE", KEYWORD, 59),
+//            new NsisTokenId("WHILE", KEYWORD, 60),
+//            new NsisTokenId("INTEGER_LITERAL", LITERAL, 61),
+//            new NsisTokenId("DECIMAL_LITERAL", LITERAL, 62),
+//            new NsisTokenId("HEX_LITERAL", LITERAL, 63),
+//            new NsisTokenId("OCTAL_LITERAL", LITERAL, 64),
+//            new NsisTokenId("FLOATING_POINT_LITERAL", LITERAL, 65),
+//            new NsisTokenId("DECIMAL_FLOATING_POINT_LITERAL", LITERAL, 66),
+//            new NsisTokenId("DECIMAL_EXPONENT", NUMBER, 67),
+//            new NsisTokenId("HEXADECIMAL_FLOATING_POINT_LITERAL", LITERAL, 68),
+//            new NsisTokenId("HEXADECIMAL_EXPONENT", NUMBER, 69),
+//            new NsisTokenId("CHARACTER_LITERAL", LITERAL, 70),
+//            new NsisTokenId("STRING_LITERAL", LITERAL, 71),
+//            new NsisTokenId("IDENTIFIER", IDENTIFIER, 72),
+//            new NsisTokenId("LETTER", LITERAL, 73),
+//            new NsisTokenId("PART_LETTER", LITERAL, 74),
+//            new NsisTokenId("LPAREN", OPERATOR, 75),
+//            new NsisTokenId("RPAREN", OPERATOR, 76),
+//            new NsisTokenId("LBRACE", OPERATOR, 77),
+//            new NsisTokenId("RBRACE", OPERATOR, 78),
+//            new NsisTokenId("LBRACKET", OPERATOR, 79),
+//            new NsisTokenId("RBRACKET", OPERATOR, 80),
+//            new NsisTokenId("SEMICOLON", OPERATOR, 81),
+//            new NsisTokenId("COMMA", OPERATOR, 82),
+//            new NsisTokenId("DOT", OPERATOR, 83),
+//            new NsisTokenId("AT", OPERATOR, 84),
+//            new NsisTokenId("ASSIGN", OPERATOR, 85),
+//            new NsisTokenId("LT", OPERATOR, 86),
+//            new NsisTokenId("BANG", OPERATOR, 87),
+//            new NsisTokenId("TILDE", OPERATOR, 88),
+//            new NsisTokenId("HOOK", OPERATOR, 89),
+//            new NsisTokenId("COLON", OPERATOR, 90),
+//            new NsisTokenId("EQ", OPERATOR, 91),
+//            new NsisTokenId("LE", OPERATOR, 92),
+//            new NsisTokenId("GE", OPERATOR, 93),
+//            new NsisTokenId("NE", OPERATOR, 94),
+//            new NsisTokenId("SC_OR", OPERATOR, 95),
+//            new NsisTokenId("SC_AND", OPERATOR, 96),
+//            new NsisTokenId("INCR", OPERATOR, 97),
+//            new NsisTokenId("DECR", OPERATOR, 98),
+//            new NsisTokenId("PLUS", OPERATOR, 99),
+//            new NsisTokenId("MINUS", OPERATOR, 100),
+//            new NsisTokenId("STAR", OPERATOR, 101),
+//            new NsisTokenId("SLASH", OPERATOR, 102),
+//            new NsisTokenId("BIT_AND", OPERATOR, 103),
+//            new NsisTokenId("BIT_OR", OPERATOR, 104),
+//            new NsisTokenId("XOR", OPERATOR, 105),
+//            new NsisTokenId("REM", OPERATOR, 106),
+//            new NsisTokenId("LSHIFT", OPERATOR, 107),
+//            new NsisTokenId("PLUSASSIGN", OPERATOR, 108),
+//            new NsisTokenId("MINUSASSIGN", OPERATOR, 109),
+//            new NsisTokenId("STARASSIGN", OPERATOR, 110),
+//            new NsisTokenId("SLASHASSIGN", OPERATOR, 111),
+//            new NsisTokenId("ANDASSIGN", OPERATOR, 112),
+//            new NsisTokenId("ORASSIGN", OPERATOR, 113),
+//            new NsisTokenId("XORASSIGN", OPERATOR, 114),
+//            new NsisTokenId("REMASSIGN", OPERATOR, 115),
+//            new NsisTokenId("LSHIFTASSIGN", OPERATOR, 116),
+//            new NsisTokenId("RSIGNEDSHIFTASSIGN", OPERATOR, 117),
+//            new NsisTokenId("RUNSIGNEDSHIFTASSIGN", OPERATOR, 118),
+//            new NsisTokenId("ELLIPSIS", OPERATOR, 119),
+//            new NsisTokenId("RUNSIGNEDSHIFT", OPERATOR, 120),
+//            new NsisTokenId("RSIGNEDSHIFT", OPERATOR, 121),
+//            new NsisTokenId("GT", OPERATOR, 122)
+//        });
+        idToToken = new HashMap<>();
         for (NsisTokenId token : tokens) {
             idToToken.put(token.ordinal(), token);
         }
+    }
+
+    private static void addTokenId(final Field field, final String type)
+            throws IllegalArgumentException, IllegalAccessException {
+
+        NsisTokenId tokenId = new NsisTokenId(field.getName(), type, field.getInt(PARSER_CONSTANTS));
+        for (NsisTokenId existingToken : tokens) {
+            if (existingToken.ordinal() == tokenId.ordinal()) {
+                LOGGER.log(
+                        Level.WARNING,
+                        "Duplicate ordinal; existing {0} duplicate {1}",
+                        new Object[]{existingToken.name(), tokenId.name()});
+                return;
+            }
+        }
+        tokens.add(tokenId);
     }
 
     static synchronized NsisTokenId getToken(int id) {
@@ -179,6 +266,11 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     @Override
     protected String mimeType() {
         return "text/x-nsi";
+
+    }
+
+    private static class ParserConstants implements NSISParserConstants {
+        // Object handle to use in reflection
     }
 
 }
