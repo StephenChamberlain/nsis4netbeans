@@ -11,6 +11,13 @@
     
     <name>NSIS 4 NetBeans</name>
     
+    <description>
+        Provides support for NSIS (Nullsoft Scriptable Install System) in NetBeans IDE.
+        Features include file type recognition for *.nsi script files and *.nsh header files, 
+        file type recognition for *.nsddef and *.nsdinc NSIS Dialog Designer files and
+        syntax highlighting.
+    </description>    
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans-spec-version>RELEASE82</netbeans-spec-version>
@@ -139,6 +146,10 @@
             <artifactId>org-openide-nodes</artifactId>
             <version>${netbeans-spec-version}</version>
         </dependency>                
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-editor-fold</artifactId>
+            <version>${netbeans-spec-version}</version>
+        </dependency> 
     </dependencies>
-
 </project>

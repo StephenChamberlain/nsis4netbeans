@@ -19,7 +19,7 @@
     <folder name="Editors">
         <folder name="text">
             <folder name="x-nsi">
-                <attr name="displayName" bundlevalue="uk.co.chamberlain.netbeans.nsis.Bundle#Editors/text/x-nsi"/>
+                <attr name="displayName" bundlevalue="uk.co.chamberlain.netbeans.nsis.Bundle#Editors/text/x-nsi"/>            
                 <folder name="FontsColors">
                     <folder name="NetBeans">
                         <folder name="Defaults">
@@ -29,6 +29,12 @@
                         </folder>
                     </folder>
                 </folder>
+                <folder name="FoldManager">
+                    <file name="uk-co-chamberlain-netbeans-nsis-netbeans-lexer-NsisFoldManagerFactory.instance">
+                        <!--uk.co.chamberlain.netbeans.nsis.netbeans.lexer.NsisFoldManagerFactory-->
+                        <attr name="instanceOf" stringvalue="uk.co.chamberlain.netbeans.nsis.netbeans.lexer.NsisFoldManagerFactory"/>
+                    </file>                    
+                </folder>                
             </folder>
         </folder>
     </folder>
