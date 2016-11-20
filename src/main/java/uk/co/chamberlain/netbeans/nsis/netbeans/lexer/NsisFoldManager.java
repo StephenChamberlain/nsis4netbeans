@@ -6,6 +6,7 @@
 package uk.co.chamberlain.netbeans.nsis.netbeans.lexer;
 
 import java.util.Iterator;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
@@ -29,7 +30,9 @@ public class NsisFoldManager implements FoldManager {
 
     private static final Logger LOGGER = Logger.getLogger(NsisFoldManager.class.getName());
 
-    public static final FoldType COMMENT_FOLD_TYPE = new FoldType("/*...*/");
+    public static final FoldType FOLD_TYPE_COMMENT = new FoldType("/*...*/");
+    public static final FoldType FOLD_TYPE_FUNCTION = new FoldType("Function...FunctionEnd");
+    public static final FoldType FOLD_TYPE_SECTION = new FoldType("Section...SectionEnd");
 
     private FoldOperation operation;
 
@@ -49,10 +52,7 @@ public class NsisFoldManager implements FoldManager {
         final TokenHierarchy<Document> hi = TokenHierarchy.get(document);
         final TokenSequence<NsisTokenId> ts = (TokenSequence<NsisTokenId>) hi.tokenSequence();
 
-        Iterator<Fold> foldIterator = operation.foldIterator();
-        while (foldIterator.hasNext()) {
-            operation.removeFromHierarchy(foldIterator.next(), transaction);
-        }
+        removeFoldsFromHierarchy(transaction);
 
         int start = 0;
         int offset = 0;
@@ -60,12 +60,29 @@ public class NsisFoldManager implements FoldManager {
             offset = ts.offset();
             final Token<NsisTokenId> token = ts.token();
             final NsisTokenId id = token.id();
-            if (isComment(id)) {                
+            final FoldType foldType;
+
+            if (isComment(id)) {
+                foldType = FOLD_TYPE_COMMENT;
+
+            } else if (isFunction(id)) {
+                foldType = FOLD_TYPE_FUNCTION;
+
+            } else if (isSection(id)) {
+                foldType = FOLD_TYPE_SECTION;
+
+            } else {
+                foldType = null;
+            }
+
+            if (foldType != null) {
                 start = offset;
                 try {
+                    LOGGER.log(Level.INFO, "NsisFoldManager#initFolds -> addToHierarchy {0}", id.name());
+
                     operation.addToHierarchy(
-                            COMMENT_FOLD_TYPE,
-                            COMMENT_FOLD_TYPE.toString(),
+                            foldType,
+                            foldType.toString(),
                             false,
                             start,
                             offset + token.length(),
@@ -80,9 +97,26 @@ public class NsisFoldManager implements FoldManager {
         }
     }
 
+    private void removeFoldsFromHierarchy(FoldHierarchyTransaction transaction) {
+        final Iterator<Fold> foldIterator = operation.foldIterator();
+        while (foldIterator.hasNext()) {
+            operation.removeFromHierarchy(foldIterator.next(), transaction);
+        }
+    }
+
     private boolean isComment(final NsisTokenId tokenId) {
         return tokenId.name().equals("FORMAL_COMMENT")
                 || tokenId.name().equals("MULTI_LINE_COMMENT");
+    }
+
+    private boolean isFunction(final NsisTokenId tokenId) {
+        return tokenId.name().equals("FUNCTION") ||
+                tokenId.name().equals("FUNCTIONEND") ||
+                tokenId.name().equals("MULTI_LINE_FUNCTION");
+    }
+
+    private boolean isSection(final NsisTokenId tokenId) {
+        return tokenId.name().equals("MULTI_LINE_SECTION");
     }
 
     @Override

@@ -39,6 +39,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static final String WHITESPACE = "whitespace";
     private static final String NUMBER = "number";
     private static final String IDENTIFIER = "identifier";
+    private static final String METHOD = "method";    
     private static final String OPERATOR = "";
 
     private static List<String> whitespace;
@@ -47,6 +48,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static List<String> operators;
     private static List<String> numbers;
     private static List<String> identifiers;
+    private static List<String> methods;
     private static List<NsisTokenId> tokens;
     private static Map<Integer, NsisTokenId> idToToken;
     private static NsisTokenId tokenForErrorSituation;
@@ -135,8 +137,17 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
                 "HEXADECIMAL_EXPONENT"
         );
 
-        identifiers = Arrays.asList("IDENTIFIER");
-
+        identifiers = Arrays.asList(
+                "IDENTIFIER"
+        );
+        
+        methods = Arrays.asList(
+                "FUNCTION",
+                "FUNCTIONEND",
+                "MULTI_LINE_FUNCTION",
+                "MULTI_LINE_SECTION"                
+        );
+        
         tokens = new ArrayList<>();
 
         for (final Field field : NSISParserConstants.class
@@ -161,6 +172,9 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
 //                    } else if (identifiers.contains(field.getName())) {
 //                        addTokenId(field, IDENTIFIER);                        
 //
+                    } else if (methods.contains(field.getName())) {
+                        addTokenId(field, METHOD);                        
+
                     } else {
                         addTokenId(field, KEYWORD);
                     }
@@ -190,7 +204,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
             }
         }
         tokens.add(tokenId);
-        
+
         if ("WHITESPACE".equals(field.getName())) {
             tokenForErrorSituation = tokenId;
         }
@@ -202,7 +216,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
         }
         return idToToken.get(id);
     }
-    
+
     static synchronized NsisTokenId getTokenForErrorSituation() {
         return tokenForErrorSituation;
     }
