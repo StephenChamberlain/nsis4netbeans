@@ -49,6 +49,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static List<String> identifiers;
     private static List<NsisTokenId> tokens;
     private static Map<Integer, NsisTokenId> idToToken;
+    private static NsisTokenId tokenForErrorSituation;
 
     private static void init() {
 
@@ -189,6 +190,10 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
             }
         }
         tokens.add(tokenId);
+        
+        if ("WHITESPACE".equals(field.getName())) {
+            tokenForErrorSituation = tokenId;
+        }
     }
 
     static synchronized NsisTokenId getToken(int id) {
@@ -196,6 +201,10 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
             init();
         }
         return idToToken.get(id);
+    }
+    
+    static synchronized NsisTokenId getTokenForErrorSituation() {
+        return tokenForErrorSituation;
     }
 
     @Override

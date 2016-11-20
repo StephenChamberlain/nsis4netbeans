@@ -17,6 +17,7 @@
  */
 package uk.co.chamberlain.netbeans.nsis.netbeans.lexer;
 
+import java.util.logging.Logger;
 import org.netbeans.spi.lexer.Lexer;
 import org.netbeans.spi.lexer.LexerRestartInfo;
 import uk.co.chamberlain.netbeans.nsis.javacc.lexer.JavaCharStream;
@@ -25,6 +26,8 @@ import uk.co.chamberlain.netbeans.nsis.javacc.lexer.Token;
 
 class NsisLexer implements Lexer<NsisTokenId> {
 
+    private static final Logger LOGGER = Logger.getLogger(NsisLexer.class.getName());
+    
     private final LexerRestartInfo<NsisTokenId> info;
     private final NSISParserTokenManager nsisParserTokenManager;
 
@@ -36,11 +39,16 @@ class NsisLexer implements Lexer<NsisTokenId> {
 
     @Override
     public org.netbeans.api.lexer.Token<NsisTokenId> nextToken() {
-        Token token = nsisParserTokenManager.getNextToken();
-        if (info.input().readLength() < 1) {
-            return null;
+        try {
+            Token token = nsisParserTokenManager.getNextToken();
+            if (info.input().readLength() < 1) {
+                return null;
+            }
+            return info.tokenFactory().createToken(NsisLanguageHierarchy.getToken(token.kind));
+        } catch (Throwable t) {
+            LOGGER.severe(t.getMessage());
+            return info.tokenFactory().createToken(NsisLanguageHierarchy.getTokenForErrorSituation());
         }
-        return info.tokenFactory().createToken(NsisLanguageHierarchy.getToken(token.kind));
     }
 
     @Override
