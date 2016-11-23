@@ -52,6 +52,10 @@ public class NsisFoldManager implements FoldManager {
         final TokenHierarchy<Document> hi = TokenHierarchy.get(document);
         final TokenSequence<NsisTokenId> ts = (TokenSequence<NsisTokenId>) hi.tokenSequence();
 
+        if (ts == null) {
+            return;
+        }
+        
         removeFoldsFromHierarchy(transaction);
 
         int start = 0;
