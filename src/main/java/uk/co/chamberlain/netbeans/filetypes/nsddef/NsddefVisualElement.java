@@ -1,19 +1,7 @@
 /*
- * NSIS 4 NetBeans
- * Copyright (C) 2016 Stephen Chamberlain
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package uk.co.chamberlain.netbeans.filetypes.nsddef;
 
@@ -31,7 +19,7 @@ import org.openide.windows.TopComponent;
 
 @MultiViewElement.Registration(
         displayName = "#LBL_Nsddef_VISUAL",
-        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsddef/nsddef.png",
+        iconBase = "uk/co/chamberlain/netbeans/filetypes/nsddef/nsddef16x16.png",
         mimeType = "text/x-nsddef",
         persistenceType = TopComponent.PERSISTENCE_NEVER,
         preferredID = "NsddefVisual",
@@ -40,8 +28,8 @@ import org.openide.windows.TopComponent;
 @Messages("LBL_Nsddef_VISUAL=Visual")
 public final class NsddefVisualElement extends JPanel implements MultiViewElement {
 
-    private final NsddefDataObject obj;
-    private final JToolBar toolbar = new JToolBar();
+    private NsddefDataObject obj;
+    private JToolBar toolbar = new JToolBar();
     private transient MultiViewElementCallback callback;
 
     public NsddefVisualElement(Lookup lkp) {

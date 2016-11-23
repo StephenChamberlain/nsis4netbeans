@@ -150,6 +150,6 @@
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-editor-fold</artifactId>
             <version>${netbeans-spec-version}</version>
-        </dependency> 
+        </dependency>         
     </dependencies>
 </project>
