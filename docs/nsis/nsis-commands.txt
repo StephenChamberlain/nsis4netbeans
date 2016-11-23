@@ -1,0 +1,269 @@
+Abort [message]
+AddBrandingImage (top|left|bottom|right) (height|width) [padding]
+AddSize size_to_add_to_section_in_kb
+AutoCloseWindow (false|true)
+BGFont [font_face [height [weight] [/ITALIC] [/UNDERLINE] [/STRIKE]]]
+BGGradient (off | [top_color [bottom_color [text_color]]])
+BrandingText [/TRIM(LEFT|RIGHT|CENTER)] installer_text
+BringToFront 
+Call function_name | [:label_name]
+CallInstDLL dll_path_on_target.dll function
+Caption installer_caption
+ChangeUI (all|dlg_id) ui_file.exe
+ClearErrors 
+ComponentText [component_page_description] [component_subtext1] [component_subtext2]
+GetDLLVersion filename $(user_var: high output) $(user_var: low output)
+GetDLLVersionLocal localfilename $(user_var: high output) $(user_var: low output)
+GetFileTime file $(user_var: high output) $(user_var: low output)
+GetFileTimeLocal localfile $(user_var: high output) $(user_var: low output)
+CopyFiles [/SILENT] [/FILESONLY] source_path destination_path [total_size_in_kb]
+CRCCheck (on|force|off)
+CreateDirectory directory_name
+CreateFont $(user_var: handle output) face_name [height weight /ITALIC /UNDERLINE /STRIKE]
+CreateShortcut [/NoWorkingDir] shortcut_name.lnk shortcut_target [parameters [icon_file [icon index [showmode [hotkey [comment]]]]]]
+    showmode=(SW_SHOWNORMAL|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED)
+    hotkey=(ALT|CONTROL|EXT|SHIFT)|(F1-F24|A-Z)
+SetDatablockOptimize (off|on)
+DeleteINISec ini_file section_name
+DeleteINIStr ini_file section_name entry_name
+DeleteRegKey [/ifempty] root_key subkey
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+DeleteRegValue root_key subkey entry_name
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+Delete [/REBOOTOK] filespec
+DetailPrint message
+DirText [directory_page_description] [directory_page_subtext] [browse_button_text] [browse_dlg_text]
+DirShow doesn't currently work
+DirVar $(user_var: dir in/out))
+DirVerify auto|leave
+GetInstDirError $(user_var: error output)
+AllowRootDirInstall (true|false)
+CheckBitmap local_bitmap.bmp
+EnableWindow hwnd (1|0)
+EnumRegKey $(user_var: output) rootkey subkey index
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+EnumRegValue $(user_var: output) rootkey subkey index
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+Exch [$(user_var)] | [stack_item_index]
+Exec command_line
+ExecWait command_line [$(user_var: return value)]
+ExecShell (open|print|etc) command_line [parameters [showmode]]
+   showmode=(SW_SHOWNORMAL|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_HIDE|SW_SHOW)
+ExpandEnvStrings $(user_var: output) string
+FindWindow $(user_var: handle output) WindowClass [WindowTitle] [Window_Parent] [Child_After]
+FindClose $(user_var: handle input)
+FindFirst $(user_var: handle output) $(user_var: filename output) filespec
+FindNext $(user_var: handle input) $(user_var: filename output)
+File [/nonfatal] [/a] ([/r] [/x filespec [...]] filespec [...] |
+   /oname=outfile one_file_only)
+FileBufSize buf_size_mb
+FlushINI ini_file
+ReserveFile [/nonfatal] [/r] [/x filespec [...]] file [file...] | [/nonfatal] /plugin file.dll
+FileClose $(user_var: handle input)
+FileErrorText [text (can contain $0)] [text without ignore (can contain $0)]
+FileOpen $(user_var: handle output) filename openmode
+   openmode=r|w|a
+FileRead $(user_var: handle input) $(user_var: text output) [maxlen]
+FileWrite $(user_var: handle input) text
+FileReadByte $(user_var: handle input) $(user_var: bytevalue output)
+FileWriteByte $(user_var: handle input) bytevalue
+FileReadUTF16LE $(user_var: handle input) $(user_var: text output) [maxlen]
+FileWriteUTF16LE [/BOM] $(user_var: handle input) text
+FileReadWord $(user_var: handle input) $(user_var: wordvalue output)
+FileWriteWord $(user_var: handle input) wordvalue
+FileSeek $(user_var: handle input) offset [mode] [$(user_var: new position output)]
+    mode=SET|CUR|END
+Function function_name
+FunctionEnd 
+GetDlgItem $(user_var: handle output) dialog item_id
+GetFullPathName [/SHORT] $(user_var: result) path_or_file
+GetTempFileName $(user_var: name output) [base_dir]
+HideWindow 
+Icon local_icon.ico
+IfAbort label_to_goto_if_abort [label_to_goto_if_no_abort]
+IfErrors label_to_goto_if_errors [label_to_goto_if_no_errors]
+IfFileExists filename label_to_goto_if_file_exists [label_to_goto_otherwise]
+IfRebootFlag jump_if_set [jump_if_not_set]
+IfSilent jump_if_silent [jump_if_not_silent]
+InstallDirRegKey root_key subkey entry_name
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD)
+InstallColors (/windows | (foreground_color background_color))
+InstallDir default_install_directory
+InstProgressFlags [flag [...]]
+    flag={smooth|colored}
+InstType [un.]install_type_name | /NOCUSTOM | /CUSTOMSTRING=str | /COMPONENTSONLYONCUSTOM
+IntOp $(user_var: result) val1 OP [val2]
+    OP=(+ - * / % | & ^ ~ ! || && << >>)
+IntCmp val1 val2 jump_if_equal [jump_if_val1_less] [jump_if_val1_more]
+IntCmpU val1 val2 jump_if_equal [jump_if_val1_less] [jump_if_val1_more]
+IntFmt $(user_var: output) format_string input
+IsWindow hwnd jump_if_window [jump_if_not_window]
+Goto label
+LangString [un.]name lang_id string
+LangStringUP obsolete, use LangString.
+LicenseData local_file_that_has_license_text | license_lang_string
+LicenseForceSelection (checkbox [accept_text] | radiobuttons [accept_text] [decline_text] | off)
+LicenseLangString name lang_id license_path
+LicenseText license_page_description [license_button_text]
+LicenseBkColor background_color
+LoadLanguageFile language.nlf
+LogSet on|off
+LogText text
+MessageBox mode messagebox_text [/SD return] [return_check label_to_goto_if_equal [return_check2 label2]]
+    mode=modeflag[|modeflag[|modeflag[...]]]
+    modeflag=(MB_ABORTRETRYIGNORE|MB_OK|MB_OKCANCEL|MB_RETRYCANCEL|MB_YESNO|MB_YESNOCANCEL|MB_ICONEXCLAMATION|MB_ICONINFORMATION|MB_ICONQUESTION|MB_ICONSTOP|MB_USERICON|MB_TOPMOST|MB_SETFOREGROUND|MB_RIGHT
+Nop 
+Name installer_name installer_name_doubled_ampersands
+OutFile install_output.exe
+Page ((custom [creator_function] [leave_function] [caption]) | ((license|components|directory|instfiles|uninstConfirm) [pre_function] [show_function] [leave_function])) [/ENABLECANCEL]
+PageCallbacks ([creator_function] [leave_function]) | ([pre_function] [show_function] [leave_function])
+PageEx [un.](custom|uninstConfirm|license|components|directory|instfiles)
+PageExEnd 
+Pop $(user_var: output)
+Push string
+Quit 
+ReadINIStr $(user_var: output) ini_file section entry_name
+ReadRegDWORD $(user_var: output) rootkey subkey entry
+   root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+ReadRegStr $(user_var: output) rootkey subkey entry
+   root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+ReadEnvStr $(user_var: output) name
+Reboot 
+RegDLL dll_path_on_target.dll [entrypoint_symbol]
+Rename [/REBOOTOK] source_file destination_file
+Return 
+RMDir [/r] [/REBOOTOK] directory_name
+Section [/o] [-][un.][section_name] [section index output]
+SectionEnd 
+SectionIn InstTypeIdx [InstTypeIdx [...]]
+SubSection deprecated - use SectionGroup
+SectionGroup [/e] [un.]section_group_name [section index output]
+SubSectionEnd deprecated - use SectionGroupEnd
+SectionGroupEnd 
+SearchPath $(user_var: result) filename
+SectionSetFlags section_index flags
+SectionGetFlags section_index $(user_var: output flags)
+SectionSetInstTypes section_index inst_types
+SectionGetInstTypes section_index $(user_var: output inst_types)
+SectionGetText section_index $(user_var: output text)
+SectionSetText section_index text_string
+SectionGetSize section_index $(user_var: output size)
+SectionSetSize section_index new_size
+GetCurInstType $(user_var: output inst_type_idx)
+SetCurInstType inst_type_idx
+InstTypeSetText insttype_index text
+InstTypeGetText insttype_index $(user_var: output text)
+SendMessage hwnd message [wparam|STR:wParam] [lparam|STR:lParam] [$(user_var: return value)] [/TIMEOUT=X]
+SetAutoClose (false|true)
+SetCtlColors hwnd [/BRANDING] [text_color] [transparent|bg_color]
+SetBrandingImage [/IMGID=image_item_id_in_dialog] [/RESIZETOFIT] bitmap.bmp
+SetCompress (off|auto|force)
+SetCompressor [/FINAL] [/SOLID] (zlib|bzip2|lzma)
+SetCompressorDictSize dict_size_mb
+SetCompressionLevel level_0-9
+SetDateSave (off|on)
+SetDetailsView (hide|show)
+SetDetailsPrint (none|listonly|textonly|both)
+SetErrors 
+SetErrorLevel error_level
+GetErrorLevel $(user_var: output)
+SetFileAttributes file attribute[|attribute[...]]
+    attribute=(NORMAL|ARCHIVE|HIDDEN|OFFLINE|READONLY|SYSTEM|TEMPORARY|0)
+SetFont [/LANG=lang_id] font_face_name font_size
+SetOutPath output_path
+SetOverwrite on|off|try|ifnewer|ifdiff
+SetPluginUnload deprecated - plug-ins should handle this on their own
+SetRebootFlag true|false
+SetRegView 32|64|lastused
+SetShellVarContext all|current
+SetSilent silent|normal
+ShowInstDetails (hide|show|nevershow)
+ShowUninstDetails (hide|show|nevershow)
+ShowWindow hwnd show_state
+SilentInstall (normal|silent|silentlog)
+SilentUnInstall (normal|silent)
+Sleep sleep_time_in_ms
+StrCmp str1 str2 label_to_goto_if_equal [label_to_goto_if_not]
+StrCmpS str1 str2 label_to_goto_if_equal [label_to_goto_if_not]
+StrCpy $(user_var: output) str [maxlen] [startoffset]
+UnsafeStrCpy $(var: output) str [maxlen] [startoffset]
+StrLen $(user_var: length output) str
+SubCaption page_number(0-4) new_subcaption
+Target cpu-charset
+CPU x86|amd64
+Unicode true|false
+UninstallExeName no longer supported, use WriteUninstaller from section.
+UninstallCaption uninstaller_caption
+UninstallIcon icon_on_local_system.ico
+UninstPage ((custom [creator_function] [leave_function] [caption]) | ((license|components|directory|instfiles|uninstConfirm) [pre_function] [show_function] [leave_function])) [/ENABLECANCEL]
+UninstallText Text_to_go_on_uninstall_page [subtext]
+UninstallSubCaption page_number(0-2) new_subcaption
+UnRegDLL dll_path_on_target.dll
+WindowIcon on|off
+WriteINIStr ini_file section_name entry_name new_value
+WriteRegBin rootkey subkey entry_name hex_string_like_12848412AB
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+WriteRegDWORD rootkey subkey entry_name new_value_dword
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+WriteRegStr rootkey subkey entry_name new_value_string
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+WriteRegExpandStr rootkey subkey entry_name new_value_string
+    root_key=(HKCR|HKLM|HKCU|HKU|HKCC|HKDD|HKPD|SHCTX)
+WriteUninstaller uninstall_exe_name
+PEDllCharacteristics addbits removebits
+PESubsysVer major.minor
+XPStyle (on|off)
+RequestExecutionLevel none|user|highest|admin
+ManifestDPIAware notset|true|false
+ManifestSupportedOS none|all|WinVista|Win7|Win8|Win8.1|Win10|{GUID} [...]
+!packhdr temp_file_name command_line_to_compress_that_temp_file
+!finalize command_with_%1
+!system command [<OP retval> | <retvalsymbol>]
+    OP=(< > <> =)
+!execute command [<OP retval> | <retvalsymbol>]
+    OP=(< > <> =)
+!makensis parameters [<OP retval> | <retvalsymbol>]
+!AddIncludeDir dir
+!include [/NONFATAL] [/CHARSET=<ACP|OEM|CP#|UTF8|UTF16<LE|BE>>] filename.nsh
+!cd absolute_or_relative_new_directory
+!if [!] (value [(==,!=,S==,S!=,=,<>,<=,<,>,>=,&,&&,||) value2] | /FILEEXISTS path)
+!ifdef symbol [| symbol2 [& symbol3 [...]]]
+!ifndef symbol [| symbol2 [& symbol3 [...]]]
+!endif 
+!define [/ifndef | /redef] ([/date|/utcdate] symbol [value]) | (/file symbol filename) | (/math symbol val1 OP val2)
+    OP=(+ - * / << >> >>> % & | ^)
+!undef symbol
+!else [if[macro][n][def] ...]
+!echo message
+!warning [warning_message]
+!error [error_message]
+!verbose verbose_level | push | pop [...]
+!macro macroname [parms ...]
+!macroend 
+!macroundef macroname
+!insertmacro macroname [parms ...]
+!ifmacrodef macro [| macro2 [& macro3 [...]]]
+!ifmacrondef macro [| macro2 [& macro3 [...]]]
+!tempfile symbol
+!delfile [/nonfatal] file
+!appendfile [/CHARSET=<ACP|OEM|CP#|UTF8[SIG]|UTF16<LE|BE>[BOM]>] [/RAWNL] file appended_line
+!getdllversion localfilename define_basename
+!searchparse [/ignorecase] [/noerrors] [/file] source_string_or_file substring OUTPUTSYM1 [substring [OUTPUTSYM2 [substring ...]]]
+!searchreplace [/ignorecase] output_name source_string substring replacestring
+MiscButtonText [back button text] [next button text] [cancel button text] [close button text]
+DetailsButtonText [details button text]
+UninstallButtonText [uninstall button text]
+InstallButtonText [install button text]
+SpaceTexts none | ([space required text] [space available text])
+CompletedText [completed text]
+GetFunctionAddress output function
+GetLabelAddress output label
+GetCurrentAddress output
+!AddPluginDir [/target] new_plugin_directory
+InitPluginsDir 
+AllowSkipFiles (off|on)
+Var [/GLOBAL] var_name
+VIAddVersionKey /LANG=lang_id keyname value
+VIProductVersion [version_string_X.X.X.X]
+VIFileVersion [version_string_X.X.X.X]
+LockWindow (on|off)
