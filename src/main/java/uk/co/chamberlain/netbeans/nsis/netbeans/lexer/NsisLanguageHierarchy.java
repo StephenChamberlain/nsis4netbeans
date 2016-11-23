@@ -33,15 +33,17 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
 
     private static final NSISParserConstants PARSER_CONSTANTS = new ParserConstants();
 
+    private static final String COMMAND = "command";
     private static final String KEYWORD = "keyword";
     private static final String LITERAL = "literal";
     private static final String COMMENT = "comment";
     private static final String WHITESPACE = "whitespace";
     private static final String NUMBER = "number";
     private static final String IDENTIFIER = "identifier";
-    private static final String METHOD = "method";    
+    private static final String METHOD = "method";
     private static final String OPERATOR = "";
 
+    private static List<String> commands;
     private static List<String> whitespace;
     private static List<String> literals;
     private static List<String> comments;
@@ -54,6 +56,252 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static NsisTokenId tokenForErrorSituation;
 
     private static void init() {
+
+        commands = Arrays.asList(
+                "ABORT",
+                "ADDBRANDINGIMAGE",
+                "ADDSIZE",
+                "AUTOCLOSEWINDOW",
+                "BGFONT",
+                "BGGRADIENT",
+                "BRANDINGTEXT",
+                "BRINGTOFRONT",
+                "CALL",
+                "CALLINSTDLL",
+                "CAPTION",
+                "CHANGEUI",
+                "CLEARERRORS",
+                "COMPONENTTEXT",
+                "GETDLLVERSION",
+                "GETDLLVERSIONLOCAL",
+                "GETFILETIME",
+                "GETFILETIMELOCAL",
+                "COPYFILES",
+                "CRCCHECK",
+                "CREATEDIRECTORY",
+                "CREATEFONT",
+                "CREATESHORTCUT",
+                "SETDATABLOCKOPTIMIZE",
+                "DELETEINISEC",
+                "DELETEINISTR",
+                "DELETEREGKEY",
+                "DELETEREGVALUE",
+                "DELETE",
+                "DETAILPRINT",
+                "DIRTEXT",
+                "DIRSHOW",
+                "DIRVAR",
+                "DIRVERIFY",
+                "GETINSTDIRERROR",
+                "ALLOWROOTDIRINSTALL",
+                "CHECKBITMAP",
+                "ENABLEWINDOW",
+                "ENUMREGKEY",
+                "ENUMREGVALUE",
+                "EXCH",
+                "EXEC",
+                "EXECWAIT",
+                "EXECSHELL",
+                "EXPANDENVSTRINGS",
+                "FINDWINDOW",
+                "FINDCLOSE",
+                "FINDFIRST",
+                "FINDNEXT",
+                "FILE",
+                "FILEBUFSIZE",
+                "FLUSHINI",
+                "RESERVEFILE",
+                "FILECLOSE",
+                "FILEERRORTEXT",
+                "FILEOPEN",
+                "FILEREAD",
+                "FILEWRITE",
+                "FILEREADBYTE",
+                "FILEWRITEBYTE",
+                "FILEREADUTF16LE",
+                "FILEWRITEUTF16LE",
+                "FILEREADWORD",
+                "FILEWRITEWORD",
+                "FILESEEK",
+                "FUNCTION",
+                "FUNCTIONEND",
+                "GETDLGITEM",
+                "GETFULLPATHNAME",
+                "GETTEMPFILENAME",
+                "HIDEWINDOW",
+                "ICON",
+                "IFABORT",
+                "IFERRORS",
+                "IFFILEEXISTS",
+                "IFREBOOTFLAG",
+                "IFSILENT",
+                "INSTALLDIRREGKEY",
+                "INSTALLCOLORS",
+                "INSTALLDIR",
+                "INSTPROGRESSFLAGS",
+                "INSTTYPE",
+                "INTOP",
+                "INTCMP",
+                "INTCMPU",
+                "INTFMT",
+                "ISWINDOW",
+                "GOTO",
+                "LANGSTRING",
+                "LANGSTRINGUP",
+                "LICENSEDATA",
+                "LICENSEFORCESELECTION",
+                "LICENSELANGSTRING",
+                "LICENSETEXT",
+                "LICENSEBKCOLOR",
+                "LOADLANGUAGEFILE",
+                "LOGSET",
+                "LOGTEXT",
+                "MESSAGEBOX",
+                "NOP",
+                "NAME",
+                "OUTFILE",
+                "PAGE",
+                "PAGECALLBACKS",
+                "PAGEEX",
+                "PAGEEXEND",
+                "POP",
+                "PUSH",
+                "QUIT",
+                "READINISTR",
+                "READREGDWORD",
+                "READREGSTR",
+                "READENVSTR",
+                "REBOOT",
+                "REGDLL",
+                "RENAME",
+                "RETURN",
+                "RMDIR",
+                "SECTION",
+                "SECTIONEND",
+                "SECTIONIN",
+                "SUBSECTION",
+                "SECTIONGROUP",
+                "SUBSECTIONEND",
+                "SECTIONGROUPEND",
+                "SEARCHPATH",
+                "SECTIONSETFLAGS",
+                "SECTIONGETFLAGS",
+                "SECTIONSETINSTTYPES",
+                "SECTIONGETINSTTYPES",
+                "SECTIONGETTEXT",
+                "SECTIONSETTEXT",
+                "SECTIONGETSIZE",
+                "SECTIONSETSIZE",
+                "GETCURINSTTYPE",
+                "SETCURINSTTYPE",
+                "INSTTYPESETTEXT",
+                "INSTTYPEGETTEXT",
+                "SENDMESSAGE",
+                "SETAUTOCLOSE",
+                "SETCTLCOLORS",
+                "SETBRANDINGIMAGE",
+                "SETCOMPRESS",
+                "SETCOMPRESSOR",
+                "SETCOMPRESSORDICTSIZE",
+                "SETCOMPRESSIONLEVEL",
+                "SETDATESAVE",
+                "SETDETAILSVIEW",
+                "SETDETAILSPRINT",
+                "SETERRORS",
+                "SETERRORLEVEL",
+                "GETERRORLEVEL",
+                "SETFILEATTRIBUTES",
+                "SETFONT",
+                "SETOUTPATH",
+                "SETOVERWRITE",
+                "SETPLUGINUNLOAD",
+                "SETREBOOTFLAG",
+                "SETREGVIEW",
+                "SETSHELLVARCONTEXT",
+                "SETSILENT",
+                "SHOWINSTDETAILS",
+                "SHOWUNINSTDETAILS",
+                "SHOWWINDOW",
+                "SILENTINSTALL",
+                "SILENTUNINSTALL",
+                "SLEEP",
+                "STRCMP",
+                "STRCMPS",
+                "STRCPY",
+                "UNSAFESTRCPY",
+                "STRLEN",
+                "SUBCAPTION",
+                "TARGET",
+                "CPU",
+                "UNICODE",
+                "UNINSTALLEXENAME",
+                "UNINSTALLCAPTION",
+                "UNINSTALLICON",
+                "UNINSTPAGE",
+                "UNINSTALLTEXT",
+                "UNINSTALLSUBCAPTION",
+                "UNREGDLL",
+                "WINDOWICON",
+                "WRITEINISTR",
+                "WRITEREGBIN",
+                "WRITEREGDWORD",
+                "WRITEREGSTR",
+                "WRITEREGEXPANDSTR",
+                "WRITEUNINSTALLER",
+                "PEDLLCHARACTERISTICS",
+                "PESUBSYSVER",
+                "XPSTYLE",
+                "REQUESTEXECUTIONLEVEL",
+                "MANIFESTDPIAWARE",
+                "MANIFESTSUPPORTEDOS",
+                "PACKHDR",
+                "FINALIZE",
+                "SYSTEM",
+                "EXECUTE",
+                "ADDINCLUDEDIR",
+                "INCLUDE",
+                "CD",
+                "IF",
+                "IFDEF",
+                "IFNDEF",
+                "ENDIF",
+                "DEFINE",
+                "UNDEF",
+                "ELSE",
+                "ECHO",
+                "WARNING",
+                "ERROR",
+                "VERBOSE",
+                "MACRO",
+                "MACROEND",
+                "MACROUNDEF",
+                "INSERTMACRO",
+                "IFMACRODEF",
+                "IFMACRONDEF",
+                "TEMPFILE",
+                "DELFILE",
+                "APPENDFILE",
+                "GETDLLVERSION",
+                "SEARCHPARSE",
+                "SEARCHREPLACE",
+                "MISCBUTTONTEXT",
+                "DETAILSBUTTONTEXT",
+                "UNINSTALLBUTTONTEXT",
+                "INSTALLBUTTONTEXT",
+                "SPACETEXTS",
+                "COMPLETEDTEXT",
+                "GETFUNCTIONADDRESS",
+                "GETLABELADDRESS",
+                "GETCURRENTADDRESS",
+                "ADDPLUGINDIR",
+                "INITPLUGINSDIR",
+                "ALLOWSKIPFILES",
+                "VAR",
+                "VIADDVERSIONKEY",
+                "VIPRODUCTVERSION",
+                "VIFILEVERSION",
+                "LOCKWINDOW"
+        );
 
         whitespace = Arrays.asList(
                 "EOF",
@@ -140,21 +388,24 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
         identifiers = Arrays.asList(
                 "IDENTIFIER"
         );
-        
+
         methods = Arrays.asList(
                 "FUNCTION",
                 "FUNCTIONEND",
                 "MULTI_LINE_FUNCTION",
-                "MULTI_LINE_SECTION"                
+                "MULTI_LINE_SECTION"
         );
-        
+
         tokens = new ArrayList<>();
 
         for (final Field field : NSISParserConstants.class
                 .getFields()) {
             try {
                 if (field.getType() == Integer.TYPE) {
-                    if (whitespace.contains(field.getName())) {
+                    if (commands.contains(field.getName())) {
+                        addTokenId(field, COMMAND);
+                        
+                    }else if (whitespace.contains(field.getName())) {
                         addTokenId(field, WHITESPACE);
 
                     } else if (literals.contains(field.getName())) {
@@ -173,7 +424,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
 //                        addTokenId(field, IDENTIFIER);                        
 //
                     } else if (methods.contains(field.getName())) {
-                        addTokenId(field, METHOD);                        
+                        addTokenId(field, METHOD);
 
                     } else {
                         addTokenId(field, KEYWORD);
