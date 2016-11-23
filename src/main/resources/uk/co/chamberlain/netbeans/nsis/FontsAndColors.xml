@@ -5,17 +5,17 @@
     <fontcolor name="command" default="command" foreColor="blue">
         <font style="bold" />
     </fontcolor>
+    <fontcolor name="comment" default="comment"/>
+    <fontcolor name="string" default="string" foreColor="ffCE7B00"/>
+    <fontcolor name="literal" default="string" foreColor="ffCE7B00" />
+    <fontcolor name="whitespace" default="whitespace"/>
     <fontcolor name="character" default="char"/>
     <fontcolor name="errors" default="error"/>
     <fontcolor name="identifier" default="identifier"/>
-    <fontcolor name="keyword" default="keyword" foreColor="black"/>
-    <fontcolor name="literal" default="keyword" foreColor="black"/>
-    <fontcolor name="comment" default="comment"/>
+    <fontcolor name="keyword" default="keyword" foreColor="black"/>    
     <fontcolor name="number" default="number"/>
-    <fontcolor name="operator" default="operator"/>
-    <fontcolor name="string" default="string" foreColor="black"/>
-    <fontcolor name="separator" default="separator"/>
-    <fontcolor name="whitespace" default="whitespace"/>
+    <fontcolor name="operator" default="operator"/>    
+    <fontcolor name="separator" default="separator"/>    
     <fontcolor name="method" default="method" foreColor="blue">
         <font style="bold" />
     </fontcolor>    
