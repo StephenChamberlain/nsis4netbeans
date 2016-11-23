@@ -525,11 +525,11 @@ public interface NSISParserConstants {
   /** RegularExpression Id. */
   int HEXADECIMAL_EXPONENT = 264;
   /** RegularExpression Id. */
-  int CHARACTER_LITERAL = 265;
+  int STRING_LITERAL_QUOTE = 265;
   /** RegularExpression Id. */
-  int CHARACTER_LITERAL_1 = 266;
+  int STRING_LITERAL_GRAVE = 266;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 267;
+  int STRING_LITERAL_DOUBLE_QUOTE = 267;
   /** RegularExpression Id. */
   int IDENTIFIER = 268;
   /** RegularExpression Id. */
@@ -905,9 +905,9 @@ public interface NSISParserConstants {
     "<DECIMAL_EXPONENT>",
     "<HEXADECIMAL_FLOATING_POINT_LITERAL>",
     "<HEXADECIMAL_EXPONENT>",
-    "<CHARACTER_LITERAL>",
-    "<CHARACTER_LITERAL_1>",
-    "<STRING_LITERAL>",
+    "<STRING_LITERAL_QUOTE>",
+    "<STRING_LITERAL_GRAVE>",
+    "<STRING_LITERAL_DOUBLE_QUOTE>",
     "<IDENTIFIER>",
     "<LETTER>",
     "<PART_LETTER>",

@@ -383,7 +383,7 @@ TOKEN :
 |
   < #HEXADECIMAL_EXPONENT: ["p","P"] (["+","-"])? (["0"-"9"])+ >
 |
-  < CHARACTER_LITERAL:
+  < STRING_LITERAL_QUOTE:
       "'"
       (   (~["'","\\","\n","\r"])
         | ("\\"
@@ -396,7 +396,7 @@ TOKEN :
       "'"
   >
 |
-  < CHARACTER_LITERAL_1:
+  < STRING_LITERAL_GRAVE:
       "`"
       (   (~["`","\\","\n","\r"])
         | ("\\"
@@ -409,7 +409,7 @@ TOKEN :
       "`"
   >
 |
-  < STRING_LITERAL:
+  < STRING_LITERAL_DOUBLE_QUOTE:
       "\""
       (   (~["\"","\\","\n","\r"])
         | ("\\"

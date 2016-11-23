@@ -83,8 +83,9 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
                 "DECIMAL_FLOATING_POINT_LITERAL",
                 "DECIMAL_EXPONENT",
                 "HEXADECIMAL_FLOATING_POINT_LITERAL",
-                "CHARACTER_LITERAL",
-                "STRING_LITERAL",
+                "STRING_LITERAL_QUOTE",
+                "STRING_LITERAL_GRAVE",
+                "STRING_LITERAL_DOUBLE_QUOTE",
                 "LETTER",
                 "PART_LETTER"
         );
