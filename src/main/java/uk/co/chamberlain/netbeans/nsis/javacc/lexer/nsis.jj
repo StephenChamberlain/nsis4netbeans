@@ -80,7 +80,6 @@ MORE :
   < ~[] >
 }
 
-
 MORE :
 {
   "SECTION" : IN_MULTI_LINE_SECTION
@@ -97,6 +96,13 @@ MORE :
 {
   < ~[] >
 }
+
+
+
+
+
+
+
 
 /* RESERVED WORDS AND LITERALS */
 
@@ -168,7 +174,7 @@ TOKEN :
 | < FILEWRITEWORD                  : 	"FileWriteWord">
 | < FILESEEK                       : 	"FileSeek">
 | < FUNCTION                       : 	"Function">
-| < FUNCTIONEND                    : 	"FunctionEnd ">
+| < FUNCTIONEND                    : 	"FunctionEnd">
 | < GETDLGITEM                     : 	"GetDlgItem">
 | < GETFULLPATHNAME                : 	"GetFullPathName">
 | < GETTEMPFILENAME                : 	"GetTempFileName">

@@ -720,7 +720,7 @@ public interface NSISParserConstants {
     "\"FileWriteWord\"",
     "\"FileSeek\"",
     "\"Function\"",
-    "\"FunctionEnd \"",
+    "\"FunctionEnd\"",
     "\"GetDlgItem\"",
     "\"GetFullPathName\"",
     "\"GetTempFileName\"",

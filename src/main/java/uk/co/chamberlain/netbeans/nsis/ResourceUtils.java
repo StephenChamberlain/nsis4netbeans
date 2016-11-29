@@ -26,6 +26,36 @@ public class ResourceUtils {
                 NSIS_DEFS_RESOURCE_BASE + "nsis-defs-whitespace.txt");
     }
 
+    public static InputStream getNsisDefsLiterals() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-literals.txt");
+    }
+
+    public static InputStream getNsisDefsComments() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-comments.txt");
+    }
+
+    public static InputStream getNsisDefsOperators() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-operators.txt");
+    }
+
+    public static InputStream getNsisDefsNumbers() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-numbers.txt");
+    }
+
+    public static InputStream getNsisDefsIdentifiers() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-identifiers.txt");
+    }
+
+    public static InputStream getNsisDefsMethods() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-methods.txt");
+    }
+
     private static InputStream getResourceAsInputStream(final String resource) {
         return Lookup.getDefault().lookup(ClassLoader.class).getResourceAsStream(resource);
     }

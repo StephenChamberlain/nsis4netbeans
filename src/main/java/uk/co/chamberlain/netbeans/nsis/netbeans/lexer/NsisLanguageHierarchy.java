@@ -17,7 +17,6 @@
  */
 package uk.co.chamberlain.netbeans.nsis.netbeans.lexer;
 
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.logging.Level;
@@ -26,7 +25,6 @@ import org.netbeans.spi.lexer.LanguageHierarchy;
 import org.netbeans.spi.lexer.Lexer;
 import org.netbeans.spi.lexer.LexerRestartInfo;
 import org.openide.util.Exceptions;
-import org.openide.util.Lookup;
 import uk.co.chamberlain.netbeans.nsis.ResourceUtils;
 import uk.co.chamberlain.netbeans.nsis.javacc.lexer.NSISParserConstants;
 
@@ -74,94 +72,47 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
         }
         nsisDefsWhitespaceScanner.close();
 
-        literals = Arrays.asList(
-                "INTEGER_LITERAL",
-                "DECIMAL_LITERAL",
-                "HEX_LITERAL",
-                "OCTAL_LITERAL",
-                "FLOATING_POINT_LITERAL",
-                "DECIMAL_FLOATING_POINT_LITERAL",
-                "DECIMAL_EXPONENT",
-                "HEXADECIMAL_FLOATING_POINT_LITERAL",
-                "STRING_LITERAL_QUOTE",
-                "STRING_LITERAL_GRAVE",
-                "STRING_LITERAL_DOUBLE_QUOTE",
-                "LETTER",
-                "PART_LETTER"
-        );
+        literals = new ArrayList<>();
+        final Scanner nsisDefsLiteralsScanner = new Scanner(ResourceUtils.getNsisDefsLiterals());
+        while (nsisDefsLiteralsScanner.hasNext()) {
+            literals.add(nsisDefsLiteralsScanner.next());
+        }
+        nsisDefsLiteralsScanner.close();
 
-        comments = Arrays.asList(
-                "SINGLE_LINE_COMMENT",
-                "FORMAL_COMMENT",
-                "MULTI_LINE_COMMENT"
-        );
+        comments = new ArrayList<>();
+        final Scanner nsisDefsCommentsScanner = new Scanner(ResourceUtils.getNsisDefsComments());
+        while (nsisDefsCommentsScanner.hasNext()) {
+            comments.add(nsisDefsCommentsScanner.next());
+        }
+        nsisDefsCommentsScanner.close();
 
-        operators = Arrays.asList(
-                "LPAREN",
-                "RPAREN",
-                "LBRACE",
-                "RBRACE",
-                "LBRACKET",
-                "RBRACKET",
-                "SEMICOLON",
-                "COMMA",
-                "DOT",
-                "AT",
-                "ASSIGN",
-                "LT",
-                "BANG",
-                "TILDE",
-                "HOOK",
-                "COLON",
-                "EQ",
-                "LE",
-                "GE",
-                "NE",
-                "SC_OR",
-                "SC_AND",
-                "INCR",
-                "DECR",
-                "PLUS",
-                "MINUS",
-                "STAR",
-                "SLASH",
-                "BIT_AND",
-                "BIT_OR",
-                "XOR",
-                "REM",
-                "LSHIFT",
-                "PLUSASSIGN",
-                "MINUSASSIGN",
-                "STARASSIGN",
-                "SLASHASSIGN",
-                "ANDASSIGN",
-                "ORASSIGN",
-                "XORASSIGN",
-                "REMASSIGN",
-                "LSHIFTASSIGN",
-                "RSIGNEDSHIFTASSIGN",
-                "RUNSIGNEDSHIFTASSIGN",
-                "ELLIPSIS",
-                "RUNSIGNEDSHIFT",
-                "RSIGNEDSHIFT",
-                "GT"
-        );
+        operators = new ArrayList<>();
+        final Scanner nsisDefsOperatorsScanner = new Scanner(ResourceUtils.getNsisDefsOperators());
+        while (nsisDefsOperatorsScanner.hasNext()) {
+            operators.add(nsisDefsOperatorsScanner.next());
+        }
+        nsisDefsOperatorsScanner.close();
 
-        numbers = Arrays.asList(
-                "DECIMAL_EXPONENT",
-                "HEXADECIMAL_EXPONENT"
-        );
+        numbers = new ArrayList<>();
+        final Scanner nsisDefsNumbersScanner = new Scanner(ResourceUtils.getNsisDefsNumbers());
+        while (nsisDefsNumbersScanner.hasNext()) {
+            numbers.add(nsisDefsNumbersScanner.next());
+        }
+        nsisDefsNumbersScanner.close();
 
-        identifiers = Arrays.asList(
-                "IDENTIFIER"
-        );
+        identifiers = new ArrayList<>();
+        final Scanner nsisDefsIdentifiersScanner = new Scanner(ResourceUtils.getNsisDefsIdentifiers());
+        while (nsisDefsIdentifiersScanner.hasNext()) {
+            identifiers.add(nsisDefsIdentifiersScanner.next());
+        }
+        nsisDefsIdentifiersScanner.close();
 
-        methods = Arrays.asList(
-                "FUNCTION",
-                "FUNCTIONEND",
-                "MULTI_LINE_FUNCTION",
-                "MULTI_LINE_SECTION"
-        );
+        methods = new ArrayList<>();
+        final Scanner nsisDefsMethodsScanner = new Scanner(ResourceUtils.getNsisDefsMethods());
+        while (nsisDefsMethodsScanner.hasNext()) {
+            methods.add(nsisDefsMethodsScanner.next());
+        }
+        nsisDefsMethodsScanner.close();
 
         tokens = new ArrayList<>();
 
