@@ -55,11 +55,12 @@ public class NsisFoldManager implements FoldManager {
         if (ts == null) {
             return;
         }
-        
+
         removeFoldsFromHierarchy(transaction);
 
         int start = 0;
         int offset = 0;
+        int startingTokenOffset = -1;
         while (ts.moveNext()) {
             offset = ts.offset();
             final Token<NsisTokenId> token = ts.token();
@@ -69,10 +70,14 @@ public class NsisFoldManager implements FoldManager {
             if (isComment(id)) {
                 foldType = FOLD_TYPE_COMMENT;
 
-            } else if (isFunction(id)) {
+            } else if (isFunctionStart(id) || isSectionStart(id)) {
+                startingTokenOffset = offset;
+                continue;
+
+            } else if (isFunctionEnd(id)) {
                 foldType = FOLD_TYPE_FUNCTION;
 
-            } else if (isSection(id)) {
+            } else if (isSectionEnd(id)) {
                 foldType = FOLD_TYPE_SECTION;
 
             } else {
@@ -88,12 +93,14 @@ public class NsisFoldManager implements FoldManager {
                             foldType,
                             foldType.toString(),
                             false,
-                            start,
+                            startingTokenOffset == -1 ? start : startingTokenOffset,
                             offset + token.length(),
                             0,
                             0,
                             hierarchy,
                             transaction);
+
+                    startingTokenOffset = -1;
                 } catch (BadLocationException ex) {
                     Exceptions.printStackTrace(ex);
                 }
@@ -113,14 +120,20 @@ public class NsisFoldManager implements FoldManager {
                 || tokenId.name().equals("MULTI_LINE_COMMENT");
     }
 
-    private boolean isFunction(final NsisTokenId tokenId) {
-        return tokenId.name().equals("FUNCTION") ||
-                tokenId.name().equals("FUNCTIONEND") ||
-                tokenId.name().equals("MULTI_LINE_FUNCTION");
+    private boolean isFunctionStart(final NsisTokenId tokenId) {
+        return tokenId.name().equals("FUNCTION");
     }
 
-    private boolean isSection(final NsisTokenId tokenId) {
-        return tokenId.name().equals("MULTI_LINE_SECTION");
+    private boolean isFunctionEnd(final NsisTokenId tokenId) {
+        return tokenId.name().equals("FUNCTIONEND");
+    }
+
+    private boolean isSectionStart(final NsisTokenId tokenId) {
+        return tokenId.name().equals("SECTION");
+    }
+
+    private boolean isSectionEnd(final NsisTokenId tokenId) {
+        return tokenId.name().equals("SECTIONEND");
     }
 
     @Override

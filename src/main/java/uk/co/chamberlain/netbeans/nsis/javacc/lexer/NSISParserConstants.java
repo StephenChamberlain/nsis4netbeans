@@ -19,613 +19,609 @@ public interface NSISParserConstants {
   /** RegularExpression Id. */
   int MULTI_LINE_COMMENT = 6;
   /** RegularExpression Id. */
-  int MULTI_LINE_FUNCTION = 9;
+  int ABORT = 8;
   /** RegularExpression Id. */
-  int MULTI_LINE_SECTION = 12;
+  int ADDBRANDINGIMAGE = 9;
   /** RegularExpression Id. */
-  int ABORT = 14;
+  int ADDSIZE = 10;
   /** RegularExpression Id. */
-  int ADDBRANDINGIMAGE = 15;
+  int AUTOCLOSEWINDOW = 11;
   /** RegularExpression Id. */
-  int ADDSIZE = 16;
+  int BGFONT = 12;
   /** RegularExpression Id. */
-  int AUTOCLOSEWINDOW = 17;
+  int BGGRADIENT = 13;
   /** RegularExpression Id. */
-  int BGFONT = 18;
+  int BRANDINGTEXT = 14;
   /** RegularExpression Id. */
-  int BGGRADIENT = 19;
+  int BRINGTOFRONT = 15;
   /** RegularExpression Id. */
-  int BRANDINGTEXT = 20;
+  int CALL = 16;
   /** RegularExpression Id. */
-  int BRINGTOFRONT = 21;
+  int CALLINSTDLL = 17;
   /** RegularExpression Id. */
-  int CALL = 22;
+  int CAPTION = 18;
   /** RegularExpression Id. */
-  int CALLINSTDLL = 23;
+  int CHANGEUI = 19;
   /** RegularExpression Id. */
-  int CAPTION = 24;
+  int CLEARERRORS = 20;
   /** RegularExpression Id. */
-  int CHANGEUI = 25;
+  int COMPONENTTEXT = 21;
   /** RegularExpression Id. */
-  int CLEARERRORS = 26;
+  int GETDLLVERSION = 22;
   /** RegularExpression Id. */
-  int COMPONENTTEXT = 27;
+  int GETDLLVERSIONLOCAL = 23;
   /** RegularExpression Id. */
-  int GETDLLVERSION = 28;
+  int GETFILETIME = 24;
   /** RegularExpression Id. */
-  int GETDLLVERSIONLOCAL = 29;
+  int GETFILETIMELOCAL = 25;
   /** RegularExpression Id. */
-  int GETFILETIME = 30;
+  int COPYFILES = 26;
   /** RegularExpression Id. */
-  int GETFILETIMELOCAL = 31;
+  int CRCCHECK = 27;
   /** RegularExpression Id. */
-  int COPYFILES = 32;
+  int CREATEDIRECTORY = 28;
   /** RegularExpression Id. */
-  int CRCCHECK = 33;
+  int CREATEFONT = 29;
   /** RegularExpression Id. */
-  int CREATEDIRECTORY = 34;
+  int CREATESHORTCUT = 30;
   /** RegularExpression Id. */
-  int CREATEFONT = 35;
+  int SETDATABLOCKOPTIMIZE = 31;
   /** RegularExpression Id. */
-  int CREATESHORTCUT = 36;
+  int DELETEINISEC = 32;
   /** RegularExpression Id. */
-  int SETDATABLOCKOPTIMIZE = 37;
+  int DELETEINISTR = 33;
   /** RegularExpression Id. */
-  int DELETEINISEC = 38;
+  int DELETEREGKEY = 34;
   /** RegularExpression Id. */
-  int DELETEINISTR = 39;
+  int DELETEREGVALUE = 35;
   /** RegularExpression Id. */
-  int DELETEREGKEY = 40;
+  int DELETE = 36;
   /** RegularExpression Id. */
-  int DELETEREGVALUE = 41;
+  int DETAILPRINT = 37;
   /** RegularExpression Id. */
-  int DELETE = 42;
+  int DIRTEXT = 38;
   /** RegularExpression Id. */
-  int DETAILPRINT = 43;
+  int DIRSHOW = 39;
   /** RegularExpression Id. */
-  int DIRTEXT = 44;
+  int DIRVAR = 40;
   /** RegularExpression Id. */
-  int DIRSHOW = 45;
+  int DIRVERIFY = 41;
   /** RegularExpression Id. */
-  int DIRVAR = 46;
+  int GETINSTDIRERROR = 42;
   /** RegularExpression Id. */
-  int DIRVERIFY = 47;
+  int ALLOWROOTDIRINSTALL = 43;
   /** RegularExpression Id. */
-  int GETINSTDIRERROR = 48;
+  int CHECKBITMAP = 44;
   /** RegularExpression Id. */
-  int ALLOWROOTDIRINSTALL = 49;
+  int ENABLEWINDOW = 45;
   /** RegularExpression Id. */
-  int CHECKBITMAP = 50;
+  int ENUMREGKEY = 46;
   /** RegularExpression Id. */
-  int ENABLEWINDOW = 51;
+  int ENUMREGVALUE = 47;
   /** RegularExpression Id. */
-  int ENUMREGKEY = 52;
+  int EXCH = 48;
   /** RegularExpression Id. */
-  int ENUMREGVALUE = 53;
+  int EXEC = 49;
   /** RegularExpression Id. */
-  int EXCH = 54;
+  int EXECWAIT = 50;
   /** RegularExpression Id. */
-  int EXEC = 55;
+  int EXECSHELL = 51;
   /** RegularExpression Id. */
-  int EXECWAIT = 56;
+  int EXPANDENVSTRINGS = 52;
   /** RegularExpression Id. */
-  int EXECSHELL = 57;
+  int FINDWINDOW = 53;
   /** RegularExpression Id. */
-  int EXPANDENVSTRINGS = 58;
+  int FINDCLOSE = 54;
   /** RegularExpression Id. */
-  int FINDWINDOW = 59;
+  int FINDFIRST = 55;
   /** RegularExpression Id. */
-  int FINDCLOSE = 60;
+  int FINDNEXT = 56;
   /** RegularExpression Id. */
-  int FINDFIRST = 61;
+  int FILE = 57;
   /** RegularExpression Id. */
-  int FINDNEXT = 62;
+  int FILEBUFSIZE = 58;
   /** RegularExpression Id. */
-  int FILE = 63;
+  int FLUSHINI = 59;
   /** RegularExpression Id. */
-  int FILEBUFSIZE = 64;
+  int RESERVEFILE = 60;
   /** RegularExpression Id. */
-  int FLUSHINI = 65;
+  int FILECLOSE = 61;
   /** RegularExpression Id. */
-  int RESERVEFILE = 66;
+  int FILEERRORTEXT = 62;
   /** RegularExpression Id. */
-  int FILECLOSE = 67;
+  int FILEOPEN = 63;
   /** RegularExpression Id. */
-  int FILEERRORTEXT = 68;
+  int FILEREAD = 64;
   /** RegularExpression Id. */
-  int FILEOPEN = 69;
+  int FILEWRITE = 65;
   /** RegularExpression Id. */
-  int FILEREAD = 70;
+  int FILEREADBYTE = 66;
   /** RegularExpression Id. */
-  int FILEWRITE = 71;
+  int FILEWRITEBYTE = 67;
   /** RegularExpression Id. */
-  int FILEREADBYTE = 72;
+  int FILEREADUTF16LE = 68;
   /** RegularExpression Id. */
-  int FILEWRITEBYTE = 73;
+  int FILEWRITEUTF16LE = 69;
   /** RegularExpression Id. */
-  int FILEREADUTF16LE = 74;
+  int FILEREADWORD = 70;
   /** RegularExpression Id. */
-  int FILEWRITEUTF16LE = 75;
+  int FILEWRITEWORD = 71;
   /** RegularExpression Id. */
-  int FILEREADWORD = 76;
+  int FILESEEK = 72;
   /** RegularExpression Id. */
-  int FILEWRITEWORD = 77;
+  int FUNCTION = 73;
   /** RegularExpression Id. */
-  int FILESEEK = 78;
+  int FUNCTIONEND = 74;
   /** RegularExpression Id. */
-  int FUNCTION = 79;
+  int GETDLGITEM = 75;
   /** RegularExpression Id. */
-  int FUNCTIONEND = 80;
+  int GETFULLPATHNAME = 76;
   /** RegularExpression Id. */
-  int GETDLGITEM = 81;
+  int GETTEMPFILENAME = 77;
   /** RegularExpression Id. */
-  int GETFULLPATHNAME = 82;
+  int HIDEWINDOW = 78;
   /** RegularExpression Id. */
-  int GETTEMPFILENAME = 83;
+  int ICON = 79;
   /** RegularExpression Id. */
-  int HIDEWINDOW = 84;
+  int IFABORT = 80;
   /** RegularExpression Id. */
-  int ICON = 85;
+  int IFERRORS = 81;
   /** RegularExpression Id. */
-  int IFABORT = 86;
+  int IFFILEEXISTS = 82;
   /** RegularExpression Id. */
-  int IFERRORS = 87;
+  int IFREBOOTFLAG = 83;
   /** RegularExpression Id. */
-  int IFFILEEXISTS = 88;
+  int IFSILENT = 84;
   /** RegularExpression Id. */
-  int IFREBOOTFLAG = 89;
+  int INSTALLDIRREGKEY = 85;
   /** RegularExpression Id. */
-  int IFSILENT = 90;
+  int INSTALLCOLORS = 86;
   /** RegularExpression Id. */
-  int INSTALLDIRREGKEY = 91;
+  int INSTALLDIR = 87;
   /** RegularExpression Id. */
-  int INSTALLCOLORS = 92;
+  int INSTPROGRESSFLAGS = 88;
   /** RegularExpression Id. */
-  int INSTALLDIR = 93;
+  int INSTTYPE = 89;
   /** RegularExpression Id. */
-  int INSTPROGRESSFLAGS = 94;
+  int INTOP = 90;
   /** RegularExpression Id. */
-  int INSTTYPE = 95;
+  int INTCMP = 91;
   /** RegularExpression Id. */
-  int INTOP = 96;
+  int INTCMPU = 92;
   /** RegularExpression Id. */
-  int INTCMP = 97;
+  int INTFMT = 93;
   /** RegularExpression Id. */
-  int INTCMPU = 98;
+  int ISWINDOW = 94;
   /** RegularExpression Id. */
-  int INTFMT = 99;
+  int GOTO = 95;
   /** RegularExpression Id. */
-  int ISWINDOW = 100;
+  int LANGSTRING = 96;
   /** RegularExpression Id. */
-  int GOTO = 101;
+  int LANGSTRINGUP = 97;
   /** RegularExpression Id. */
-  int LANGSTRING = 102;
+  int LICENSEDATA = 98;
   /** RegularExpression Id. */
-  int LANGSTRINGUP = 103;
+  int LICENSEFORCESELECTION = 99;
   /** RegularExpression Id. */
-  int LICENSEDATA = 104;
+  int LICENSELANGSTRING = 100;
   /** RegularExpression Id. */
-  int LICENSEFORCESELECTION = 105;
+  int LICENSETEXT = 101;
   /** RegularExpression Id. */
-  int LICENSELANGSTRING = 106;
+  int LICENSEBKCOLOR = 102;
   /** RegularExpression Id. */
-  int LICENSETEXT = 107;
+  int LOADLANGUAGEFILE = 103;
   /** RegularExpression Id. */
-  int LICENSEBKCOLOR = 108;
+  int LOGSET = 104;
   /** RegularExpression Id. */
-  int LOADLANGUAGEFILE = 109;
+  int LOGTEXT = 105;
   /** RegularExpression Id. */
-  int LOGSET = 110;
+  int MESSAGEBOX = 106;
   /** RegularExpression Id. */
-  int LOGTEXT = 111;
+  int NOP = 107;
   /** RegularExpression Id. */
-  int MESSAGEBOX = 112;
+  int NAME = 108;
   /** RegularExpression Id. */
-  int NOP = 113;
+  int OUTFILE = 109;
   /** RegularExpression Id. */
-  int NAME = 114;
+  int PAGE = 110;
   /** RegularExpression Id. */
-  int OUTFILE = 115;
+  int PAGECALLBACKS = 111;
   /** RegularExpression Id. */
-  int PAGE = 116;
+  int PAGEEX = 112;
   /** RegularExpression Id. */
-  int PAGECALLBACKS = 117;
+  int PAGEEXEND = 113;
   /** RegularExpression Id. */
-  int PAGEEX = 118;
+  int POP = 114;
   /** RegularExpression Id. */
-  int PAGEEXEND = 119;
+  int PUSH = 115;
   /** RegularExpression Id. */
-  int POP = 120;
+  int QUIT = 116;
   /** RegularExpression Id. */
-  int PUSH = 121;
+  int READINISTR = 117;
   /** RegularExpression Id. */
-  int QUIT = 122;
+  int READREGDWORD = 118;
   /** RegularExpression Id. */
-  int READINISTR = 123;
+  int READREGSTR = 119;
   /** RegularExpression Id. */
-  int READREGDWORD = 124;
+  int READENVSTR = 120;
   /** RegularExpression Id. */
-  int READREGSTR = 125;
+  int REBOOT = 121;
   /** RegularExpression Id. */
-  int READENVSTR = 126;
+  int REGDLL = 122;
   /** RegularExpression Id. */
-  int REBOOT = 127;
+  int RENAME = 123;
   /** RegularExpression Id. */
-  int REGDLL = 128;
+  int RETURN = 124;
   /** RegularExpression Id. */
-  int RENAME = 129;
+  int RMDIR = 125;
   /** RegularExpression Id. */
-  int RETURN = 130;
+  int SECTION = 126;
   /** RegularExpression Id. */
-  int RMDIR = 131;
+  int SECTIONEND = 127;
   /** RegularExpression Id. */
-  int SECTION = 132;
+  int SECTIONIN = 128;
   /** RegularExpression Id. */
-  int SECTIONEND = 133;
+  int SUBSECTION = 129;
   /** RegularExpression Id. */
-  int SECTIONIN = 134;
+  int SECTIONGROUP = 130;
   /** RegularExpression Id. */
-  int SUBSECTION = 135;
+  int SUBSECTIONEND = 131;
   /** RegularExpression Id. */
-  int SECTIONGROUP = 136;
+  int SECTIONGROUPEND = 132;
   /** RegularExpression Id. */
-  int SUBSECTIONEND = 137;
+  int SEARCHPATH = 133;
   /** RegularExpression Id. */
-  int SECTIONGROUPEND = 138;
+  int SECTIONSETFLAGS = 134;
   /** RegularExpression Id. */
-  int SEARCHPATH = 139;
+  int SECTIONGETFLAGS = 135;
   /** RegularExpression Id. */
-  int SECTIONSETFLAGS = 140;
+  int SECTIONSETINSTTYPES = 136;
   /** RegularExpression Id. */
-  int SECTIONGETFLAGS = 141;
+  int SECTIONGETINSTTYPES = 137;
   /** RegularExpression Id. */
-  int SECTIONSETINSTTYPES = 142;
+  int SECTIONGETTEXT = 138;
   /** RegularExpression Id. */
-  int SECTIONGETINSTTYPES = 143;
+  int SECTIONSETTEXT = 139;
   /** RegularExpression Id. */
-  int SECTIONGETTEXT = 144;
+  int SECTIONGETSIZE = 140;
   /** RegularExpression Id. */
-  int SECTIONSETTEXT = 145;
+  int SECTIONSETSIZE = 141;
   /** RegularExpression Id. */
-  int SECTIONGETSIZE = 146;
+  int GETCURINSTTYPE = 142;
   /** RegularExpression Id. */
-  int SECTIONSETSIZE = 147;
+  int SETCURINSTTYPE = 143;
   /** RegularExpression Id. */
-  int GETCURINSTTYPE = 148;
+  int INSTTYPESETTEXT = 144;
   /** RegularExpression Id. */
-  int SETCURINSTTYPE = 149;
+  int INSTTYPEGETTEXT = 145;
   /** RegularExpression Id. */
-  int INSTTYPESETTEXT = 150;
+  int SENDMESSAGE = 146;
   /** RegularExpression Id. */
-  int INSTTYPEGETTEXT = 151;
+  int SETAUTOCLOSE = 147;
   /** RegularExpression Id. */
-  int SENDMESSAGE = 152;
+  int SETCTLCOLORS = 148;
   /** RegularExpression Id. */
-  int SETAUTOCLOSE = 153;
+  int SETBRANDINGIMAGE = 149;
   /** RegularExpression Id. */
-  int SETCTLCOLORS = 154;
+  int SETCOMPRESS = 150;
   /** RegularExpression Id. */
-  int SETBRANDINGIMAGE = 155;
+  int SETCOMPRESSOR = 151;
   /** RegularExpression Id. */
-  int SETCOMPRESS = 156;
+  int SETCOMPRESSORDICTSIZE = 152;
   /** RegularExpression Id. */
-  int SETCOMPRESSOR = 157;
+  int SETCOMPRESSIONLEVEL = 153;
   /** RegularExpression Id. */
-  int SETCOMPRESSORDICTSIZE = 158;
+  int SETDATESAVE = 154;
   /** RegularExpression Id. */
-  int SETCOMPRESSIONLEVEL = 159;
+  int SETDETAILSVIEW = 155;
   /** RegularExpression Id. */
-  int SETDATESAVE = 160;
+  int SETDETAILSPRINT = 156;
   /** RegularExpression Id. */
-  int SETDETAILSVIEW = 161;
+  int SETERRORS = 157;
   /** RegularExpression Id. */
-  int SETDETAILSPRINT = 162;
+  int SETERRORLEVEL = 158;
   /** RegularExpression Id. */
-  int SETERRORS = 163;
+  int GETERRORLEVEL = 159;
   /** RegularExpression Id. */
-  int SETERRORLEVEL = 164;
+  int SETFILEATTRIBUTES = 160;
   /** RegularExpression Id. */
-  int GETERRORLEVEL = 165;
+  int SETFONT = 161;
   /** RegularExpression Id. */
-  int SETFILEATTRIBUTES = 166;
+  int SETOUTPATH = 162;
   /** RegularExpression Id. */
-  int SETFONT = 167;
+  int SETOVERWRITE = 163;
   /** RegularExpression Id. */
-  int SETOUTPATH = 168;
+  int SETPLUGINUNLOAD = 164;
   /** RegularExpression Id. */
-  int SETOVERWRITE = 169;
+  int SETREBOOTFLAG = 165;
   /** RegularExpression Id. */
-  int SETPLUGINUNLOAD = 170;
+  int SETREGVIEW = 166;
   /** RegularExpression Id. */
-  int SETREBOOTFLAG = 171;
+  int SETSHELLVARCONTEXT = 167;
   /** RegularExpression Id. */
-  int SETREGVIEW = 172;
+  int SETSILENT = 168;
   /** RegularExpression Id. */
-  int SETSHELLVARCONTEXT = 173;
+  int SHOWINSTDETAILS = 169;
   /** RegularExpression Id. */
-  int SETSILENT = 174;
+  int SHOWUNINSTDETAILS = 170;
   /** RegularExpression Id. */
-  int SHOWINSTDETAILS = 175;
+  int SHOWWINDOW = 171;
   /** RegularExpression Id. */
-  int SHOWUNINSTDETAILS = 176;
+  int SILENTINSTALL = 172;
   /** RegularExpression Id. */
-  int SHOWWINDOW = 177;
+  int SILENTUNINSTALL = 173;
   /** RegularExpression Id. */
-  int SILENTINSTALL = 178;
+  int SLEEP = 174;
   /** RegularExpression Id. */
-  int SILENTUNINSTALL = 179;
+  int STRCMP = 175;
   /** RegularExpression Id. */
-  int SLEEP = 180;
+  int STRCMPS = 176;
   /** RegularExpression Id. */
-  int STRCMP = 181;
+  int STRCPY = 177;
   /** RegularExpression Id. */
-  int STRCMPS = 182;
+  int UNSAFESTRCPY = 178;
   /** RegularExpression Id. */
-  int STRCPY = 183;
+  int STRLEN = 179;
   /** RegularExpression Id. */
-  int UNSAFESTRCPY = 184;
+  int SUBCAPTION = 180;
   /** RegularExpression Id. */
-  int STRLEN = 185;
+  int TARGET = 181;
   /** RegularExpression Id. */
-  int SUBCAPTION = 186;
+  int CPU = 182;
   /** RegularExpression Id. */
-  int TARGET = 187;
+  int UNICODE = 183;
   /** RegularExpression Id. */
-  int CPU = 188;
+  int UNINSTALLEXENAME = 184;
   /** RegularExpression Id. */
-  int UNICODE = 189;
+  int UNINSTALLCAPTION = 185;
   /** RegularExpression Id. */
-  int UNINSTALLEXENAME = 190;
+  int UNINSTALLICON = 186;
   /** RegularExpression Id. */
-  int UNINSTALLCAPTION = 191;
+  int UNINSTPAGE = 187;
   /** RegularExpression Id. */
-  int UNINSTALLICON = 192;
+  int UNINSTALLTEXT = 188;
   /** RegularExpression Id. */
-  int UNINSTPAGE = 193;
+  int UNINSTALLSUBCAPTION = 189;
   /** RegularExpression Id. */
-  int UNINSTALLTEXT = 194;
+  int UNREGDLL = 190;
   /** RegularExpression Id. */
-  int UNINSTALLSUBCAPTION = 195;
+  int WINDOWICON = 191;
   /** RegularExpression Id. */
-  int UNREGDLL = 196;
+  int WRITEINISTR = 192;
   /** RegularExpression Id. */
-  int WINDOWICON = 197;
+  int WRITEREGBIN = 193;
   /** RegularExpression Id. */
-  int WRITEINISTR = 198;
+  int WRITEREGDWORD = 194;
   /** RegularExpression Id. */
-  int WRITEREGBIN = 199;
+  int WRITEREGSTR = 195;
   /** RegularExpression Id. */
-  int WRITEREGDWORD = 200;
+  int WRITEREGEXPANDSTR = 196;
   /** RegularExpression Id. */
-  int WRITEREGSTR = 201;
+  int WRITEUNINSTALLER = 197;
   /** RegularExpression Id. */
-  int WRITEREGEXPANDSTR = 202;
+  int PEDLLCHARACTERISTICS = 198;
   /** RegularExpression Id. */
-  int WRITEUNINSTALLER = 203;
+  int PESUBSYSVER = 199;
   /** RegularExpression Id. */
-  int PEDLLCHARACTERISTICS = 204;
+  int XPSTYLE = 200;
   /** RegularExpression Id. */
-  int PESUBSYSVER = 205;
+  int REQUESTEXECUTIONLEVEL = 201;
   /** RegularExpression Id. */
-  int XPSTYLE = 206;
+  int MANIFESTDPIAWARE = 202;
   /** RegularExpression Id. */
-  int REQUESTEXECUTIONLEVEL = 207;
+  int MANIFESTSUPPORTEDOS = 203;
   /** RegularExpression Id. */
-  int MANIFESTDPIAWARE = 208;
+  int PACKHDR = 204;
   /** RegularExpression Id. */
-  int MANIFESTSUPPORTEDOS = 209;
+  int FINALIZE = 205;
   /** RegularExpression Id. */
-  int PACKHDR = 210;
+  int SYSTEM = 206;
   /** RegularExpression Id. */
-  int FINALIZE = 211;
+  int EXECUTE = 207;
   /** RegularExpression Id. */
-  int SYSTEM = 212;
+  int ADDINCLUDEDIR = 208;
   /** RegularExpression Id. */
-  int EXECUTE = 213;
+  int INCLUDE = 209;
   /** RegularExpression Id. */
-  int ADDINCLUDEDIR = 214;
+  int CD = 210;
   /** RegularExpression Id. */
-  int INCLUDE = 215;
+  int IF = 211;
   /** RegularExpression Id. */
-  int CD = 216;
+  int IFDEF = 212;
   /** RegularExpression Id. */
-  int IF = 217;
+  int IFNDEF = 213;
   /** RegularExpression Id. */
-  int IFDEF = 218;
+  int ENDIF = 214;
   /** RegularExpression Id. */
-  int IFNDEF = 219;
+  int DEFINE = 215;
   /** RegularExpression Id. */
-  int ENDIF = 220;
+  int UNDEF = 216;
   /** RegularExpression Id. */
-  int DEFINE = 221;
+  int ELSE = 217;
   /** RegularExpression Id. */
-  int UNDEF = 222;
+  int ECHO = 218;
   /** RegularExpression Id. */
-  int ELSE = 223;
+  int WARNING = 219;
   /** RegularExpression Id. */
-  int ECHO = 224;
+  int ERROR = 220;
   /** RegularExpression Id. */
-  int WARNING = 225;
+  int VERBOSE = 221;
   /** RegularExpression Id. */
-  int ERROR = 226;
+  int MACRO = 222;
   /** RegularExpression Id. */
-  int VERBOSE = 227;
+  int MACROEND = 223;
   /** RegularExpression Id. */
-  int MACRO = 228;
+  int MACROUNDEF = 224;
   /** RegularExpression Id. */
-  int MACROEND = 229;
+  int INSERTMACRO = 225;
   /** RegularExpression Id. */
-  int MACROUNDEF = 230;
+  int IFMACRODEF = 226;
   /** RegularExpression Id. */
-  int INSERTMACRO = 231;
+  int IFMACRONDEF = 227;
   /** RegularExpression Id. */
-  int IFMACRODEF = 232;
+  int TEMPFILE = 228;
   /** RegularExpression Id. */
-  int IFMACRONDEF = 233;
+  int DELFILE = 229;
   /** RegularExpression Id. */
-  int TEMPFILE = 234;
+  int APPENDFILE = 230;
   /** RegularExpression Id. */
-  int DELFILE = 235;
+  int SEARCHPARSE = 231;
   /** RegularExpression Id. */
-  int APPENDFILE = 236;
+  int SEARCHREPLACE = 232;
   /** RegularExpression Id. */
-  int SEARCHPARSE = 237;
+  int MISCBUTTONTEXT = 233;
   /** RegularExpression Id. */
-  int SEARCHREPLACE = 238;
+  int DETAILSBUTTONTEXT = 234;
   /** RegularExpression Id. */
-  int MISCBUTTONTEXT = 239;
+  int UNINSTALLBUTTONTEXT = 235;
   /** RegularExpression Id. */
-  int DETAILSBUTTONTEXT = 240;
+  int INSTALLBUTTONTEXT = 236;
   /** RegularExpression Id. */
-  int UNINSTALLBUTTONTEXT = 241;
+  int SPACETEXTS = 237;
   /** RegularExpression Id. */
-  int INSTALLBUTTONTEXT = 242;
+  int COMPLETEDTEXT = 238;
   /** RegularExpression Id. */
-  int SPACETEXTS = 243;
+  int GETFUNCTIONADDRESS = 239;
   /** RegularExpression Id. */
-  int COMPLETEDTEXT = 244;
+  int GETLABELADDRESS = 240;
   /** RegularExpression Id. */
-  int GETFUNCTIONADDRESS = 245;
+  int GETCURRENTADDRESS = 241;
   /** RegularExpression Id. */
-  int GETLABELADDRESS = 246;
+  int ADDPLUGINDIR = 242;
   /** RegularExpression Id. */
-  int GETCURRENTADDRESS = 247;
+  int INITPLUGINSDIR = 243;
   /** RegularExpression Id. */
-  int ADDPLUGINDIR = 248;
+  int ALLOWSKIPFILES = 244;
   /** RegularExpression Id. */
-  int INITPLUGINSDIR = 249;
+  int VAR = 245;
   /** RegularExpression Id. */
-  int ALLOWSKIPFILES = 250;
+  int VIADDVERSIONKEY = 246;
   /** RegularExpression Id. */
-  int VAR = 251;
+  int VIPRODUCTVERSION = 247;
   /** RegularExpression Id. */
-  int VIADDVERSIONKEY = 252;
+  int VIFILEVERSION = 248;
   /** RegularExpression Id. */
-  int VIPRODUCTVERSION = 253;
+  int LOCKWINDOW = 249;
   /** RegularExpression Id. */
-  int VIFILEVERSION = 254;
+  int INTEGER_LITERAL = 250;
   /** RegularExpression Id. */
-  int LOCKWINDOW = 255;
+  int DECIMAL_LITERAL = 251;
   /** RegularExpression Id. */
-  int INTEGER_LITERAL = 256;
+  int HEX_LITERAL = 252;
   /** RegularExpression Id. */
-  int DECIMAL_LITERAL = 257;
+  int OCTAL_LITERAL = 253;
   /** RegularExpression Id. */
-  int HEX_LITERAL = 258;
+  int FLOATING_POINT_LITERAL = 254;
   /** RegularExpression Id. */
-  int OCTAL_LITERAL = 259;
+  int DECIMAL_FLOATING_POINT_LITERAL = 255;
   /** RegularExpression Id. */
-  int FLOATING_POINT_LITERAL = 260;
+  int DECIMAL_EXPONENT = 256;
   /** RegularExpression Id. */
-  int DECIMAL_FLOATING_POINT_LITERAL = 261;
+  int HEXADECIMAL_FLOATING_POINT_LITERAL = 257;
   /** RegularExpression Id. */
-  int DECIMAL_EXPONENT = 262;
+  int HEXADECIMAL_EXPONENT = 258;
   /** RegularExpression Id. */
-  int HEXADECIMAL_FLOATING_POINT_LITERAL = 263;
+  int STRING_LITERAL_QUOTE = 259;
   /** RegularExpression Id. */
-  int HEXADECIMAL_EXPONENT = 264;
+  int STRING_LITERAL_GRAVE = 260;
   /** RegularExpression Id. */
-  int STRING_LITERAL_QUOTE = 265;
+  int STRING_LITERAL_DOUBLE_QUOTE = 261;
   /** RegularExpression Id. */
-  int STRING_LITERAL_GRAVE = 266;
+  int IDENTIFIER = 262;
   /** RegularExpression Id. */
-  int STRING_LITERAL_DOUBLE_QUOTE = 267;
+  int LETTER = 263;
   /** RegularExpression Id. */
-  int IDENTIFIER = 268;
+  int PART_LETTER = 264;
   /** RegularExpression Id. */
-  int LETTER = 269;
+  int LPAREN = 265;
   /** RegularExpression Id. */
-  int PART_LETTER = 270;
+  int RPAREN = 266;
   /** RegularExpression Id. */
-  int LPAREN = 271;
+  int LBRACE = 267;
   /** RegularExpression Id. */
-  int RPAREN = 272;
+  int RBRACE = 268;
   /** RegularExpression Id. */
-  int LBRACE = 273;
+  int LBRACKET = 269;
   /** RegularExpression Id. */
-  int RBRACE = 274;
+  int RBRACKET = 270;
   /** RegularExpression Id. */
-  int LBRACKET = 275;
+  int COMMA = 271;
   /** RegularExpression Id. */
-  int RBRACKET = 276;
+  int DOT = 272;
   /** RegularExpression Id. */
-  int COMMA = 277;
+  int AT = 273;
   /** RegularExpression Id. */
-  int DOT = 278;
+  int ASSIGN = 274;
   /** RegularExpression Id. */
-  int AT = 279;
+  int LT = 275;
   /** RegularExpression Id. */
-  int ASSIGN = 280;
+  int BANG = 276;
   /** RegularExpression Id. */
-  int LT = 281;
+  int TILDE = 277;
   /** RegularExpression Id. */
-  int BANG = 282;
+  int HOOK = 278;
   /** RegularExpression Id. */
-  int TILDE = 283;
+  int COLON = 279;
   /** RegularExpression Id. */
-  int HOOK = 284;
+  int EQ = 280;
   /** RegularExpression Id. */
-  int COLON = 285;
+  int LE = 281;
   /** RegularExpression Id. */
-  int EQ = 286;
+  int GE = 282;
   /** RegularExpression Id. */
-  int LE = 287;
+  int NE = 283;
   /** RegularExpression Id. */
-  int GE = 288;
+  int SC_OR = 284;
   /** RegularExpression Id. */
-  int NE = 289;
+  int SC_AND = 285;
   /** RegularExpression Id. */
-  int SC_OR = 290;
+  int INCR = 286;
   /** RegularExpression Id. */
-  int SC_AND = 291;
+  int DECR = 287;
   /** RegularExpression Id. */
-  int INCR = 292;
+  int PLUS = 288;
   /** RegularExpression Id. */
-  int DECR = 293;
+  int MINUS = 289;
   /** RegularExpression Id. */
-  int PLUS = 294;
+  int STAR = 290;
   /** RegularExpression Id. */
-  int MINUS = 295;
+  int SLASH = 291;
   /** RegularExpression Id. */
-  int STAR = 296;
+  int BIT_AND = 292;
   /** RegularExpression Id. */
-  int SLASH = 297;
+  int BIT_OR = 293;
   /** RegularExpression Id. */
-  int BIT_AND = 298;
+  int XOR = 294;
   /** RegularExpression Id. */
-  int BIT_OR = 299;
+  int REM = 295;
   /** RegularExpression Id. */
-  int XOR = 300;
+  int LSHIFT = 296;
   /** RegularExpression Id. */
-  int REM = 301;
+  int PLUSASSIGN = 297;
   /** RegularExpression Id. */
-  int LSHIFT = 302;
+  int MINUSASSIGN = 298;
   /** RegularExpression Id. */
-  int PLUSASSIGN = 303;
+  int STARASSIGN = 299;
   /** RegularExpression Id. */
-  int MINUSASSIGN = 304;
+  int SLASHASSIGN = 300;
   /** RegularExpression Id. */
-  int STARASSIGN = 305;
+  int ANDASSIGN = 301;
   /** RegularExpression Id. */
-  int SLASHASSIGN = 306;
+  int ORASSIGN = 302;
   /** RegularExpression Id. */
-  int ANDASSIGN = 307;
+  int XORASSIGN = 303;
   /** RegularExpression Id. */
-  int ORASSIGN = 308;
+  int REMASSIGN = 304;
   /** RegularExpression Id. */
-  int XORASSIGN = 309;
+  int LSHIFTASSIGN = 305;
   /** RegularExpression Id. */
-  int REMASSIGN = 310;
+  int RSIGNEDSHIFTASSIGN = 306;
   /** RegularExpression Id. */
-  int LSHIFTASSIGN = 311;
+  int RUNSIGNEDSHIFTASSIGN = 307;
   /** RegularExpression Id. */
-  int RSIGNEDSHIFTASSIGN = 312;
+  int ELLIPSIS = 308;
   /** RegularExpression Id. */
-  int RUNSIGNEDSHIFTASSIGN = 313;
-  /** RegularExpression Id. */
-  int ELLIPSIS = 314;
-  /** RegularExpression Id. */
-  int UNEXPECTED_CHARACTER = 315;
+  int UNEXPECTED_CHARACTER = 309;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -633,10 +629,6 @@ public interface NSISParserConstants {
   int IN_FORMAL_COMMENT = 1;
   /** Lexical state. */
   int IN_MULTI_LINE_COMMENT = 2;
-  /** Lexical state. */
-  int IN_MULTI_LINE_FUNCTION = 3;
-  /** Lexical state. */
-  int IN_MULTI_LINE_SECTION = 4;
 
   /** Literal token values. */
   String[] tokenImage = {
@@ -648,12 +640,6 @@ public interface NSISParserConstants {
     "\"*/\"",
     "\"*/\"",
     "<token of kind 7>",
-    "\"FUNCTION\"",
-    "\"FUNCTIONEND\"",
-    "<token of kind 10>",
-    "\"SECTION\"",
-    "\"SECTIONEND\"",
-    "<token of kind 13>",
     "\"Abort\"",
     "\"AddBrandingImage\"",
     "\"AddSize\"",
