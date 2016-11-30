@@ -31,7 +31,6 @@
                 </folder>
                 <folder name="FoldManager">
                     <file name="uk-co-chamberlain-netbeans-nsis-netbeans-lexer-NsisFoldManagerFactory.instance">
-                        <!--uk.co.chamberlain.netbeans.nsis.netbeans.lexer.NsisFoldManagerFactory-->
                         <attr name="instanceOf" stringvalue="uk.co.chamberlain.netbeans.nsis.netbeans.lexer.NsisFoldManagerFactory"/>
                     </file>                    
                 </folder>                

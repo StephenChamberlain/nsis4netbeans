@@ -11,15 +11,15 @@
     <fontcolor name="whitespace" default="whitespace"/>
     <fontcolor name="character" default="char"/>
     <fontcolor name="errors" default="error"/>
-    <fontcolor name="identifier" default="identifier"/>
     <fontcolor name="keyword" default="keyword" foreColor="black"/>    
+    <fontcolor name="plugin" default="plugin" foreColor="ff007C00"/>    
     <fontcolor name="number" default="number"/>
     <fontcolor name="operator" default="operator"/>    
     <fontcolor name="separator" default="separator"/>    
-    <fontcolor name="method" default="method" foreColor="blue">
+    <fontcolor name="function" default="function" foreColor="blue">
         <font style="bold" />
-    </fontcolor>    
-    <fontcolor name="method-declaration" default="method">
+    </fontcolor>
+    <fontcolor name="section" default="section" foreColor="blue">
         <font style="bold" />
     </fontcolor>
 </fontscolors>

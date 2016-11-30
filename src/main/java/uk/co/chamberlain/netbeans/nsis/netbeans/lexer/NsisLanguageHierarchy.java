@@ -40,8 +40,9 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static final String COMMENT = "comment";
     private static final String WHITESPACE = "whitespace";
     private static final String NUMBER = "number";
-    private static final String IDENTIFIER = "identifier";
-    private static final String METHOD = "method";
+    private static final String FUNCTION = "function";
+    private static final String SECTION = "section";
+    private static final String PLUGIN = "plugin";
     private static final String OPERATOR = "";
 
     private static List<String> commands;
@@ -51,7 +52,9 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static List<String> operators;
     private static List<String> numbers;
     private static List<String> identifiers;
-    private static List<String> methods;
+    private static List<String> functions;
+    private static List<String> sections;
+    private static List<String> plugins;
     private static List<NsisTokenId> tokens;
     private static Map<Integer, NsisTokenId> idToToken;
     private static NsisTokenId tokenForErrorSituation;
@@ -107,13 +110,27 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
         }
         nsisDefsIdentifiersScanner.close();
 
-        methods = new ArrayList<>();
-        final Scanner nsisDefsMethodsScanner = new Scanner(ResourceUtils.getNsisDefsMethods());
-        while (nsisDefsMethodsScanner.hasNext()) {
-            methods.add(nsisDefsMethodsScanner.next());
+        functions = new ArrayList<>();
+        final Scanner nsisDefsFunctionsScanner = new Scanner(ResourceUtils.getNsisDefsFunctions());
+        while (nsisDefsFunctionsScanner.hasNext()) {
+            functions.add(nsisDefsFunctionsScanner.next());
         }
-        nsisDefsMethodsScanner.close();
+        nsisDefsFunctionsScanner.close();
 
+        sections = new ArrayList<>();
+        final Scanner nsisDefsSectionsScanner = new Scanner(ResourceUtils.getNsisDefsSections());
+        while (nsisDefsSectionsScanner.hasNext()) {
+            sections.add(nsisDefsSectionsScanner.next());
+        }
+        nsisDefsSectionsScanner.close();        
+        
+        plugins = new ArrayList<>();
+        final Scanner nsisDefsPluginsScanner = new Scanner(ResourceUtils.getNsisDefsPlugins());
+        while (nsisDefsPluginsScanner.hasNext()) {
+            plugins.add(nsisDefsPluginsScanner.next());
+        }
+        nsisDefsPluginsScanner.close();        
+        
         tokens = new ArrayList<>();
 
         for (final Field field : NSISParserConstants.class
@@ -138,12 +155,15 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
                     } else if (numbers.contains(field.getName())) {
                         addTokenId(field, NUMBER);
 
-//                    } else if (identifiers.contains(field.getName())) {
-//                        addTokenId(field, IDENTIFIER);                        
-//
-                    } else if (methods.contains(field.getName())) {
-                        addTokenId(field, METHOD);
+                    } else if (functions.contains(field.getName())) {
+                        addTokenId(field, FUNCTION);
 
+                    } else if (sections.contains(field.getName())) {
+                        addTokenId(field, SECTION);                        
+                        
+                    } else if (plugins.contains(field.getName())) {
+                        addTokenId(field, PLUGIN);                        
+                        
                     } else {
                         addTokenId(field, KEYWORD);
                     }

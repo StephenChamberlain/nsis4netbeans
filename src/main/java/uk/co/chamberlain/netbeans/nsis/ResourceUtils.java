@@ -51,11 +51,21 @@ public class ResourceUtils {
                 NSIS_DEFS_RESOURCE_BASE + "nsis-defs-identifiers.txt");
     }
 
-    public static InputStream getNsisDefsMethods() {
+    public static InputStream getNsisDefsFunctions() {
         return getResourceAsInputStream(
-                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-methods.txt");
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-functions.txt");
     }
 
+    public static InputStream getNsisDefsSections() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-sections.txt");
+    }    
+    
+    public static InputStream getNsisDefsPlugins() {
+        return getResourceAsInputStream(
+                NSIS_DEFS_RESOURCE_BASE + "nsis-defs-plugins.txt");
+    }    
+    
     private static InputStream getResourceAsInputStream(final String resource) {
         return Lookup.getDefault().lookup(ClassLoader.class).getResourceAsStream(resource);
     }
