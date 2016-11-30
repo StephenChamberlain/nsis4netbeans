@@ -24,7 +24,10 @@
                     <folder name="NetBeans">
                         <folder name="Defaults">
                             <file name="FontsAndColors.xml" url="FontsAndColors.xml">  
-                                <attr name="displayName" bundlevalue="uk.co.chamberlain.netbeans.nsis.Bundle#Editors/text/x-nsi/FontsColors/NetBeans/Defaults/FontsAndColors.xml"/>
+                                <!-- 
+                                DON'T follow NetBeans hint to use displayName! It will remove all custom property names from the 
+                                fonts and colours dialog; displayName is not properly documented on this! -->
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="uk.co.chamberlain.netbeans.nsis.Bundle"/>
                             </file>
                         </folder>
                     </folder>
@@ -46,4 +49,14 @@
         </folder>
     </folder>
 
+    <folder name="Toolbars">
+        <folder name="Build">
+            <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAction.shadow_hidden"/>
+        </folder>
+        <folder name="NSIS">
+            <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Build/uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAction.instance"/>
+            </file>
+        </folder>
+    </folder>
 </filesystem>
