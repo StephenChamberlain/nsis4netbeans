@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>uk.co.chamberlain</groupId>
     <artifactId>nsis4netbeans</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>nbm</packaging>
     
     <name>NSIS 4 NetBeans</name>
@@ -22,7 +22,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans-spec-version>RELEASE82</netbeans-spec-version>
     </properties>
-    
+
+    <developers>
+        <developer>
+            <id>chamberlain</id>
+            <name>Stephen Chamberlain</name>
+            <email>steve@steve-chamberlain.co.uk</email>
+            <url>http://www.steve-chamberlain.co.uk/</url>
+        </developer>
+    </developers>    
+            
     <build>
         <plugins>
             <plugin>
@@ -31,7 +40,15 @@
                 <version>3.13</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <useOSGiDependencies>true</useOSGiDependencies>
+                    <useOSGiDependencies>true</useOSGiDependencies>                    
+                    <author>Stephen Chamberlain</author>
+<!--                   
+                    TODO: signing...
+  
+                                        <keystore></keystore>
+                                        <keystorealias></keystorealias>
+                                        <keystorepassword></keystorepassword>
+                    -->
                 </configuration>
             </plugin>
             <plugin>
@@ -68,7 +85,12 @@
                 <version>2.4</version>
                 <configuration>
                     <useDefaultManifestFile>true</useDefaultManifestFile>
-                </configuration>
+                    <archive>
+                        <manifestEntries>
+                            <OpenIDE-Module-Specification-Version>${project.version}</OpenIDE-Module-Specification-Version>
+                        </manifestEntries>
+                    </archive>                    
+                </configuration>                
             </plugin>
         </plugins>
     </build>
