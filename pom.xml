@@ -65,6 +65,7 @@
                 </executions>
                 <configuration>
                     <executable>${project.basedir}\javacc-5.0\bin\javacc.bat</executable>
+                    <workingDirectory>${project.basedir}\src\main\java\uk\co\chamberlain\netbeans\nsis\javacc\lexer</workingDirectory>
                     <arguments>
                         <argument>${project.basedir}\src\main\java\uk\co\chamberlain\netbeans\nsis\javacc\lexer\nsis.jj</argument>
                     </arguments>
