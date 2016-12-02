@@ -1,9 +1,0 @@
-- syntax highlighting
-- config option - point to nsis exe
-- config option - verbosity level
-? - config option - point to dialog designer
-- button; compile script with nsis (must be configured)
-- menu action; compile script with nsis (must be configured)
-- open .nsddef and .nsdinc files in dialog designer
-? - new project (new->module development->project template)?
-- double click exe should run it
