@@ -35,20 +35,27 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.bitstrings.maven.plugins</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
-                <version>3.13</version>
+                <version>4.1</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <useOSGiDependencies>true</useOSGiDependencies>                    
+                    <useOSGiDependencies>true</useOSGiDependencies>
+
                     <author>Stephen Chamberlain</author>
-<!--                   
-                    TODO: signing...
-  
-                                        <keystore></keystore>
-                                        <keystorealias></keystorealias>
-                                        <keystorepassword></keystorepassword>
-                    -->
+                    <homePageUrl>https://sourceforge.net/projects/nsis4netbeans/</homePageUrl>
+
+                    <!-- keep it for backwards compatibility to previous versions-->
+                    <codeNameBase>uk.co.chamberlain.netbeans.nsis</codeNameBase>
+
+                    <!-- keystore: only required, if you don't want to pass the path to the keystore file via cmdline-->
+                    <keystore>nbproject/private/keystore</keystore>
+                    <keystorealias>nsis4netbeans</keystorealias>
+                    <signingTsaCert>nsis4netbeans</signingTsaCert>
+                    <signingTsaUrl>http://timestamp.globalsign.com/scripts/timestamp.dll</signingTsaUrl>                    
+
+                    <licenseName>Common Development and Distribution License</licenseName>
+                    <licenseFile>docs/license.txt</licenseFile>
                 </configuration>
             </plugin>
             <plugin>

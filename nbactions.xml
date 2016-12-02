@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-clean package module</actionName>
+            <displayName>clean package module</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+            </goals>
+            <properties>
+                <keystorepass>nZ}8e247AM-EGC{$</keystorepass>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>nbm:nbm</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>
