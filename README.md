@@ -19,14 +19,14 @@ Common Development and Distribution License
 ## Specification
 
 - Syntax Highlighting:
-⋅⋅* Commands
-⋅⋅* Functions
-⋅⋅* Sections
-⋅⋅* Plugins
-⋅⋅* etc...
+ - Commands
+ - Functions
+ - Sections
+ - Plugins
+ - etc...
 - Configuration Options:
-⋅⋅* NSIS location on the target system, for the NSIS compile action.
-⋅⋅* Verbosity level of NSIS output. Defaults to "Info, warnings and errors".
+ - NSIS location on the target system, for the NSIS compile action.
+ - Verbosity level of NSIS output. Defaults to "Info, warnings and errors".
 - Compile script with NSIS (must be configured in options) in toolbar, project navigator and code editor.
 - Open .nsddef files in NSIS Dialog Designer (http://nsis.sourceforge.net/NSIS_Dialog_Designer) if installed.
 - Double click *.exe files to execute.
