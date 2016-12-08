@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>uk.co.chamberlain</groupId>
     <artifactId>nsis4netbeans</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>nbm</packaging>
     
     <name>NSIS 4 NetBeans</name>
@@ -59,7 +59,7 @@
                     <signingTsaCert>nsis4netbeans</signingTsaCert>
                     <signingTsaUrl>http://timestamp.globalsign.com/scripts/timestamp.dll</signingTsaUrl>                    
 
-                    <licenseName>Common Development and Distribution License</licenseName>
+                    <licenseName>GNU General Public License</licenseName>
                     <licenseFile>docs/license.txt</licenseFile>
                 </configuration>
             </plugin>
