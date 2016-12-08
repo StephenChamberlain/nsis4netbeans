@@ -32,6 +32,11 @@
         </developer>
     </developers>    
             
+    <scm>
+        <connection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</connection>
+        <developerConnection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</developerConnection>
+    </scm>
+            
     <build>
         <plugins>
             <plugin>
