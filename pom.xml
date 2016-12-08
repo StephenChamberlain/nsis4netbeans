@@ -59,7 +59,7 @@
                     <signingTsaCert>nsis4netbeans</signingTsaCert>
                     <signingTsaUrl>http://timestamp.globalsign.com/scripts/timestamp.dll</signingTsaUrl>                    
 
-                    <licenseName>Common Development and Distribution License</licenseName>
+                    <licenseName>GNU General Public License</licenseName>
                     <licenseFile>docs/license.txt</licenseFile>
                 </configuration>
             </plugin>
