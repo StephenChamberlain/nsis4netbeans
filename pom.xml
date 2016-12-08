@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
     <modelVersion>4.0.0</modelVersion>
     <groupId>uk.co.chamberlain</groupId>
     <artifactId>nsis4netbeans</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>nbm</packaging>
     
     <name>NSIS 4 NetBeans</name>
@@ -35,7 +33,8 @@
     <scm>
         <connection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</connection>
         <developerConnection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</developerConnection>
-    </scm>
+      <tag>1.0.0</tag>
+  </scm>
             
     <build>
         <plugins>
