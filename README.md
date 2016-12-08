@@ -12,7 +12,7 @@ for "NSIS" and you should find it...
 
 ## License
 
-Common Development and Distribution License
+GNU General Public License version 3
 
 ---
 
