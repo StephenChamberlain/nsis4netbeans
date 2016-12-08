@@ -54,7 +54,7 @@ import static uk.co.chamberlain.netbeans.nsis.NsisConstants.*;
   @ActionReference(path = "Editors/text/x-nsi/Popup", position = 300, separatorAfter = 350)
 })
 @Messages("CTL_CompileNsiScriptAction=Compile NSIS script...")
-public final class CompileNsiScriptAction implements ActionListener {
+public class CompileNsiScriptAction implements ActionListener {
 
     private final DataObject context;
 

@@ -13,6 +13,7 @@
                 <attr name="type" stringvalue="org.openide.loaders.DataObject"/>
             </file>
             <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileAction.instance_hidden"/>
+            <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAndRunAction.instance_hidden"/>
         </folder>
     </folder>
 
@@ -52,11 +53,15 @@
     <folder name="Toolbars">
         <folder name="Build">
             <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAction.shadow_hidden"/>
+<!--            <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAndRunAction.shadow_hidden"/>-->
         </folder>
         <folder name="NSIS">
             <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAction.shadow">
                 <attr name="originalFile" stringvalue="Actions/Build/uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAction.instance"/>
             </file>
+<!--            <file name="uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAndRunAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Build/uk-co-chamberlain-netbeans-nsis-actions-CompileNsiScriptAndRunAction.instance"/>
+            </file>            -->
         </folder>
     </folder>
 </filesystem>
