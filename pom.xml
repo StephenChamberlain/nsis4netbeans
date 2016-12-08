@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>uk.co.chamberlain</groupId>
     <artifactId>nsis4netbeans</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>nbm</packaging>
     
     <name>NSIS 4 NetBeans</name>
