@@ -36,7 +36,7 @@ import org.openide.util.Lookup;
 public final class NsisOptionsPanelController extends OptionsPanelController {
 
     private NsisPanel panel;
-    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private boolean changed;
 
     @Override
@@ -47,12 +47,9 @@ public final class NsisOptionsPanelController extends OptionsPanelController {
 
     @Override
     public void applyChanges() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                getPanel().store();
-                changed = false;
-            }
+        SwingUtilities.invokeLater(() -> {
+            getPanel().store();
+            changed = false;
         });
     }
 
@@ -77,18 +74,18 @@ public final class NsisOptionsPanelController extends OptionsPanelController {
     }
 
     @Override
-    public JComponent getComponent(Lookup masterLookup) {
+    public JComponent getComponent(final Lookup lookup) {
         return getPanel();
     }
 
     @Override
-    public void addPropertyChangeListener(PropertyChangeListener l) {
-        pcs.addPropertyChangeListener(l);
+    public void addPropertyChangeListener(final PropertyChangeListener propertyChangeListener) {
+        propertyChangeSupport.addPropertyChangeListener(propertyChangeListener);
     }
 
     @Override
-    public void removePropertyChangeListener(PropertyChangeListener l) {
-        pcs.removePropertyChangeListener(l);
+    public void removePropertyChangeListener(final PropertyChangeListener propertyChangeListener) {
+        propertyChangeSupport.removePropertyChangeListener(propertyChangeListener);
     }
 
     private NsisPanel getPanel() {
@@ -101,9 +98,9 @@ public final class NsisOptionsPanelController extends OptionsPanelController {
     void changed() {
         if (!changed) {
             changed = true;
-            pcs.firePropertyChange(OptionsPanelController.PROP_CHANGED, false, true);
+            propertyChangeSupport.firePropertyChange(OptionsPanelController.PROP_CHANGED, false, true);
         }
-        pcs.firePropertyChange(OptionsPanelController.PROP_VALID, null, null);
+        propertyChangeSupport.firePropertyChange(OptionsPanelController.PROP_VALID, null, null);
     }
 
 }

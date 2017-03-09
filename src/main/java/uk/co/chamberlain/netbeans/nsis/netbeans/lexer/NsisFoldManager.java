@@ -42,36 +42,39 @@ public class NsisFoldManager implements FoldManager {
     public static final FoldType FOLD_TYPE_FUNCTION = new FoldType("Function...FunctionEnd");
     public static final FoldType FOLD_TYPE_SECTION = new FoldType("Section...SectionEnd");
 
-    private FoldOperation operation;
+    private FoldOperation foldOperation;
 
     @Override
-    public void init(final FoldOperation operation) {
+    public void init(final FoldOperation foldOperation) {
         LOGGER.info("NsisFoldManager#init");
 
-        this.operation = operation;
+        this.foldOperation = foldOperation;
     }
 
     @Override
-    public void initFolds(FoldHierarchyTransaction transaction) {
+    public void initFolds(final FoldHierarchyTransaction foldHierarchyTransaction) {
         LOGGER.info("NsisFoldManager#initFolds");
 
-        final FoldHierarchy hierarchy = operation.getHierarchy();
+        final FoldHierarchy hierarchy = foldOperation.getHierarchy();
         final Document document = hierarchy.getComponent().getDocument();
-        final TokenHierarchy<Document> hi = TokenHierarchy.get(document);
-        final TokenSequence<NsisTokenId> ts = (TokenSequence<NsisTokenId>) hi.tokenSequence();
+        final TokenHierarchy<Document> tokenHierarchy = TokenHierarchy.get(document);
+        final TokenSequence<NsisTokenId> tokenSequence = (TokenSequence<NsisTokenId>) tokenHierarchy.tokenSequence();
 
-        if (ts == null) {
+        if (tokenSequence == null) {
             return;
         }
 
-        removeFoldsFromHierarchy(transaction);
+        removeFoldsFromHierarchy(foldHierarchyTransaction);
 
-        int start = 0;
-        int offset = 0;
+        int start;
+        int offset;
         int startingTokenOffset = -1;
-        while (ts.moveNext()) {
-            offset = ts.offset();
-            final Token<NsisTokenId> token = ts.token();
+
+        while (tokenSequence.moveNext()) {
+
+            offset = tokenSequence.offset();
+
+            final Token<NsisTokenId> token = tokenSequence.token();
             final NsisTokenId id = token.id();
             final FoldType foldType;
 
@@ -97,7 +100,7 @@ public class NsisFoldManager implements FoldManager {
                 try {
                     LOGGER.log(Level.INFO, "NsisFoldManager#initFolds -> addToHierarchy {0}", id.name());
 
-                    operation.addToHierarchy(
+                    foldOperation.addToHierarchy(
                             foldType,
                             foldType.toString(),
                             false,
@@ -106,7 +109,7 @@ public class NsisFoldManager implements FoldManager {
                             0,
                             0,
                             hierarchy,
-                            transaction);
+                            foldHierarchyTransaction);
 
                     startingTokenOffset = -1;
                 } catch (BadLocationException ex) {
@@ -116,10 +119,10 @@ public class NsisFoldManager implements FoldManager {
         }
     }
 
-    private void removeFoldsFromHierarchy(FoldHierarchyTransaction transaction) {
-        final Iterator<Fold> foldIterator = operation.foldIterator();
+    private void removeFoldsFromHierarchy(final FoldHierarchyTransaction transaction) {
+        final Iterator<Fold> foldIterator = foldOperation.foldIterator();
         while (foldIterator.hasNext()) {
-            operation.removeFromHierarchy(foldIterator.next(), transaction);
+            foldOperation.removeFromHierarchy(foldIterator.next(), transaction);
         }
     }
 
@@ -145,34 +148,34 @@ public class NsisFoldManager implements FoldManager {
     }
 
     @Override
-    public void insertUpdate(DocumentEvent de, FoldHierarchyTransaction fht) {
+    public void insertUpdate(final DocumentEvent documentEvent, final FoldHierarchyTransaction foldHierarchyTransaction) {
         LOGGER.info("NsisFoldManager#insertUpdate");
-        initFolds(fht);
+        initFolds(foldHierarchyTransaction);
     }
 
     @Override
-    public void removeUpdate(DocumentEvent de, FoldHierarchyTransaction fht) {
+    public void removeUpdate(final DocumentEvent documentEvent, final FoldHierarchyTransaction foldHierarchyTransaction) {
         LOGGER.info("NsisFoldManager#removeUpdate");
-        initFolds(fht);
+        initFolds(foldHierarchyTransaction);
     }
 
     @Override
-    public void changedUpdate(DocumentEvent de, FoldHierarchyTransaction fht) {
+    public void changedUpdate(final DocumentEvent documentEvent, final FoldHierarchyTransaction foldHierarchyTransaction) {
         LOGGER.info("NsisFoldManager#changedUpdate");
     }
 
     @Override
-    public void removeEmptyNotify(Fold fold) {
+    public void removeEmptyNotify(final Fold fold) {
         LOGGER.info("NsisFoldManager#removeEmptyNotify");
     }
 
     @Override
-    public void removeDamagedNotify(Fold fold) {
+    public void removeDamagedNotify(final Fold fold) {
         LOGGER.info("NsisFoldManager#removeDamagedNotify");
     }
 
     @Override
-    public void expandNotify(Fold fold) {
+    public void expandNotify(final Fold fold) {
         LOGGER.info("NsisFoldManager#expandNotify");
     }
 

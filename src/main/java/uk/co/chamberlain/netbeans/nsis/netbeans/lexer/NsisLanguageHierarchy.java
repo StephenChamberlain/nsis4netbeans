@@ -62,74 +62,74 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static void init() {
 
         commands = new ArrayList<>();
-        final Scanner nsisDefsCommandsScanner = new Scanner(ResourceUtils.getNsisDefsCommands());
-        while (nsisDefsCommandsScanner.hasNext()) {
-            commands.add(nsisDefsCommandsScanner.next());
+        try (Scanner nsisDefsCommandsScanner = new Scanner(ResourceUtils.getNsisDefsCommands())) {
+            while (nsisDefsCommandsScanner.hasNext()) {
+                commands.add(nsisDefsCommandsScanner.next());
+            }
         }
-        nsisDefsCommandsScanner.close();
 
         whitespace = new ArrayList<>();
-        final Scanner nsisDefsWhitespaceScanner = new Scanner(ResourceUtils.getNsisDefsWhitespace());
-        while (nsisDefsWhitespaceScanner.hasNext()) {
-            whitespace.add(nsisDefsWhitespaceScanner.next());
+        try (Scanner nsisDefsWhitespaceScanner = new Scanner(ResourceUtils.getNsisDefsWhitespace())) {
+            while (nsisDefsWhitespaceScanner.hasNext()) {
+                whitespace.add(nsisDefsWhitespaceScanner.next());
+            }
         }
-        nsisDefsWhitespaceScanner.close();
 
         literals = new ArrayList<>();
-        final Scanner nsisDefsLiteralsScanner = new Scanner(ResourceUtils.getNsisDefsLiterals());
-        while (nsisDefsLiteralsScanner.hasNext()) {
-            literals.add(nsisDefsLiteralsScanner.next());
+        try (Scanner nsisDefsLiteralsScanner = new Scanner(ResourceUtils.getNsisDefsLiterals())) {
+            while (nsisDefsLiteralsScanner.hasNext()) {
+                literals.add(nsisDefsLiteralsScanner.next());
+            }
         }
-        nsisDefsLiteralsScanner.close();
 
         comments = new ArrayList<>();
-        final Scanner nsisDefsCommentsScanner = new Scanner(ResourceUtils.getNsisDefsComments());
-        while (nsisDefsCommentsScanner.hasNext()) {
-            comments.add(nsisDefsCommentsScanner.next());
+        try (Scanner nsisDefsCommentsScanner = new Scanner(ResourceUtils.getNsisDefsComments())) {
+            while (nsisDefsCommentsScanner.hasNext()) {
+                comments.add(nsisDefsCommentsScanner.next());
+            }
         }
-        nsisDefsCommentsScanner.close();
 
         operators = new ArrayList<>();
-        final Scanner nsisDefsOperatorsScanner = new Scanner(ResourceUtils.getNsisDefsOperators());
-        while (nsisDefsOperatorsScanner.hasNext()) {
-            operators.add(nsisDefsOperatorsScanner.next());
+        try (Scanner nsisDefsOperatorsScanner = new Scanner(ResourceUtils.getNsisDefsOperators())) {
+            while (nsisDefsOperatorsScanner.hasNext()) {
+                operators.add(nsisDefsOperatorsScanner.next());
+            }
         }
-        nsisDefsOperatorsScanner.close();
 
         numbers = new ArrayList<>();
-        final Scanner nsisDefsNumbersScanner = new Scanner(ResourceUtils.getNsisDefsNumbers());
-        while (nsisDefsNumbersScanner.hasNext()) {
-            numbers.add(nsisDefsNumbersScanner.next());
+        try (Scanner nsisDefsNumbersScanner = new Scanner(ResourceUtils.getNsisDefsNumbers())) {
+            while (nsisDefsNumbersScanner.hasNext()) {
+                numbers.add(nsisDefsNumbersScanner.next());
+            }
         }
-        nsisDefsNumbersScanner.close();
 
         identifiers = new ArrayList<>();
-        final Scanner nsisDefsIdentifiersScanner = new Scanner(ResourceUtils.getNsisDefsIdentifiers());
-        while (nsisDefsIdentifiersScanner.hasNext()) {
-            identifiers.add(nsisDefsIdentifiersScanner.next());
+        try (Scanner nsisDefsIdentifiersScanner = new Scanner(ResourceUtils.getNsisDefsIdentifiers())) {
+            while (nsisDefsIdentifiersScanner.hasNext()) {
+                identifiers.add(nsisDefsIdentifiersScanner.next());
+            }
         }
-        nsisDefsIdentifiersScanner.close();
 
         functions = new ArrayList<>();
-        final Scanner nsisDefsFunctionsScanner = new Scanner(ResourceUtils.getNsisDefsFunctions());
-        while (nsisDefsFunctionsScanner.hasNext()) {
-            functions.add(nsisDefsFunctionsScanner.next());
+        try (Scanner nsisDefsFunctionsScanner = new Scanner(ResourceUtils.getNsisDefsFunctions())) {
+            while (nsisDefsFunctionsScanner.hasNext()) {
+                functions.add(nsisDefsFunctionsScanner.next());
+            }
         }
-        nsisDefsFunctionsScanner.close();
 
         sections = new ArrayList<>();
-        final Scanner nsisDefsSectionsScanner = new Scanner(ResourceUtils.getNsisDefsSections());
-        while (nsisDefsSectionsScanner.hasNext()) {
-            sections.add(nsisDefsSectionsScanner.next());
+        try (Scanner nsisDefsSectionsScanner = new Scanner(ResourceUtils.getNsisDefsSections())) {
+            while (nsisDefsSectionsScanner.hasNext()) {
+                sections.add(nsisDefsSectionsScanner.next());
+            }
         }
-        nsisDefsSectionsScanner.close();        
         
         plugins = new ArrayList<>();
-        final Scanner nsisDefsPluginsScanner = new Scanner(ResourceUtils.getNsisDefsPlugins());
-        while (nsisDefsPluginsScanner.hasNext()) {
-            plugins.add(nsisDefsPluginsScanner.next());
+        try (Scanner nsisDefsPluginsScanner = new Scanner(ResourceUtils.getNsisDefsPlugins())) {
+            while (nsisDefsPluginsScanner.hasNext()) {
+                plugins.add(nsisDefsPluginsScanner.next());
+            }
         }
-        nsisDefsPluginsScanner.close();        
         
         tokens = new ArrayList<>();
 
@@ -174,15 +174,15 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
         }
 
         idToToken = new HashMap<>();
-        for (NsisTokenId token : tokens) {
+        tokens.forEach((token) -> {
             idToToken.put(token.ordinal(), token);
-        }
+        });
     }
 
     private static void addTokenId(final Field field, final String type)
             throws IllegalArgumentException, IllegalAccessException {
 
-        NsisTokenId tokenId = new NsisTokenId(field.getName(), type, field.getInt(PARSER_CONSTANTS));
+        final NsisTokenId tokenId = new NsisTokenId(field.getName(), type, field.getInt(PARSER_CONSTANTS));
         for (NsisTokenId existingToken : tokens) {
             if (existingToken.ordinal() == tokenId.ordinal()) {
                 LOGGER.log(
@@ -199,7 +199,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
         }
     }
 
-    static synchronized NsisTokenId getToken(int id) {
+    static synchronized NsisTokenId getToken(final int id) {
         if (idToToken == null) {
             init();
         }
@@ -219,7 +219,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     }
 
     @Override
-    protected synchronized Lexer<NsisTokenId> createLexer(LexerRestartInfo<NsisTokenId> info) {
+    protected synchronized Lexer<NsisTokenId> createLexer(final LexerRestartInfo<NsisTokenId> info) {
         return new NsisLexer(info);
     }
 

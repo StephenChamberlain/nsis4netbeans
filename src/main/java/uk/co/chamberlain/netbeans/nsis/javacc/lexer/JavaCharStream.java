@@ -1,3 +1,20 @@
+/*
+ * NSIS 4 NetBeans
+ * Copyright (C) 2016 Stephen Chamberlain
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package uk.co.chamberlain.netbeans.nsis.javacc.lexer;
 
 import java.io.IOException;
@@ -12,15 +29,15 @@ public class JavaCharStream {
 
     static boolean staticFlag;
 
-    public JavaCharStream(LexerInput input) {
+    public JavaCharStream(final LexerInput input) {
         this.input = input;
     }
 
-    JavaCharStream(Reader stream, int i, int i0) {
+    JavaCharStream(final Reader stream, final int i, final int i0) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    JavaCharStream(InputStream stream, String encoding, int i, int i0) throws UnsupportedEncodingException {
+    JavaCharStream(final InputStream stream, final String encoding, final int i, final int i0) throws UnsupportedEncodingException {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -32,22 +49,22 @@ public class JavaCharStream {
         return input.readText().toString();
     }
 
-    public char[] GetSuffix(int len) {
+    public char[] GetSuffix(final int len) {
         if (len > input.readLength()) {
             throw new IllegalArgumentException();
         }
         return input.readText(input.readLength() - len, input.readLength()).toString().toCharArray();
     }
 
-    void ReInit(Reader stream, int i, int i0) {
+    void ReInit(final Reader stream, final int i, final int i0) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    void ReInit(InputStream stream, String encoding, int i, int i0) throws UnsupportedEncodingException {
+    void ReInit(final InputStream stream, final String encoding, final int i, final int i0) throws UnsupportedEncodingException {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    void backup(int i) {
+    void backup(final int i) {
         input.backup(i);
     }
 
