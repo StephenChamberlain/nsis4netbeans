@@ -33,6 +33,7 @@ import org.openide.nodes.Node;
 import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
+import uk.co.chamberlain.netbeans.filetypes.AssociateLookupVersion;
 
 @Messages({
     "LBL_Nsddef_LOADER=Files of Nsddef"
@@ -110,8 +111,10 @@ import org.openide.windows.TopComponent;
 })
 public class NsddefDataObject extends MultiDataObject {
 
-    public NsddefDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
-        super(pf, loader);
+    public NsddefDataObject(final FileObject fileObject, final MultiFileLoader multiFileLoader)
+            throws DataObjectExistsException, IOException {
+
+        super(fileObject, multiFileLoader);
         registerEditor("text/x-nsddef", true);
     }
 
@@ -119,10 +122,10 @@ public class NsddefDataObject extends MultiDataObject {
     protected Node createNodeDelegate() {
         return new NsddefNode(this);
     }
-    
+
     @Override
     protected int associateLookup() {
-        return 1;
+        return AssociateLookupVersion.VERSION_1.getVersion();
     }
 
     @MultiViewElement.Registration(
@@ -134,8 +137,8 @@ public class NsddefDataObject extends MultiDataObject {
             position = 1000
     )
     @Messages("LBL_Nsddef_EDITOR=Source")
-    public static MultiViewEditorElement createEditor(Lookup lkp) {
-        return new MultiViewEditorElement(lkp);
+    public static MultiViewEditorElement createEditor(final Lookup lookup) {
+        return new MultiViewEditorElement(lookup);
     }
 
 }

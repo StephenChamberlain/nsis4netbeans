@@ -33,6 +33,7 @@ import org.openide.nodes.Node;
 import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
+import uk.co.chamberlain.netbeans.filetypes.AssociateLookupVersion;
 
 @Messages({
     "LBL_Exe_LOADER=Files of Exe"
@@ -110,8 +111,10 @@ import org.openide.windows.TopComponent;
 })
 public class ExeDataObject extends MultiDataObject {
 
-    public ExeDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
-        super(pf, loader);
+    public ExeDataObject(final FileObject fileObject, final MultiFileLoader multiFileLoader)
+            throws DataObjectExistsException, IOException {
+
+        super(fileObject, multiFileLoader);
         registerEditor("text/x-exe", true);
     }
 
@@ -122,7 +125,7 @@ public class ExeDataObject extends MultiDataObject {
 
     @Override
     protected int associateLookup() {
-        return 1;
+        return AssociateLookupVersion.VERSION_1.getVersion();
     }
 
     @MultiViewElement.Registration(
@@ -134,8 +137,8 @@ public class ExeDataObject extends MultiDataObject {
             position = 1000
     )
     @Messages("LBL_Exe_EDITOR=Source")
-    public static MultiViewEditorElement createEditor(Lookup lkp) {
-        return new MultiViewEditorElement(lkp);
+    public static MultiViewEditorElement createEditor(final Lookup lookup) {
+        return new MultiViewEditorElement(lookup);
     }
 
 }

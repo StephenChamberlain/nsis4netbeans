@@ -32,6 +32,7 @@ import org.openide.loaders.MultiFileLoader;
 import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
+import uk.co.chamberlain.netbeans.filetypes.AssociateLookupVersion;
 
 @Messages({
     "LBL_Nsdinc_LOADER=Files of Nsdinc"
@@ -117,7 +118,7 @@ public class NsdincDataObject extends MultiDataObject {
 
     @Override
     protected int associateLookup() {
-        return 1;
+        return AssociateLookupVersion.VERSION_1.getVersion();
     }
 
     @MultiViewElement.Registration(
