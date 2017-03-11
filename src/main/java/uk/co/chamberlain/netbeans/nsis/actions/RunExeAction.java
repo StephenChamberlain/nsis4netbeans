@@ -20,14 +20,17 @@ package uk.co.chamberlain.netbeans.nsis.actions;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 import org.netbeans.api.extexecution.ExecutionDescriptor;
 import org.netbeans.api.extexecution.ExecutionService;
 import org.openide.loaders.DataObject;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
+import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
 
 @ActionID(
@@ -44,12 +47,13 @@ public final class RunExeAction implements Action, ActionListener {
 
     private final DataObject context;
 
-    public RunExeAction(DataObject context) {
+    public RunExeAction(final DataObject context) {
         this.context = context;
     }
 
     @Override
-    public void actionPerformed(ActionEvent ev) {
+    public void actionPerformed(final ActionEvent actionEvent) {
+
         final String exeFilePath = context.getPrimaryFile().getPath();
 
         final String commandLine = exeFilePath;
@@ -63,22 +67,37 @@ public final class RunExeAction implements Action, ActionListener {
 
         final ExecutionService exeService = ExecutionService.newService(
                 new ProcessLaunch(commandLine),
-                descriptor, "Run Executable");
+                descriptor,
+                "Run Executable");
 
         final Future<Integer> exitCode = exeService.run();
+
+        try {
+            int result = exitCode.get();
+            if (result != 0) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Process returned code " + result, // TODO: i18n
+                        "Non zero return code", // TODO: i18n
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (InterruptedException | ExecutionException ex) {
+            Exceptions.printStackTrace(ex);
+        }
     }
 
     @Override
-    public Object getValue(String string) {
+    public Object getValue(final String string) {
         return context;
     }
 
     @Override
-    public void putValue(String string, Object o) {
+    public void putValue(final String string, final Object object) {
     }
 
     @Override
-    public void setEnabled(boolean bln) {
+    public void setEnabled(final boolean bool) {
     }
 
     @Override
@@ -87,10 +106,10 @@ public final class RunExeAction implements Action, ActionListener {
     }
 
     @Override
-    public void addPropertyChangeListener(PropertyChangeListener pl) {
+    public void addPropertyChangeListener(final PropertyChangeListener propertyChangeListener) {
     }
 
     @Override
-    public void removePropertyChangeListener(PropertyChangeListener pl) {
+    public void removePropertyChangeListener(final PropertyChangeListener propertyChangeListener) {
     }
 }

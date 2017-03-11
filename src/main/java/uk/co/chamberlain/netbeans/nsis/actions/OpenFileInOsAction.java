@@ -31,7 +31,6 @@ import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
 import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
-import static uk.co.chamberlain.netbeans.nsis.NsisConstants.MAKENSIS_EXE_NAME;
 
 @ActionID(
         category = "Debug",
@@ -47,13 +46,15 @@ public final class OpenFileInOsAction implements Action, ActionListener {
 
     private final DataObject context;
 
-    public OpenFileInOsAction(DataObject context) {
+    public OpenFileInOsAction(final DataObject context) {
         this.context = context;
     }
 
     @Override
-    public void actionPerformed(ActionEvent ev) {
+    public void actionPerformed(final ActionEvent actionEvent) {
+        
         final File file = new File(context.getPrimaryFile().getPath());
+        
         if (file.exists() && file.isFile()) {
             try {
                 Desktop.getDesktop().open(file);
@@ -73,16 +74,16 @@ public final class OpenFileInOsAction implements Action, ActionListener {
     }
 
     @Override
-    public Object getValue(String string) {
+    public Object getValue(final String string) {
         return context;
     }
 
     @Override
-    public void putValue(String string, Object o) {
+    public void putValue(final String string, final Object object) {
     }
 
     @Override
-    public void setEnabled(boolean bln) {
+    public void setEnabled(final boolean bool) {
     }
 
     @Override
@@ -91,10 +92,10 @@ public final class OpenFileInOsAction implements Action, ActionListener {
     }
 
     @Override
-    public void addPropertyChangeListener(PropertyChangeListener pl) {
+    public void addPropertyChangeListener(final PropertyChangeListener propertyChangeListener) {
     }
 
     @Override
-    public void removePropertyChangeListener(PropertyChangeListener pl) {
+    public void removePropertyChangeListener(final PropertyChangeListener propertyChangeListener) {
     }
 }
