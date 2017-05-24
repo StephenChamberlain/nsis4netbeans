@@ -41,6 +41,7 @@ public class NsisFoldManager implements FoldManager {
     public static final FoldType FOLD_TYPE_COMMENT = new FoldType("/*...*/");
     public static final FoldType FOLD_TYPE_FUNCTION = new FoldType("Function...FunctionEnd");
     public static final FoldType FOLD_TYPE_SECTION = new FoldType("Section...SectionEnd");
+    public static final FoldType FOLD_TYPE_MACRO = new FoldType("!macro...!macroend");    
 
     private FoldOperation foldOperation;
 
@@ -81,7 +82,7 @@ public class NsisFoldManager implements FoldManager {
             if (isComment(id)) {
                 foldType = FOLD_TYPE_COMMENT;
 
-            } else if (isFunctionStart(id) || isSectionStart(id)) {
+            } else if (isFunctionStart(id) || isSectionStart(id) || isMacroStart(id)) {
                 startingTokenOffset = offset;
                 continue;
 
@@ -91,6 +92,9 @@ public class NsisFoldManager implements FoldManager {
             } else if (isSectionEnd(id)) {
                 foldType = FOLD_TYPE_SECTION;
 
+            } else if (isMacroEnd(id)) {
+                foldType = FOLD_TYPE_MACRO;                
+                
             } else {
                 foldType = null;
             }
@@ -147,6 +151,14 @@ public class NsisFoldManager implements FoldManager {
         return tokenId.name().equals("SECTIONEND");
     }
 
+    private boolean isMacroStart(final NsisTokenId tokenId) {
+        return tokenId.name().equals("MACRO");
+    }
+
+    private boolean isMacroEnd(final NsisTokenId tokenId) {
+        return tokenId.name().equals("MACROEND");
+    }    
+    
     @Override
     public void insertUpdate(final DocumentEvent documentEvent, final FoldHierarchyTransaction foldHierarchyTransaction) {
         LOGGER.info("NsisFoldManager#insertUpdate");
