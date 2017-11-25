@@ -21,6 +21,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans-spec-version>RELEASE82</netbeans-spec-version>
+        <javacc.home>${project.basedir}/javacc-5.0</javacc.home>
     </properties>
     
     <profiles>
@@ -32,7 +33,7 @@
                 </os>
             </activation>
             <properties>
-                <javacc.os.specific.executable>${project.basedir}\javacc-5.0\bin\javacc.bat</javacc.os.specific.executable>
+                <javacc.os.specific.executable>${javacc.home}/bin/javacc.bat</javacc.os.specific.executable>
             </properties>            
         </profile>    
         <profile>
@@ -43,7 +44,7 @@
                 </os>
             </activation>
             <properties>
-                <javacc.os.specific.executable>${project.basedir}\javacc-5.0\bin\javacc</javacc.os.specific.executable>
+                <javacc.os.specific.executable>${javacc.home}/bin/javacc</javacc.os.specific.executable>
             </properties>
         </profile>        
     </profiles>
@@ -58,8 +59,6 @@
     </developers>    
             
     <scm>
-        <connection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</connection>
-        <developerConnection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</developerConnection>
         <connection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</connection>
         <developerConnection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</developerConnection>
     </scm>
@@ -104,9 +103,9 @@
                 </executions>
                 <configuration>
                     <executable>${javacc.os.specific.executable}</executable>
-                    <workingDirectory>${project.basedir}\src\main\java\uk\co\chamberlain\netbeans\nsis\javacc\lexer</workingDirectory>
+                    <workingDirectory>${project.basedir}/src/main/java/uk/co/chamberlain/netbeans/nsis/javacc/lexer</workingDirectory>
                     <arguments>
-                        <argument>${project.basedir}\src\main\java\uk\co\chamberlain\netbeans\nsis\javacc\lexer\nsis.jj</argument>
+                        <argument>${project.basedir}/src/main/java/uk/co/chamberlain/netbeans/nsis/javacc/lexer/nsis.jj</argument>
                     </arguments>
                 </configuration>
             </plugin>            
