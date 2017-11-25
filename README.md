@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/StephenChamberlain/nsis4netbeans.svg?branch=master)](https://travis-ci.org/StephenChamberlain/nsis4netbeans) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Synopsis
 
 Provides support for NSIS (Nullsoft Scriptable Install System) in NetBeans IDE.
