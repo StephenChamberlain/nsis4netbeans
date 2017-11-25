@@ -32,6 +32,7 @@ import org.openide.loaders.MultiFileLoader;
 import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
+import uk.co.chamberlain.netbeans.filetypes.AssociateLookupVersion;
 
 @Messages({
     "LBL_Nsh_LOADER=Files of Nsh"
@@ -40,7 +41,7 @@ import org.openide.windows.TopComponent;
         displayName = "#LBL_Nsh_LOADER",
         mimeType = "text/x-nsh",
         extension = {"nsh", "NSH"},
-        position =  2147483002
+        position = 2147483002
 )
 @DataObject.Registration(
         mimeType = "text/x-nsh",
@@ -110,14 +111,16 @@ import org.openide.windows.TopComponent;
 })
 public class NshDataObject extends MultiDataObject {
 
-    public NshDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
-        super(pf, loader);
+    public NshDataObject(final FileObject fileObject, final MultiFileLoader multiFileLoader)
+            throws DataObjectExistsException, IOException {
+
+        super(fileObject, multiFileLoader);
         registerEditor("text/x-nsh", true);
     }
 
     @Override
     protected int associateLookup() {
-        return 1;
+        return AssociateLookupVersion.VERSION_1.getVersion();
     }
 
     @MultiViewElement.Registration(
@@ -129,8 +132,8 @@ public class NshDataObject extends MultiDataObject {
             position = 1000
     )
     @Messages("LBL_Nsh_EDITOR=Source")
-    public static MultiViewEditorElement createEditor(Lookup lkp) {
-        return new MultiViewEditorElement(lkp);
+    public static MultiViewEditorElement createEditor(final Lookup lookup) {
+        return new MultiViewEditorElement(lookup);
     }
 
 }

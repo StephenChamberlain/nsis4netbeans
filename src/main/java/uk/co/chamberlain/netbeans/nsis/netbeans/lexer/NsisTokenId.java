@@ -27,9 +27,10 @@ public class NsisTokenId implements TokenId {
     private final int id;
 
     NsisTokenId(
-            String name,
-            String primaryCategory,
-            int id) {
+            final String name,
+            final String primaryCategory,
+            final int id) {
+
         this.name = name;
         this.primaryCategory = primaryCategory;
         this.id = id;

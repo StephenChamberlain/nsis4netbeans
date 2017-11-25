@@ -27,11 +27,11 @@ import uk.co.chamberlain.netbeans.nsis.javacc.lexer.Token;
 class NsisLexer implements Lexer<NsisTokenId> {
 
     private static final Logger LOGGER = Logger.getLogger(NsisLexer.class.getName());
-    
+
     private final LexerRestartInfo<NsisTokenId> info;
     private final NSISParserTokenManager nsisParserTokenManager;
 
-    NsisLexer(LexerRestartInfo<NsisTokenId> info) {
+    NsisLexer(final LexerRestartInfo<NsisTokenId> info) {
         this.info = info;
         JavaCharStream stream = new JavaCharStream(info.input());
         nsisParserTokenManager = new NSISParserTokenManager(stream);
@@ -40,7 +40,7 @@ class NsisLexer implements Lexer<NsisTokenId> {
     @Override
     public org.netbeans.api.lexer.Token<NsisTokenId> nextToken() {
         try {
-            Token token = nsisParserTokenManager.getNextToken();
+            final Token token = nsisParserTokenManager.getNextToken();
             if (info.input().readLength() < 1) {
                 return null;
             }

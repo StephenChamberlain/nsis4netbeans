@@ -15,28 +15,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.co.chamberlain.netbeans.filetypes.nsddef;
-
-import javax.swing.Action;
-
-import org.openide.loaders.DataNode;
-import org.openide.nodes.Children;
-
-import uk.co.chamberlain.netbeans.nsis.actions.OpenFileInOsAction;
+package uk.co.chamberlain.netbeans.filetypes;
 
 /**
- * Associates the open file action with *.nsddef files; these can be opened in the NSIS Dialog Designer application, if
- * installed.
+ * @see MultiDataObject#associateLookup
  */
-public class NsddefNode extends DataNode {
+public enum AssociateLookupVersion {
 
-    public NsddefNode(final NsddefDataObject nsddefDataObject) {
-        super(nsddefDataObject, Children.LEAF);
+    /**
+     * Delegates to {@code getNodeDelegate().getLookup()}.
+     */
+    VERSION_0(0),
+    /**
+     * Delegates to {@code getCookieSet().getLookup()} and makes sure {@link FileObject}, {@code this} and {@link Node}
+     * are in the lookup. The {@link Node} is created lazily by calling {@link #getNodeDelegate()}.
+     */
+    VERSION_1(1);
+
+    private final int version;
+
+    private AssociateLookupVersion(int version) {
+        this.version = version;
     }
 
-    @Override
-    public Action getPreferredAction() {
-        return new OpenFileInOsAction(getDataObject());
+    public int getVersion() {
+        return version;
     }
 
 }

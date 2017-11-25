@@ -20,6 +20,7 @@ package uk.co.chamberlain.netbeans.nsis.actions;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import javax.swing.JOptionPane;
 
@@ -30,6 +31,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
+import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
 
 import uk.co.chamberlain.netbeans.nsis.options.NsisOptionsManager;
@@ -58,18 +60,20 @@ public class CompileNsiScriptAction implements ActionListener {
 
     private final DataObject context;
 
-    public CompileNsiScriptAction(DataObject context) {
+    public CompileNsiScriptAction(final DataObject context) {
         this.context = context;
     }
 
     @Override
-    public void actionPerformed(ActionEvent ev) {
+    public void actionPerformed(final ActionEvent actionEvent) {
+
         final String nsisHome = NsisOptionsManager.getNsisHome();
+
         if (!canFindNsisExecutable(nsisHome)) {
             JOptionPane.showMessageDialog(
                     null,
-                    MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.",
-                    "NSIS not found!",
+                    MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.", // TODO: i18n
+                    "NSIS not found!", // TODO: i18n
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -96,6 +100,20 @@ public class CompileNsiScriptAction implements ActionListener {
                 descriptor, "NSIS Compile");
 
         final Future<Integer> exitCode = exeService.run();
+
+        try {
+            int result = exitCode.get();
+            if (result != 0) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Compile returned code " + result, // TODO: i18n
+                        "Non zero return code", // TODO: i18n
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (InterruptedException | ExecutionException ex) {
+            Exceptions.printStackTrace(ex);
+        }
     }
 
     private boolean canFindNsisExecutable(final String nsisHome) {

@@ -24,15 +24,18 @@ class ProcessLaunch implements Callable<Process> {
 
     private final String[] commandLine;
 
-    public ProcessLaunch(String... commandLine) {
+    public ProcessLaunch(final String... commandLine) {
         this.commandLine = commandLine;
     }
 
     @Override
     public Process call() throws Exception {
+
         final ProcessBuilder processBuilder = new ProcessBuilder(commandLine);
+
         processBuilder.directory(new File(System.getProperty("user.home"))); //NOI18N
         processBuilder.redirectErrorStream(true);
+
         return processBuilder.start();
     }
 }

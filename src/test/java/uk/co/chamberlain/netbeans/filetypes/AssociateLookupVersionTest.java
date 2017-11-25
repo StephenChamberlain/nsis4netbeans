@@ -15,28 +15,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.co.chamberlain.netbeans.filetypes.nsddef;
+package uk.co.chamberlain.netbeans.filetypes;
 
-import javax.swing.Action;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-import org.openide.loaders.DataNode;
-import org.openide.nodes.Children;
+public class AssociateLookupVersionTest {
 
-import uk.co.chamberlain.netbeans.nsis.actions.OpenFileInOsAction;
-
-/**
- * Associates the open file action with *.nsddef files; these can be opened in the NSIS Dialog Designer application, if
- * installed.
- */
-public class NsddefNode extends DataNode {
-
-    public NsddefNode(final NsddefDataObject nsddefDataObject) {
-        super(nsddefDataObject, Children.LEAF);
-    }
-
-    @Override
-    public Action getPreferredAction() {
-        return new OpenFileInOsAction(getDataObject());
+    @Test
+    public void testValues() {
+        assertEquals(0, AssociateLookupVersion.VERSION_0.getVersion());
+        assertEquals(1, AssociateLookupVersion.VERSION_1.getVersion());
     }
 
 }
