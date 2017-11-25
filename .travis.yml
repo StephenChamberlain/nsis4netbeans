@@ -1,5 +1,5 @@
 before_install:
-  - chmod +x javacc
+  - chmod +x ./javacc-5.0/bin/javacc
 language: java
 jdk:
   - oraclejdk8
