@@ -1,6 +1,5 @@
 before_install:
-  - chmod +x StephenChamberlain/nsis4netbeans/javacc-5.0/bin/javacc
-  - chmod +x StephenChamberlain/nsis4netbeans/javacc-6.0/bin/javacc
+  - chmod +x javacc
 language: java
 jdk:
   - oraclejdk8
