@@ -32,6 +32,7 @@ import org.openide.loaders.MultiFileLoader;
 import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
+import uk.co.chamberlain.netbeans.filetypes.AssociateLookupVersion;
 
 @Messages({
     "LBL_Nsi_LOADER=Files of Nsi"
@@ -40,7 +41,7 @@ import org.openide.windows.TopComponent;
         displayName = "#LBL_Nsi_LOADER",
         mimeType = "text/x-nsi",
         extension = {"nsi", "NSI", "nsh", "NSH", "nsdinc", "NSDINC"},
-        position =  2147483001
+        position = 2147483001
 )
 @DataObject.Registration(
         mimeType = "text/x-nsi",
@@ -110,14 +111,16 @@ import org.openide.windows.TopComponent;
 })
 public class NsiDataObject extends MultiDataObject {
 
-    public NsiDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
-        super(pf, loader);
+    public NsiDataObject(final FileObject fileObject, final MultiFileLoader multiFileLoader)
+            throws DataObjectExistsException, IOException {
+
+        super(fileObject, multiFileLoader);
         registerEditor("text/x-nsi", true);
     }
 
     @Override
     protected int associateLookup() {
-        return 1;
+        return AssociateLookupVersion.VERSION_1.getVersion();
     }
 
     @MultiViewElement.Registration(
@@ -129,8 +132,8 @@ public class NsiDataObject extends MultiDataObject {
             position = 1000
     )
     @Messages("LBL_Nsi_EDITOR=Source")
-    public static MultiViewEditorElement createEditor(Lookup lkp) {
-        return new MultiViewEditorElement(lkp);
+    public static MultiViewEditorElement createEditor(final Lookup lookup) {
+        return new MultiViewEditorElement(lookup);
     }
 
 }

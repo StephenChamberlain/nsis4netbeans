@@ -47,7 +47,7 @@ public final class CompileNsiScriptAndRunAction extends CompileNsiScriptAction {
 
     private final DataObject context;
 
-    public CompileNsiScriptAndRunAction(DataObject context) {
+    public CompileNsiScriptAndRunAction(final DataObject context) {
         super(context);
         this.context = context;
     }
