@@ -60,6 +60,8 @@
     <scm>
         <connection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</connection>
         <developerConnection>scm:git:ssh://s-b-chamberlain@git.code.sf.net/p/nsis4netbeans/code</developerConnection>
+        <connection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</connection>
+        <developerConnection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</developerConnection>
     </scm>
             
     <build>
