@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/StephenChamberlain/nsis4netbeans.svg?branch=master)](https://travis-ci.org/StephenChamberlain/nsis4netbeans) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Build Status](https://travis-ci.org/StephenChamberlain/nsis4netbeans.svg?branch=master)](https://travis-ci.org/StephenChamberlain/nsis4netbeans) 
+[![Maintainability](https://api.codeclimate.com/v1/badges/c114c011822314c552b2/maintainability)](https://codeclimate.com/github/StephenChamberlain/nsis4netbeans/maintainability)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Synopsis
 
