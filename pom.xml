@@ -23,7 +23,21 @@
         <netbeans-spec-version>RELEASE82</netbeans-spec-version>
         <javacc.home>${project.basedir}/javacc-5.0</javacc.home>
     </properties>
-    
+   
+    <developers>
+        <developer>
+            <id>chamberlain</id>
+            <name>Stephen Chamberlain</name>
+            <email>steve@steve-chamberlain.co.uk</email>
+            <url>http://www.steve-chamberlain.co.uk/</url>
+        </developer>
+    </developers>    
+            
+    <scm>
+        <connection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</connection>
+        <developerConnection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</developerConnection>
+    </scm>
+   
     <profiles>
         <profile>
             <id>windows</id>
@@ -47,22 +61,8 @@
                 <javacc.os.specific.executable>${javacc.home}/bin/javacc</javacc.os.specific.executable>
             </properties>
         </profile>        
-    </profiles>
-
-    <developers>
-        <developer>
-            <id>chamberlain</id>
-            <name>Stephen Chamberlain</name>
-            <email>steve@steve-chamberlain.co.uk</email>
-            <url>http://www.steve-chamberlain.co.uk/</url>
-        </developer>
-    </developers>    
-            
-    <scm>
-        <connection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</connection>
-        <developerConnection>scm:git@github.com:StephenChamberlain/nsis4netbeans.git</developerConnection>
-    </scm>
-            
+    </profiles>            
+                              
     <build>
         <plugins>
             <plugin>
