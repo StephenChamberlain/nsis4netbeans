@@ -17,6 +17,7 @@
  */
 package uk.co.chamberlain.netbeans.nsis.netbeans.lexer;
 
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.logging.Level;
@@ -40,6 +41,7 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static final String COMMENT = "comment";
     private static final String WHITESPACE = "whitespace";
     private static final String NUMBER = "number";
+    private static final String IDENTIFIER = "identifier";
     private static final String FUNCTION = "function";
     private static final String SECTION = "section";
     private static final String PLUGIN = "plugin";
@@ -60,81 +62,34 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     private static NsisTokenId tokenForErrorSituation;
 
     private static void init() {
+        commands = buildLanguageConstruct(ResourceUtils.getNsisDefsCommands());
+        whitespace = buildLanguageConstruct(ResourceUtils.getNsisDefsWhitespace());
+        literals = buildLanguageConstruct(ResourceUtils.getNsisDefsLiterals());
+        comments = buildLanguageConstruct(ResourceUtils.getNsisDefsComments());
+        operators = buildLanguageConstruct(ResourceUtils.getNsisDefsOperators());
+        numbers = buildLanguageConstruct(ResourceUtils.getNsisDefsNumbers());
+        identifiers = buildLanguageConstruct(ResourceUtils.getNsisDefsIdentifiers());
+        functions = buildLanguageConstruct(ResourceUtils.getNsisDefsFunctions());
+        sections = buildLanguageConstruct(ResourceUtils.getNsisDefsSections());
+        plugins = buildLanguageConstruct(ResourceUtils.getNsisDefsPlugins());
 
-        commands = new ArrayList<>();
-        try (Scanner nsisDefsCommandsScanner = new Scanner(ResourceUtils.getNsisDefsCommands())) {
-            while (nsisDefsCommandsScanner.hasNext()) {
-                commands.add(nsisDefsCommandsScanner.next());
-            }
-        }
+        addFieldsToTokens();
+    }
 
-        whitespace = new ArrayList<>();
-        try (Scanner nsisDefsWhitespaceScanner = new Scanner(ResourceUtils.getNsisDefsWhitespace())) {
-            while (nsisDefsWhitespaceScanner.hasNext()) {
-                whitespace.add(nsisDefsWhitespaceScanner.next());
+    private static List<String> buildLanguageConstruct(InputStream languageConstructStream) {
+        List<String> languageConstruct = new ArrayList<>();
+        try (Scanner languageConstructScanner = new Scanner(languageConstructStream)) {
+            while (languageConstructScanner.hasNext()) {
+                languageConstruct.add(languageConstructScanner.next());
             }
         }
+        return languageConstruct;
+    }
 
-        literals = new ArrayList<>();
-        try (Scanner nsisDefsLiteralsScanner = new Scanner(ResourceUtils.getNsisDefsLiterals())) {
-            while (nsisDefsLiteralsScanner.hasNext()) {
-                literals.add(nsisDefsLiteralsScanner.next());
-            }
-        }
-
-        comments = new ArrayList<>();
-        try (Scanner nsisDefsCommentsScanner = new Scanner(ResourceUtils.getNsisDefsComments())) {
-            while (nsisDefsCommentsScanner.hasNext()) {
-                comments.add(nsisDefsCommentsScanner.next());
-            }
-        }
-
-        operators = new ArrayList<>();
-        try (Scanner nsisDefsOperatorsScanner = new Scanner(ResourceUtils.getNsisDefsOperators())) {
-            while (nsisDefsOperatorsScanner.hasNext()) {
-                operators.add(nsisDefsOperatorsScanner.next());
-            }
-        }
-
-        numbers = new ArrayList<>();
-        try (Scanner nsisDefsNumbersScanner = new Scanner(ResourceUtils.getNsisDefsNumbers())) {
-            while (nsisDefsNumbersScanner.hasNext()) {
-                numbers.add(nsisDefsNumbersScanner.next());
-            }
-        }
-
-        identifiers = new ArrayList<>();
-        try (Scanner nsisDefsIdentifiersScanner = new Scanner(ResourceUtils.getNsisDefsIdentifiers())) {
-            while (nsisDefsIdentifiersScanner.hasNext()) {
-                identifiers.add(nsisDefsIdentifiersScanner.next());
-            }
-        }
-
-        functions = new ArrayList<>();
-        try (Scanner nsisDefsFunctionsScanner = new Scanner(ResourceUtils.getNsisDefsFunctions())) {
-            while (nsisDefsFunctionsScanner.hasNext()) {
-                functions.add(nsisDefsFunctionsScanner.next());
-            }
-        }
-
-        sections = new ArrayList<>();
-        try (Scanner nsisDefsSectionsScanner = new Scanner(ResourceUtils.getNsisDefsSections())) {
-            while (nsisDefsSectionsScanner.hasNext()) {
-                sections.add(nsisDefsSectionsScanner.next());
-            }
-        }
-        
-        plugins = new ArrayList<>();
-        try (Scanner nsisDefsPluginsScanner = new Scanner(ResourceUtils.getNsisDefsPlugins())) {
-            while (nsisDefsPluginsScanner.hasNext()) {
-                plugins.add(nsisDefsPluginsScanner.next());
-            }
-        }
-        
+    private static void addFieldsToTokens() {
         tokens = new ArrayList<>();
 
-        for (final Field field : NSISParserConstants.class
-                .getFields()) {
+        for (final Field field : NSISParserConstants.class.getFields()) {
             try {
                 if (field.getType() == Integer.TYPE) {
                     if (commands.contains(field.getName())) {
@@ -155,15 +110,18 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
                     } else if (numbers.contains(field.getName())) {
                         addTokenId(field, NUMBER);
 
+                    } else if (identifiers.contains(field.getName())) {
+                        addTokenId(field, IDENTIFIER);
+
                     } else if (functions.contains(field.getName())) {
                         addTokenId(field, FUNCTION);
 
                     } else if (sections.contains(field.getName())) {
-                        addTokenId(field, SECTION);                        
-                        
+                        addTokenId(field, SECTION);
+
                     } else if (plugins.contains(field.getName())) {
-                        addTokenId(field, PLUGIN);                        
-                        
+                        addTokenId(field, PLUGIN);
+
                     } else {
                         addTokenId(field, KEYWORD);
                     }
@@ -226,11 +184,9 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
     @Override
     protected String mimeType() {
         return "text/x-nsi";
-
     }
 
     private static class ParserConstants implements NSISParserConstants {
         // Object handle to use in reflection
     }
-
 }
