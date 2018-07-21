@@ -78,12 +78,11 @@ public class NsisFoldManager implements FoldManager {
 
     private void addFoldsToHierarchy(final TokenSequence<NsisTokenId> tokenSequence, final FoldHierarchy hierarchy,
             final FoldHierarchyTransaction foldHierarchyTransaction) {
-        int start;
+
         int offset;
         int startingTokenOffset = -1;
 
         while (tokenSequence.moveNext()) {
-
             offset = tokenSequence.offset();
 
             final Token<NsisTokenId> token = tokenSequence.token();
@@ -110,28 +109,38 @@ public class NsisFoldManager implements FoldManager {
                 foldType = null;
             }
 
-            if (foldType != null) {
-                start = offset;
-                try {
-                    LOGGER.log(Level.INFO, "NsisFoldManager#initFolds -> addToHierarchy {0}", id.name());
+            startingTokenOffset = addFoldToHierarchy(foldType, offset, startingTokenOffset, id, token, hierarchy,
+                    foldHierarchyTransaction);
+        }
+    }
 
-                    foldOperation.addToHierarchy(
-                            foldType,
-                            foldType.toString(),
-                            false,
-                            startingTokenOffset == -1 ? start : startingTokenOffset,
-                            offset + token.length(),
-                            0,
-                            0,
-                            hierarchy,
-                            foldHierarchyTransaction);
+    private int addFoldToHierarchy(final FoldType foldType, int offset, int startingTokenOffset, final NsisTokenId id,
+            final Token<NsisTokenId> token, final FoldHierarchy hierarchy,
+            final FoldHierarchyTransaction foldHierarchyTransaction) {
+        int start;
 
-                    startingTokenOffset = -1;
-                } catch (BadLocationException ex) {
-                    Exceptions.printStackTrace(ex);
-                }
+        if (foldType != null) {
+            start = offset;
+            try {
+                LOGGER.log(Level.INFO, "NsisFoldManager#initFolds -> addToHierarchy {0}", id.name());
+
+                foldOperation.addToHierarchy(
+                        foldType,
+                        foldType.toString(),
+                        false,
+                        startingTokenOffset == -1 ? start : startingTokenOffset,
+                        offset + token.length(),
+                        0,
+                        0,
+                        hierarchy,
+                        foldHierarchyTransaction);
+
+                startingTokenOffset = -1;
+            } catch (BadLocationException ex) {
+                Exceptions.printStackTrace(ex);
             }
         }
+        return startingTokenOffset;
     }
 
     private boolean isComment(final NsisTokenId tokenId) {
