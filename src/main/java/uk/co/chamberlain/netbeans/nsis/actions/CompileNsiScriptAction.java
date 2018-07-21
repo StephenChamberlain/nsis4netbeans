@@ -66,13 +66,7 @@ public class CompileNsiScriptAction implements ActionListener {
     public void actionPerformed(final ActionEvent actionEvent) {
 
         final String nsisHome = NsisOptionsManager.getNsisHome();
-
-        if (!canFindNsisExecutable(nsisHome)) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.", // TODO: i18n
-                    "NSIS not found!", // TODO: i18n
-                    JOptionPane.ERROR_MESSAGE);
+        if (!validateNsisHome(nsisHome)) {
             return;
         }
 
@@ -80,11 +74,10 @@ public class CompileNsiScriptAction implements ActionListener {
         final String nsisFilePath = context.getPrimaryFile().getPath();
 
         final String commandLine = buildCommandLine(nsisHome, nsisVerbosity, nsisFilePath);
-        final ExecutionDescriptor descriptor = buildExecutionDescriptor();
 
         final ExecutionService exeService = ExecutionService.newService(
                 new ProcessLaunch(commandLine),
-                descriptor, "NSIS Compile");
+                buildExecutionDescriptor(), "NSIS Compile");
 
         final Future<Integer> exitCode = exeService.run();
 
@@ -101,6 +94,18 @@ public class CompileNsiScriptAction implements ActionListener {
         } catch (InterruptedException | ExecutionException ex) {
             Exceptions.printStackTrace(ex);
         }
+    }
+
+    private boolean validateNsisHome(final String nsisHome) {
+        if (!canFindNsisExecutable(nsisHome)) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.", // TODO: i18n
+                    "NSIS not found!", // TODO: i18n
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
     private String buildCommandLine(String nsisHome, int nsisVerbosity, String nsisFilePath) {
