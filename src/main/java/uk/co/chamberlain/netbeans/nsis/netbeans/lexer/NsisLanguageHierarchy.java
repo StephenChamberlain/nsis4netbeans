@@ -90,51 +90,56 @@ public class NsisLanguageHierarchy extends LanguageHierarchy<NsisTokenId> {
         tokens = new ArrayList<>();
 
         for (final Field field : NSISParserConstants.class.getFields()) {
-            try {
-                if (field.getType() == Integer.TYPE) {
-                    if (commands.contains(field.getName())) {
-                        addTokenId(field, COMMAND);
-
-                    } else if (whitespace.contains(field.getName())) {
-                        addTokenId(field, WHITESPACE);
-
-                    } else if (literals.contains(field.getName())) {
-                        addTokenId(field, LITERAL);
-
-                    } else if (comments.contains(field.getName())) {
-                        addTokenId(field, COMMENT);
-
-                    } else if (operators.contains(field.getName())) {
-                        addTokenId(field, OPERATOR);
-
-                    } else if (numbers.contains(field.getName())) {
-                        addTokenId(field, NUMBER);
-
-                    } else if (identifiers.contains(field.getName())) {
-                        addTokenId(field, IDENTIFIER);
-
-                    } else if (functions.contains(field.getName())) {
-                        addTokenId(field, FUNCTION);
-
-                    } else if (sections.contains(field.getName())) {
-                        addTokenId(field, SECTION);
-
-                    } else if (plugins.contains(field.getName())) {
-                        addTokenId(field, PLUGIN);
-
-                    } else {
-                        addTokenId(field, KEYWORD);
-                    }
-                }
-            } catch (IllegalArgumentException | IllegalAccessException ex) {
-                Exceptions.printStackTrace(ex);
+            if (field.getType() != Integer.TYPE) {
+                continue;
             }
+            processField(field);
         }
 
         idToToken = new HashMap<>();
         tokens.forEach((token) -> {
             idToToken.put(token.ordinal(), token);
         });
+    }
+
+    private static void processField(final Field field) {
+        try {
+            if (commands.contains(field.getName())) {
+                addTokenId(field, COMMAND);
+
+            } else if (whitespace.contains(field.getName())) {
+                addTokenId(field, WHITESPACE);
+
+            } else if (literals.contains(field.getName())) {
+                addTokenId(field, LITERAL);
+
+            } else if (comments.contains(field.getName())) {
+                addTokenId(field, COMMENT);
+
+            } else if (operators.contains(field.getName())) {
+                addTokenId(field, OPERATOR);
+
+            } else if (numbers.contains(field.getName())) {
+                addTokenId(field, NUMBER);
+
+            } else if (identifiers.contains(field.getName())) {
+                addTokenId(field, IDENTIFIER);
+
+            } else if (functions.contains(field.getName())) {
+                addTokenId(field, FUNCTION);
+
+            } else if (sections.contains(field.getName())) {
+                addTokenId(field, SECTION);
+
+            } else if (plugins.contains(field.getName())) {
+                addTokenId(field, PLUGIN);
+
+            } else {
+                addTokenId(field, KEYWORD);
+            }
+        } catch (IllegalArgumentException | IllegalAccessException ex) {
+            Exceptions.printStackTrace(ex);
+        }
     }
 
     private static void addTokenId(final Field field, final String type)
