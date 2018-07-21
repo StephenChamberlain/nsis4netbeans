@@ -41,7 +41,7 @@ public class NsisFoldManager implements FoldManager {
     public static final FoldType FOLD_TYPE_COMMENT = new FoldType("/*...*/");
     public static final FoldType FOLD_TYPE_FUNCTION = new FoldType("Function...FunctionEnd");
     public static final FoldType FOLD_TYPE_SECTION = new FoldType("Section...SectionEnd");
-    public static final FoldType FOLD_TYPE_MACRO = new FoldType("!macro...!macroend");    
+    public static final FoldType FOLD_TYPE_MACRO = new FoldType("!macro...!macroend");
 
     private FoldOperation foldOperation;
 
@@ -66,7 +66,18 @@ public class NsisFoldManager implements FoldManager {
         }
 
         removeFoldsFromHierarchy(foldHierarchyTransaction);
+        addFoldsToHierarchy(tokenSequence, hierarchy, foldHierarchyTransaction);
+    }
 
+    private void removeFoldsFromHierarchy(final FoldHierarchyTransaction transaction) {
+        final Iterator<Fold> foldIterator = foldOperation.foldIterator();
+        while (foldIterator.hasNext()) {
+            foldOperation.removeFromHierarchy(foldIterator.next(), transaction);
+        }
+    }
+
+    private void addFoldsToHierarchy(final TokenSequence<NsisTokenId> tokenSequence, final FoldHierarchy hierarchy,
+            final FoldHierarchyTransaction foldHierarchyTransaction) {
         int start;
         int offset;
         int startingTokenOffset = -1;
@@ -93,8 +104,8 @@ public class NsisFoldManager implements FoldManager {
                 foldType = FOLD_TYPE_SECTION;
 
             } else if (isMacroEnd(id)) {
-                foldType = FOLD_TYPE_MACRO;                
-                
+                foldType = FOLD_TYPE_MACRO;
+
             } else {
                 foldType = null;
             }
@@ -120,13 +131,6 @@ public class NsisFoldManager implements FoldManager {
                     Exceptions.printStackTrace(ex);
                 }
             }
-        }
-    }
-
-    private void removeFoldsFromHierarchy(final FoldHierarchyTransaction transaction) {
-        final Iterator<Fold> foldIterator = foldOperation.foldIterator();
-        while (foldIterator.hasNext()) {
-            foldOperation.removeFromHierarchy(foldIterator.next(), transaction);
         }
     }
 
@@ -157,8 +161,8 @@ public class NsisFoldManager implements FoldManager {
 
     private boolean isMacroEnd(final NsisTokenId tokenId) {
         return tokenId.name().equals("MACROEND");
-    }    
-    
+    }
+
     @Override
     public void insertUpdate(final DocumentEvent documentEvent, final FoldHierarchyTransaction foldHierarchyTransaction) {
         LOGGER.info("NsisFoldManager#insertUpdate");
