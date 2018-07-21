@@ -1,9 +1,9 @@
 version: "2"         # required to adjust maintainability checks
 exclude_patterns:
   - "javacc-**/"
-  - "uk/co/chamberlain/netbeans/nsis/javacc/lexer/NSISParserConstants.java"
-  - "uk/co/chamberlain/netbeans/nsis/javacc/lexer/NSISParserTokenManager.java"
-  - "uk/co/chamberlain/netbeans/nsis/javacc/lexer/ParseException.java"
-  - "uk/co/chamberlain/netbeans/nsis/javacc/lexer/SimpleCharStream.java"
-  - "uk/co/chamberlain/netbeans/nsis/javacc/lexer/Token.java"
-  - "uk/co/chamberlain/netbeans/nsis/javacc/lexer/TokenMgrError.java"
+  - "**/javacc/lexer/NSISParserConstants.java"
+  - "**/javacc/lexer/NSISParserTokenManager.java"
+  - "**/javacc/lexer/ParseException.java"
+  - "**/javacc/lexer/SimpleCharStream.java"
+  - "**/javacc/lexer/Token.java"
+  - "**/javacc/lexer/TokenMgrError.java"
