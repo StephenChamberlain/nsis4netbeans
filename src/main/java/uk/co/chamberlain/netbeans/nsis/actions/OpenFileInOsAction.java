@@ -52,24 +52,28 @@ public final class OpenFileInOsAction implements Action, ActionListener {
 
     @Override
     public void actionPerformed(final ActionEvent actionEvent) {
-        
+
         final File file = new File(context.getPrimaryFile().getPath());
-        
+
         if (file.exists() && file.isFile()) {
             try {
                 Desktop.getDesktop().open(file);
             } catch (IOException ex) {
-                if (ex.getMessage().contains("Application not found")) {
-                    final String extension = "*" + file.getName().substring(file.getName().indexOf("."));
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Could not find a default application for " + extension + " files",
-                            "Application not found!",
-                            JOptionPane.ERROR_MESSAGE);
-                } else {
-                    Exceptions.printStackTrace(ex);
-                }
+                handleDesktopException(ex, file);
             }
+        }
+    }
+
+    private void handleDesktopException(final IOException ex, final File file) {
+        if (ex.getMessage().contains("Application not found")) {
+            final String extension = "*" + file.getName().substring(file.getName().indexOf("."));
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Could not find a default application for " + extension + " files",
+                    "Application not found!",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            Exceptions.printStackTrace(ex);
         }
     }
 

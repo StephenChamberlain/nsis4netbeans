@@ -47,13 +47,11 @@ import static uk.co.chamberlain.netbeans.nsis.NsisConstants.*;
         displayName = "#CTL_CompileNsiScriptAction"
 )
 @ActionReferences({
-    @ActionReference(path = "Menu/BuildProject", position = 297, separatorBefore = 296)
+    @ActionReference(path = "Menu/BuildProject", position = 297, separatorBefore = 296),
+    @ActionReference(path = "Toolbars/Build", position = 250),
+    @ActionReference(path = "Loaders/text/x-nsi/Actions", position = 150, separatorBefore = 125) // position = 150, separatorBefore = 125 // original = position = -100, separatorAfter = -50
     ,
-  @ActionReference(path = "Toolbars/Build", position = 250)
-    ,
-  @ActionReference(path = "Loaders/text/x-nsi/Actions", position = 150, separatorBefore = 125) // position = 150, separatorBefore = 125 // original = position = -100, separatorAfter = -50
-    ,
-  @ActionReference(path = "Editors/text/x-nsi/Popup", position = 300, separatorAfter = 350)
+    @ActionReference(path = "Editors/text/x-nsi/Popup", position = 300, separatorAfter = 350)
 })
 @Messages("CTL_CompileNsiScriptAction=Compile NSIS script...")
 public class CompileNsiScriptAction implements ActionListener {
@@ -68,36 +66,18 @@ public class CompileNsiScriptAction implements ActionListener {
     public void actionPerformed(final ActionEvent actionEvent) {
 
         final String nsisHome = NsisOptionsManager.getNsisHome();
-
-        if (!canFindNsisExecutable(nsisHome)) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.", // TODO: i18n
-                    "NSIS not found!", // TODO: i18n
-                    JOptionPane.ERROR_MESSAGE);
+        if (!validateNsisHome(nsisHome)) {
             return;
         }
 
         final int nsisVerbosity = NsisOptionsManager.getNsisVerbosity();
         final String nsisFilePath = context.getPrimaryFile().getPath();
 
-        final String commandLine
-                = DOUBLE_QUOTE + nsisHome + SEPARATOR + MAKENSIS_EXE_NAME + DOUBLE_QUOTE
-                + SPACE
-                + MAKENSIS_CLI_VERBOSITY + nsisVerbosity
-                + SPACE
-                + DOUBLE_QUOTE + nsisFilePath + DOUBLE_QUOTE;
-
-        final ExecutionDescriptor descriptor
-                = new ExecutionDescriptor()
-                        .controllable(true)
-                        .frontWindow(true)
-                        .preExecution(null)
-                        .postExecution(null);
+        final String commandLine = buildCommandLine(nsisHome, nsisVerbosity, nsisFilePath);
 
         final ExecutionService exeService = ExecutionService.newService(
                 new ProcessLaunch(commandLine),
-                descriptor, "NSIS Compile");
+                buildExecutionDescriptor(), "NSIS Compile");
 
         final Future<Integer> exitCode = exeService.run();
 
@@ -114,6 +94,35 @@ public class CompileNsiScriptAction implements ActionListener {
         } catch (InterruptedException | ExecutionException ex) {
             Exceptions.printStackTrace(ex);
         }
+    }
+
+    private boolean validateNsisHome(final String nsisHome) {
+        if (!canFindNsisExecutable(nsisHome)) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    MAKENSIS_EXE_NAME + " could not be found; please specify a valid NSIS installation in the Options dialog.", // TODO: i18n
+                    "NSIS not found!", // TODO: i18n
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    private String buildCommandLine(String nsisHome, int nsisVerbosity, String nsisFilePath) {
+        return new StringBuilder()
+                .append(DOUBLE_QUOTE).append(nsisHome).append(SEPARATOR).append(MAKENSIS_EXE_NAME).append(DOUBLE_QUOTE)
+                .append(SPACE)
+                .append(MAKENSIS_CLI_VERBOSITY).append(nsisVerbosity)
+                .append(SPACE)
+                .append(DOUBLE_QUOTE).append(nsisFilePath).append(DOUBLE_QUOTE).toString();
+    }
+
+    private ExecutionDescriptor buildExecutionDescriptor() {
+        return new ExecutionDescriptor()
+                .controllable(true)
+                .frontWindow(true)
+                .preExecution(null)
+                .postExecution(null);
     }
 
     private boolean canFindNsisExecutable(final String nsisHome) {
