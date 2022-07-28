@@ -121,8 +121,8 @@ public class CompileNsiScriptAction implements ActionListener {
         return new ExecutionDescriptor()
                 .controllable(true)
                 .frontWindow(true)
-                .preExecution(null)
-                .postExecution(null);
+                .preExecution(()->{})
+                .postExecution(()->{});
     }
 
     private boolean canFindNsisExecutable(final String nsisHome) {

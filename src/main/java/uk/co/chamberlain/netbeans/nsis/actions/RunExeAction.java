@@ -62,8 +62,8 @@ public final class RunExeAction implements Action, ActionListener {
                 = new ExecutionDescriptor()
                         .controllable(true)
                         .frontWindow(true)
-                        .preExecution(null)
-                        .postExecution(null);
+                        .preExecution(()->{})
+                        .postExecution(()->{});
 
         final ExecutionService exeService = ExecutionService.newService(
                 new ProcessLaunch(commandLine),

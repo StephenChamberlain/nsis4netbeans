@@ -20,7 +20,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netbeans-spec-version>RELEASE82</netbeans-spec-version>
+        <netbeans-spec-version>RELEASE140</netbeans-spec-version>
         <javacc.home>${project.basedir}/javacc-5.0</javacc.home>
     </properties>
    
@@ -147,9 +147,9 @@
     
     <repositories>
         <repository>
-            <id>netbeans</id>
+            <id>apache.snapshots</id>
             <name>Repository hosting NetBeans modules</name>
-            <url>http://bits.netbeans.org/nexus/content/groups/netbeans</url>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
